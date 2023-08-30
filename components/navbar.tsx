@@ -109,14 +109,14 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
+    <Box position='fixed' as="nav" w='100%' zIndex={2} boxShadow={'base'}>
       <Flex
         bg={"pastelBlue"}
         color={useColorModeValue("gray.600", "white")}
         maxH={"97px"}
         py={{ md: 2, base: "28px" }}
         px={{ md: "160px", base: "32px" }}
-        borderBottom={1}
+        borderBottom={0}
         borderStyle={!isOpen ? "solid" : "none"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
