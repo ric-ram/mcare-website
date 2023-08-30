@@ -121,7 +121,7 @@ export default function Footer() {
           direction={"column"}
           align={"center"}
         >
-          <Text>© 2022 Chakra Templates. All rights reserved</Text>
+          <Text>© 2023 MCare</Text>
         </Container>
       </Box>
     </Box>
