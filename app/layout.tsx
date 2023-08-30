@@ -30,8 +30,8 @@ export default function RootLayout({
           <Container
             pt={"85px"}
             maxWidth={"full"}
+            px={0}
             // maxHeight={'full'}
-            px={{ md: "160px", base: "32px" }}
           >
             {children}
           </Container>

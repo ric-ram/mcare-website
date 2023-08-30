@@ -1,6 +1,9 @@
 import { checkboxAnatomy as parts } from "@chakra-ui/anatomy"
 import { createMultiStyleConfigHelpers, defineStyle, extendTheme, type ThemeConfig } from '@chakra-ui/react'
 import { mode } from "@chakra-ui/theme-tools"
+import { Quicksand } from "next/font/google";
+
+const quicksand = Quicksand({ subsets: ['latin'] });
 
 type AccessibleColor = {
     bg?: string
@@ -90,12 +93,15 @@ const theme = extendTheme({
     styles: {
         global: {
             'html, body': {
-                fontSize: '16px'
+                fontSize: '16px',
             },
             'a': {
                 fontSize: '16px'
             }
         }
+    },
+    fonts: {
+        heading: quicksand.style.fontFamily,
     },
     colors: {
         pastelBlue: '#EFFBFF',
@@ -154,6 +160,16 @@ const theme = extendTheme({
             },
             variants: {
                 customSolid: variantSolid,
+            }
+        },
+        Heading: {
+            variants: {
+                'header1': {
+                    color: 'darkBlue',
+                    fontWeight: 'bold',
+                    fontSize: () => ({ base: '48px', md: '56px' }),
+                    lineHeight: '64px',
+                },
             }
         }
     }
