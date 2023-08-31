@@ -37,7 +37,7 @@ ContainerProps) {
     <Container
       maxWidth="full"
       py={12}
-      px={{ md: "160px", base: "32px" }}
+      px={{ lg: "160px", base: "32px" }}
       bg={bgColor}
     >
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} px={8} alignItems={'center'} templateAreas={{base: `'first' 'second'`, md:`'first second'`}} >
