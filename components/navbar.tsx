@@ -109,21 +109,18 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box position='fixed' as="nav" w='100%' zIndex={2} boxShadow={'base'}>
+    <Box position='fixed' as="nav" w='100%' zIndex={2} boxShadow={!isOpen && 'base'}>
       <Flex
         bg={"pastelBlue"}
         color={useColorModeValue("gray.600", "white")}
         maxH={"97px"}
-        py={{ md: 2, base: "28px" }}
-        px={{ md: "160px", base: "32px" }}
-        borderBottom={0}
-        borderStyle={!isOpen ? "solid" : "none"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        py={{ lg: 2, base: "28px" }}
+        px={{ lg: "160px", base: "32px" }}
         align={"center"}
       >
         <Flex
-          flex={{ base: 1, md: "auto" }}
-          display={{ base: "flex", md: "none" }}
+          flex={{ base: 1, lg: "auto" }}
+          display={{ base: "flex", lg: "none" }}
           justify={"space-between"}
           align={"center"}
         >
@@ -162,10 +159,10 @@ const DesktopNav = () => {
       flex={{ base: 1 }}
       justify={"space-between"}
       align={"center"}
-      display={{ base: "none", md: "flex" }}
+      display={{ base: "none", lg: "flex" }}
     >
       <Image objectFit="cover" src="/images/LogoDesktop.svg" alt="Logo" />
-      <Flex display={{ base: "none", md: "flex" }}>
+      <Flex display={{ base: "none", lg: "flex" }}>
         <Stack direction={"row"} spacing={3} align={"center"}>
           {NAV_ITEMS.map(
             (navItem) =>
@@ -215,7 +212,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Button
                 as={"a"}
-                display={{ base: "none", md: "inline-flex" }}
+                display={{ base: "none", lg: "inline-flex" }}
                 fontSize={"16px"}
                 fontWeight={"medium"}
                 lineHeight={"24px"}
@@ -489,7 +486,7 @@ const AppointmentsForm = () => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={"pastelBlue"} display={{ md: "none" }}>
+    <Stack bg={"pastelBlue"} display={{ lg: "none" }} boxShadow={'base'}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}

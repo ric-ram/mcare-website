@@ -52,7 +52,7 @@ const SocialButton = ({
 export default function Footer() {
   return (
     <Box bg={"darkBlue"} color={"white"} py={"50px"} position={'relative'} bottom={0} left={0} right={0}>
-      <Container as={Stack} maxW={"full"} pt={10} pb={14} px={{ md: "160px", base: "32px" }} align={"space-between"}>
+      <Container as={Stack} maxW={"full"} pt={10} pb={14} px={{ lg: "160px", base: "32px" }} align={"space-between"}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8} justifyItems={'center'}>
           <Stack align={{ base: 'center', md: "flex-start"}} spacing={'18px'}>
             <ListHeader>A MCare</ListHeader>
