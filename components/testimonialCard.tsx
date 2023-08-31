@@ -33,7 +33,7 @@ interface RatingProps {
   rating: number;
 }
 
-type TestimonialCardProps = {
+export type TestimonialCardProps = {
   author: string;
   review: string;
   rating: number;
@@ -70,23 +70,22 @@ export default function TestimonialCard({
   return (
     <Box
       bg={"lightBlue.200"}
-      maxW="396px"
-      maxH="340px"
+      maxW={{base: '246px', xl: "396px"}}
+      maxH={{base: '380px', xl: "340px"}}
       rounded="lg"
       shadow="md"
       position="relative"
+      mx={8}
     >
-      <Stack px={6} py={8} spacing={16}>
+      <Stack px={{base: 3, xl: 6}} py={8} spacing={{base: 6, xl: 16}}>
         <Flex
           justifyContent="space-between"
-          align="flex-start"
+          align={{base: 'center', xl: "flex-start"}}
           direction="column"
-          gap={6}
+          gap={{base: 4, xl: 6}}
         >
           <Rating rating={rating} />
-          <Text>
-            {review}
-          </Text>
+          <Text textAlign={{base: 'center', xl: 'left'}}>{review}</Text>
         </Flex>
         <Flex justifyContent="space-between" alignContent="center">
           <Box

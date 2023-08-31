@@ -170,6 +170,12 @@ const theme = extendTheme({
                     fontSize: () => ({ base: '48px', md: '56px' }),
                     lineHeight: '64px',
                 },
+                'header2': {
+                    color: 'darkBlue',
+                    fontWeight: '700',
+                    fontSize: '36px',
+                    lineHeight: '48px',
+                },
             }
         }
     }
