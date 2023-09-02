@@ -1,4 +1,9 @@
 import ContainerWithImage from "@/components/containerImage";
+import {
+  AppointmentsForm,
+  RecruitForm,
+  TestimonialForm,
+} from "@/components/forms";
 import TestimonialCard from "@/components/testimonialCard";
 import TestimonialCarousel from "@/components/testimonialCarousel";
 
@@ -12,20 +17,39 @@ export default function Home() {
   };
 
   const testimonial = {
-    author: 'John Doe',
+    author: "John Doe",
     review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
     odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
     Suspendisse urna nibh, viverra non, semper suscipit, posuere a,
     pede.`,
-    rating: 5
-  }
+    rating: 5,
+  };
 
   return (
     <>
+      <RecruitForm />
+      {/* <TestimonialForm /> */}
+      {/* <AppointmentsForm />
       <TestimonialCarousel />
-      {/* <TestimonialCard author={testimonial.author} review={testimonial.review} rating={testimonial.rating}/> */}
-      {/* <ContainerWithImage title={'A MCare'} text={imgContainer.loreumText} imageSrc={imgContainer.imagePlaceholder} imageAlt={imageContainer.imageAlt} />
-      <ContainerWithImage title={'A MCare'} text={imgContainer.loreumText} imageSrc={imgContainer.imagePlaceholder} imageAlt={imgContainer.imageAlt} imageRight={true} bgColor="pastelBlue"/> */}
+      <TestimonialCard
+        author={testimonial.author}
+        review={testimonial.review}
+        rating={testimonial.rating}
+      />
+      <ContainerWithImage
+        title={"A MCare"}
+        text={imgContainer.loreumText}
+        imageSrc={imgContainer.imagePlaceholder}
+        imageAlt={imgContainer.imageAlt}
+      />
+      <ContainerWithImage
+        title={"A MCare"}
+        text={imgContainer.loreumText}
+        imageSrc={imgContainer.imagePlaceholder}
+        imageAlt={imgContainer.imageAlt}
+        imageRight={true}
+        bgColor="pastelBlue"
+      /> */}
     </>
   );
 }

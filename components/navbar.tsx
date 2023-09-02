@@ -30,8 +30,6 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Person, Email, Phone } from "@mui/icons-material";
-import { useForm } from "react-hook-form";
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -39,6 +37,7 @@ import {
   SetStateAction,
   useState,
 } from "react";
+import { AppointmentsForm } from "./forms";
 
 interface NavItem {
   label: string;
@@ -97,19 +96,17 @@ const NAV_ITEMS: Array<NavItem> = [
   },
 ];
 
-type appointmentsInputs = {
-  name: string;
-  email: string;
-  phone: number;
-  message: string;
-  agree: boolean;
-};
-
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box position='fixed' as="nav" w='100%' zIndex={2} boxShadow={!isOpen && 'base'}>
+    <Box
+      position="fixed"
+      as="nav"
+      w="100%"
+      zIndex={3}
+      boxShadow={!isOpen && "base"}
+    >
       <Flex
         bg={"pastelBlue"}
         color={useColorModeValue("gray.600", "white")}
@@ -241,7 +238,7 @@ const DesktopNav = () => {
               width={"auto"}
             >
               <PopoverArrow bg={popoverContentBgColor} />
-              <AppointmentsForm />
+              <AppointmentsForm popover={true} />
             </PopoverContent>
           </Popover>
         </Stack>
@@ -276,217 +273,9 @@ const DesktopSubNav = ({ label, href, options }: NavItem) => {
   );
 };
 
-const AppointmentsForm = () => {
-  const NAME_REGEX = /^[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+([ \-']{0,1}[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+){0,2}[.]{0,1}$/
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<appointmentsInputs>();
-
-  function onSubmit(values: any) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        resolve(values);
-      }, 3000);
-    });
-  }
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <VStack spacing={4}>
-        <FormControl isInvalid={Boolean(errors.name)}>
-          <FormLabel color={"darkBlue"} fontSize={"18px"}>
-            Nome
-          </FormLabel>
-
-          <InputGroup>
-            <InputLeftElement>
-              <Icon as={Person} color={"darkBlue"} />
-            </InputLeftElement>
-            <Input
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Nome"
-              bg={"white"}
-              width={"320px"}
-              height={"44px"}
-              focusBorderColor="darkBlue"
-              {...register("name", {
-                required: "Este campo é obrigatório",
-                pattern: { value: NAME_REGEX, message: "Por favor insira um nome válido"},
-                minLength: {
-                  value: 3,
-                  message: "Deve ter pelo menos 3 caracteres",
-                },
-              })}
-            />
-          </InputGroup>
-          {!errors.name ? (
-            <FormHelperText>O seu primeiro e último nome</FormHelperText>
-          ) : (
-            <FormErrorMessage>
-              {errors.name.message?.toString()}
-            </FormErrorMessage>
-          )}
-        </FormControl>
-
-        <FormControl isInvalid={Boolean(errors.email)}>
-          <FormLabel color={"darkBlue"} fontSize={"18px"}>
-            Email
-          </FormLabel>
-
-          <InputGroup>
-            <InputLeftElement>
-              <Icon as={Email} color={"darkBlue"} />
-            </InputLeftElement>
-            <Input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Email"
-              bg={"white"}
-              width={"320px"}
-              height={"44px"}
-              focusBorderColor="darkBlue"
-              {...register("email", {
-                required: "Este campo é obrigatório",
-              })}
-            />
-          </InputGroup>
-          {!errors.email ? (
-            <FormHelperText>O seu email de contacto</FormHelperText>
-          ) : (
-            <FormErrorMessage>
-              {errors.email.message?.toString()}
-            </FormErrorMessage>
-          )}
-        </FormControl>
-
-        <FormControl isInvalid={Boolean(errors.phone)}>
-          <FormLabel color={"darkBlue"} fontSize={"18px"}>
-            Contacto telefónico
-          </FormLabel>
-
-          <InputGroup>
-            <InputLeftElement>
-              <Icon as={Phone} color={"darkBlue"} />
-            </InputLeftElement>
-            <Input
-              id="phone"
-              type="number"
-              name="phone"
-              placeholder="Telefone"
-              bg={"white"}
-              width={"320px"}
-              height={"44px"}
-              focusBorderColor="darkBlue"
-              {...register("phone", {
-                required: "Este campo é obrigatório",
-                minLength: { value: 9, message: "O número deve ter 9 digitos" },
-                maxLength: { value: 9, message: "O número deve ter 9 digitos" },
-              })}
-            />
-          </InputGroup>
-          {!errors.phone ? (
-            <FormHelperText>O seu número de telemóvel</FormHelperText>
-          ) : (
-            <FormErrorMessage>
-              {errors.phone.message?.toString()}
-            </FormErrorMessage>
-          )}
-        </FormControl>
-
-        <FormControl isInvalid={Boolean(errors.message)}>
-          <FormLabel color={"darkBlue"} fontSize={"18px"}>
-            Mensagem
-          </FormLabel>
-
-          <InputGroup>
-            <Textarea
-              //value={message}
-              id="message"
-              name="message"
-              placeholder="Mensagem..."
-              bg={"white"}
-              width={"320px"}
-              minHeight={"120px"}
-              focusBorderColor="darkBlue"
-              //onChange={handleMessageInputChange}
-              {...register("message", {
-                required: "Este campo é obrigatório",
-              })}
-            />
-          </InputGroup>
-          {!errors.message ? (
-            <FormHelperText width={"320px"}>
-              Por favor deixe-nos uma mensagem para que possa ser contactada
-              mais tarde
-            </FormHelperText>
-          ) : (
-            <FormErrorMessage>
-              {errors.message.message?.toString()}
-            </FormErrorMessage>
-          )}
-        </FormControl>
-
-        <FormControl isInvalid={Boolean(errors.agree)}>
-          <Checkbox
-          id="agree"
-          name='agree'
-            size="md14"
-            iconSize={"10px"}
-            borderColor={"darkBlue"}
-            variant={"rounded"}
-            _hover={{
-              "& .chakra-checkbox__control": {
-                background: "grey",
-                borderColor: "darkBlue",
-              },
-            }}
-            _checked={{
-              "& .chakra-checkbox__control": {
-                background: "darkBlue",
-                borderColor: "darkBlue",
-              },
-            }}
-            {...register("agree", {
-              required: {value: true, message: "Este campo é obrigatório"},
-            })}
-          >
-            <Text color={"black"}>
-              Li e aceito os termos da{" "}
-              <Link href="#" color={"darkBlue"}>
-                política de privacidade.
-              </Link>
-            </Text>
-          </Checkbox>
-          <FormErrorMessage>
-              {errors.agree && errors.agree.message?.toString()}
-            </FormErrorMessage>
-        </FormControl>
-
-        <Button
-          mt={6}
-          colorScheme="darkBlues"
-          type="submit"
-          variant="customSolid"
-          size={"regular"}
-          isLoading={isSubmitting}
-        >
-          Enviar Mensagem
-        </Button>
-      </VStack>
-    </form>
-  );
-};
-
 const MobileNav = () => {
   return (
-    <Stack bg={"pastelBlue"} display={{ lg: "none" }} boxShadow={'base'}>
+    <Stack bg={"pastelBlue"} display={{ lg: "none" }} boxShadow={"base"}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -580,4 +369,3 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     </Stack>
   );
 };
-
