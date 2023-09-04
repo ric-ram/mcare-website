@@ -1,6 +1,6 @@
-import { checkboxAnatomy as parts } from "@chakra-ui/anatomy"
-import { createMultiStyleConfigHelpers, defineStyle, extendTheme, type ThemeConfig } from '@chakra-ui/react'
-import { mode } from "@chakra-ui/theme-tools"
+import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers, defineStyle, extendTheme } from '@chakra-ui/react';
+import { mode } from "@chakra-ui/theme-tools";
 import { Quicksand } from "next/font/google";
 
 const quicksand = Quicksand({ subsets: ['latin'] });
@@ -37,7 +37,7 @@ const accessibleColorMap: { [key: string]: AccessibleColor } = {
     },
 }
 
-const variantSolid = defineStyle((props) => {
+const variantDarkSolid = defineStyle((props) => {
     const { colorScheme: c } = props
 
     if (c === "gray") {
@@ -64,6 +64,47 @@ const variantSolid = defineStyle((props) => {
     } = accessibleColorMap[c] ?? {}
 
     const background = mode(bg, `${c}.800`)(props)
+
+    return {
+        bg: background,
+        color: mode(color, `gray.800`)(props),
+        _hover: {
+            bg: mode(hoverBg, `${c}.300`)(props),
+            _disabled: {
+                bg: background,
+            },
+        },
+        _active: { bg: mode(activeBg, `${c}.400`)(props) },
+    }
+})
+
+const variantLightSolid = defineStyle((props) => {
+    const { colorScheme: c } = props
+
+    if (c === "gray") {
+        const bg = mode(`gray.100`, `whiteAlpha.200`)(props)
+
+        return {
+            bg,
+            color: mode(`gray.800`, `whiteAlpha.900`)(props),
+            _hover: {
+                bg: mode(`gray.200`, `whiteAlpha.300`)(props),
+                _disabled: {
+                    bg,
+                },
+            },
+            _active: { bg: mode(`gray.300`, `whiteAlpha.400`)(props) },
+        }
+    }
+
+    const {
+        bg = `${c}.50`,
+        color = "white",
+        hoverBg = `${c}.100`,
+        activeBg = `${c}.200`,
+    } = accessibleColorMap[c] ?? {}
+
+    const background = mode(bg, `${c}.50`)(props)
 
     return {
         bg: background,
@@ -105,6 +146,19 @@ const theme = extendTheme({
     },
     colors: {
         pastelBlue: '#EFFBFF',
+        pastelBlues:
+        {
+            50: '#e5f9ff',
+            100: '#bbebfb',
+            200: '#8fddf9',
+            300: '#68d0f7',
+            400: '#4ec4f6',
+            500: '#41aadc',
+            600: '#3285ab',
+            700: '#235f7a',
+            800: '#113849',
+            900: '#00131a',
+        },
         lightBlue:
         {
             50: '#e2f7fe',
@@ -159,7 +213,8 @@ const theme = extendTheme({
                 regular: buttonRegular,
             },
             variants: {
-                customSolid: variantSolid,
+                darkSolid: variantDarkSolid,
+                lightSolid: variantLightSolid
             }
         },
         Heading: {
@@ -170,6 +225,20 @@ const theme = extendTheme({
                     fontSize: () => ({ base: '48px', md: '56px' }),
                     lineHeight: '64px',
                 },
+                'header2': {
+                    color: 'darkBlue',
+                    fontWeight: '700',
+                    fontSize: '36px',
+                    lineHeight: '48px',
+                },
+            }
+        },
+        Select: {
+            field: {
+                background: 'darkBlues.600',
+            },
+            icon: {
+                color: 'darkBlue',
             }
         }
     }
