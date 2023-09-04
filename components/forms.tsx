@@ -57,7 +57,7 @@ type recruitInputs = {
   email: string;
   phone: number;
   actuationZone: string;
-  interventionArea: string;
+  specializationArea: string;
   file: File;
   message: string;
   agree: boolean;
@@ -88,26 +88,30 @@ const actuationZones: optionProp[] = [
   },
 ];
 
-const interventionAreas: optionProp[] = [
+const specializationAreas: optionProp[] = [
   {
-    label: "Neurologia",
-    value: "Neurologia",
+    label: "Fisioterapeuta",
+    value: "Fisioterapeuta",
   },
   {
-    label: "Músculo-esquelética",
-    value: "Músculo-esquelética",
+    label: "Terapeuta Ocupacional",
+    value: "Terapeuta Ocupacional",
   },
   {
     label: "Cardiorrespiratória",
     value: "Cardiorrespiratória",
   },
   {
-    label: "Drenagem Linfática",
-    value: "Drenagem Linfática",
+    label: "Terapeuta da Fala",
+    value: "Terapeuta da Fala",
   },
   {
-    label: "Massagem Terapêutica",
-    value: "Massagem Terapêutica",
+    label: "Neuropsicólogo/a",
+    value: "Neuropsicólogo/a",
+  },
+  {
+    label: "Outro",
+    value: "Outro",
   },
 ];
 
@@ -997,9 +1001,9 @@ export const RecruitForm = () => {
             )}
           </FormControl>
 
-          <FormControl isInvalid={Boolean(errors.interventionArea)}>
+          <FormControl isInvalid={Boolean(errors.specializationArea)}>
             <FormLabel color={"darkBlue"} fontSize={"18px"}>
-              Área de Intervenção
+              Área de Especialização
             </FormLabel>
 
             <HStack spacing={1}>
@@ -1012,27 +1016,25 @@ export const RecruitForm = () => {
               </Flex>
 
               <Select
-                id="interventionArea"
-                name="interventionArea"
-                placeholder="Área de Intervenção"
+                id="specializationArea"
+                name="specializationArea"
+                placeholder="Área de Especialização"
                 w={"full"}
                 h={"44px"}
                 bg={"white"}
                 focusBorderColor="darkBlue"
-                {...register("interventionArea", {
+                {...register("specializationArea", {
                   required: "Este campo é obrigatório",
                 })}
               >
-                <Options options={interventionAreas} />
+                <Options options={specializationAreas} />
               </Select>
             </HStack>
-            {!errors.interventionArea ? (
-              <FormHelperText>
-                A sua área de intervenção preferencial
-              </FormHelperText>
+            {!errors.specializationArea ? (
+              <FormHelperText>A sua área de especialização</FormHelperText>
             ) : (
               <FormErrorMessage>
-                {errors.interventionArea.message?.toString()}
+                {errors.specializationArea.message?.toString()}
               </FormErrorMessage>
             )}
           </FormControl>
