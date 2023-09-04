@@ -20,9 +20,15 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const FooterLink = ({ children }: { children: ReactNode }) => {
+const FooterLink = ({
+  children,
+  href,
+}: {
+  children: ReactNode;
+  href?: string;
+}) => {
   return (
-    <Link href='#' fontWeight={'400'} fontSize={'16px'} lineHeight={'24px'}>
+    <Link href={href} fontWeight={'400'} fontSize={'16px'} lineHeight={'24px'}>
       {children}
     </Link>
   );
@@ -77,7 +83,7 @@ export default function Footer() {
             <ListHeader>A MCare</ListHeader>
             <FooterLink>Sobre nós</FooterLink>
             <FooterLink>Equipa</FooterLink>
-            <FooterLink>Recrutar</FooterLink>
+            <FooterLink href='/recrutar'>Recrutar</FooterLink>
             <FooterLink>Testemunhos</FooterLink>
           </Stack>
 

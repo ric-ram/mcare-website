@@ -1,12 +1,3 @@
-import ContainerWithImage from '@/components/containerImage';
-import {
-  AppointmentsForm,
-  RecruitForm,
-  TestimonialForm,
-} from '@/components/forms';
-import TestimonialCard from '@/components/testimonialCard';
-import TestimonialCarousel from '@/components/testimonialCarousel';
-
 export default function Home() {
   const imgContainer = {
     loreumText:
@@ -27,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <RecruitForm />
+      {/* <RecruitForm />
       <TestimonialForm />
       <AppointmentsForm />
       <TestimonialCarousel />
@@ -49,7 +40,7 @@ export default function Home() {
         imageAlt={imgContainer.imageAlt}
         imageRight={true}
         bgColor='pastelBlue'
-      />
+      /> */}
     </>
   );
 }
