@@ -1,23 +1,19 @@
-"use client";
+'use client';
 
-import React from "react";
 import {
   Box,
-  IconButton,
-  useBreakpointValue,
-  Stack,
-  Heading,
-  Text,
-  Container,
-  Flex,
   HStack,
-  Center,
-} from "@chakra-ui/react";
+  Heading,
+  IconButton,
+  Stack,
+  useBreakpointValue,
+} from '@chakra-ui/react';
+import React from 'react';
 // Here we have used react-icons package for the icons
-import { ChevronRightRounded, ChevronLeftRounded } from "@mui/icons-material";
+import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material';
 // And react-slick as our Carousel Lib
-import Slider from "react-slick";
-import TestimonialCard, { TestimonialCardProps } from "./testimonialCard";
+import Slider from 'react-slick';
+import TestimonialCard, { TestimonialCardProps } from './testimonialCard';
 
 type SlideProps = {
   key: number;
@@ -65,39 +61,39 @@ export default function CaptionCarousel() {
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
-  const top = useBreakpointValue({ base: "39%", md: "39%" });
-  const side = useBreakpointValue({ base: "0", md: "0px" });
+  const top = useBreakpointValue({ base: '39%', md: '39%' });
+  const side = useBreakpointValue({ base: '0', md: '0px' });
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
   const cards = [
     {
-      author: "John Doe",
+      author: 'John Doe',
       review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
       rating: 5,
     },
     {
-      author: "Jane Doe",
+      author: 'Jane Doe',
       review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
       rating: 4,
     },
     {
-      author: "John Wick",
+      author: 'John Wick',
       review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
       rating: 4,
     },
     {
-      author: "Slenderman",
+      author: 'Slenderman',
       review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
       rating: 3.5,
     },
     {
-      author: "Dr. Watson",
+      author: 'Dr. Watson',
       review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
       rating: 5,
     },
     {
-      author: "Winston",
+      author: 'Winston',
       review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
       rating: 4,
     },
@@ -107,10 +103,10 @@ export default function CaptionCarousel() {
     return (
       <HStack
         key={key}
-        w="100%"
-        h="100%"
-        alignContent="center"
-        justifyContent="center"
+        w='100%'
+        h='100%'
+        alignContent='center'
+        justifyContent='center'
       >
         <TestimonialCard
           author={testimonial.author}
@@ -124,72 +120,72 @@ export default function CaptionCarousel() {
   return (
     <Stack
       py={12}
-      px={{ lg: "160px", base: "32px" }}
-      position={"relative"}
-      height={"650px"}
-      width={"full"}
-      overflow={"hidden"}
-      alignItems={"center"}
-      spacing={"78px"}
+      px={{ lg: '160px', base: '32px' }}
+      position={'relative'}
+      height={'650px'}
+      width={'full'}
+      overflow={'hidden'}
+      alignItems={'center'}
+      spacing={'78px'}
     >
-      <Heading as={"h2"} variant={{ base: "header2", lg: "header1" }}>
+      <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
         Testemunhos
       </Heading>
       <Box
-        position={"relative"}
-        height={"full"}
-        width={"full"}
+        position={'relative'}
+        height={'full'}
+        width={'full'}
         //overflow={"hidden"}
-        px={{ base: 4, xl: "97px" }}
+        px={{ base: 4, xl: '97px' }}
         sx={{
-          ".slick-dots": {
-            transform: { base: "translateY(12px)", xl: "translateY(36px)" },
+          '.slick-dots': {
+            transform: { base: 'translateY(12px)', xl: 'translateY(36px)' },
           },
-          ".slick-dots li": {
-            width: "16px",
-            height: "16px",
+          '.slick-dots li': {
+            width: '16px',
+            height: '16px',
           },
-          ".slick-dots li button": {
+          '.slick-dots li button': {
             _before: {
-              transition: "0.2s",
+              transition: '0.2s',
               content: "''",
-              borderRadius: "100%",
-              background: "darkBlues.800",
-              width: "14px",
-              height: "14px",
-              top: "7%",
-              left: "7%",
+              borderRadius: '100%',
+              background: 'darkBlues.800',
+              width: '14px',
+              height: '14px',
+              top: '7%',
+              left: '7%',
             },
           },
-          ".slick-dots li.slick-active button": {
+          '.slick-dots li.slick-active button': {
             _before: {
-              width: "16px",
-              height: "16px",
-              top: "0",
-              left: "0",
+              width: '16px',
+              height: '16px',
+              top: '0',
+              left: '0',
             },
           },
         }}
       >
         {/* CSS files for react-slick */}
         <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          rel='stylesheet'
+          type='text/css'
+          href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
         />
         <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          rel='stylesheet'
+          type='text/css'
+          href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
         />
         {/* Left Icon */}
         <IconButton
-          aria-label="left-arrow"
-          variant="ghost"
-          position="absolute"
+          aria-label='left-arrow'
+          variant='ghost'
+          position='absolute'
           left={side}
           top={top}
-          transform={"translate(0%, -50%)"}
+          transform={'translate(0%, -50%)'}
           zIndex={2}
           onClick={() => slider?.slickPrev()}
         >
@@ -197,12 +193,12 @@ export default function CaptionCarousel() {
         </IconButton>
         {/* Right Icon */}
         <IconButton
-          aria-label="right-arrow"
-          variant="ghost"
-          position="absolute"
+          aria-label='right-arrow'
+          variant='ghost'
+          position='absolute'
           right={side}
           top={top}
-          transform={"translate(0%, -50%)"}
+          transform={'translate(0%, -50%)'}
           zIndex={2}
           onClick={() => slider?.slickNext()}
         >

@@ -1,43 +1,24 @@
-"use client";
+'use client';
 
+import { ChevronRightIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import {
   Box,
-  Flex,
-  Text,
-  IconButton,
   Button,
-  Stack,
   Collapse,
+  Flex,
   Icon,
+  IconButton,
   Image,
   Popover,
-  PopoverTrigger,
-  PopoverContent,
-  useColorModeValue,
-  useBreakpointValue,
-  useDisclosure,
   PopoverArrow,
-  VStack,
-  FormControl,
-  FormLabel,
-  InputGroup,
-  InputLeftElement,
-  Input,
-  FormHelperText,
-  Textarea,
-  Checkbox,
-  Link,
-  FormErrorMessage,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  Dispatch,
-  SetStateAction,
-  useState,
-} from "react";
-import { AppointmentsForm } from "./forms";
+  PopoverContent,
+  PopoverTrigger,
+  Stack,
+  Text,
+  useColorModeValue,
+  useDisclosure,
+} from '@chakra-ui/react';
+import { AppointmentsForm } from './forms';
 
 interface NavItem {
   label: string;
@@ -48,51 +29,55 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "A MCare",
+    label: 'A MCare',
     children: [
       {
-        label: "Sobre nós",
-        href: "#",
+        label: 'Sobre nós',
+        href: '#',
       },
       {
-        label: "Equipa",
-        href: "#",
+        label: 'Equipa',
+        href: '#',
       },
     ],
   },
   {
-    label: "Serviços",
+    label: 'Serviços',
     children: [
       {
-        label: "Neurologia",
-        href: "#",
+        label: 'Neurologia',
+        href: '#',
       },
       {
-        label: "Músculo-esquelética",
-        href: "#",
+        label: 'Músculo-esquelética',
+        href: '#',
       },
       {
-        label: "Cardiorrespiratória",
-        href: "#",
+        label: 'Cardiorrespiratória',
+        href: '#',
       },
       {
-        label: "Drenagem Linfática",
-        href: "#",
+        label: 'Drenagem Linfática',
+        href: '#',
       },
       {
-        label: "Massagem Terapêutica",
-        href: "#",
+        label: 'Massagem Terapêutica',
+        href: '#',
+      },
+      {
+        label: 'Geriatria',
+        href: '#',
       },
     ],
   },
   {
-    label: "Testemunhos",
-    href: "#",
+    label: 'Testemunhos',
+    href: '#',
   },
   {
-    label: "Marcações",
-    options: "mobile-only",
-    href: "#",
+    label: 'Marcações',
+    options: 'mobile-only',
+    href: '#',
   },
 ];
 
@@ -101,38 +86,38 @@ export default function Navbar() {
 
   return (
     <Box
-      position="fixed"
-      as="nav"
-      w="100%"
+      position='fixed'
+      as='nav'
+      w='100%'
       zIndex={3}
-      boxShadow={!isOpen && "base"}
+      boxShadow={!isOpen && 'base'}
     >
       <Flex
-        bg={"pastelBlue"}
-        color={useColorModeValue("gray.600", "white")}
-        maxH={"97px"}
-        py={{ lg: 2, base: "28px" }}
-        px={{ lg: "160px", base: "32px" }}
-        align={"center"}
+        bg={'pastelBlue'}
+        color={useColorModeValue('gray.600', 'white')}
+        maxH={'97px'}
+        py={{ lg: 2, base: '28px' }}
+        px={{ lg: '160px', base: '32px' }}
+        align={'center'}
       >
         <Flex
-          flex={{ base: 1, lg: "auto" }}
-          display={{ base: "flex", lg: "none" }}
-          justify={"space-between"}
-          align={"center"}
+          flex={{ base: 1, lg: 'auto' }}
+          display={{ base: 'flex', lg: 'none' }}
+          justify={'space-between'}
+          align={'center'}
         >
-          <Image objectFit="cover" src="/images/LogoMobile.svg" alt="Logo" />
+          <Image objectFit='cover' src='/images/LogoMobile.svg' alt='Logo' />
           <IconButton
             onClick={onToggle}
             icon={
               isOpen ? (
-                <CloseIcon w={"32px"} h={"32px"} color={"darkBlue"} />
+                <CloseIcon w={'32px'} h={'32px'} color={'darkBlue'} />
               ) : (
-                <HamburgerIcon w={"32px"} h={"32px"} color={"darkBlue"} />
+                <HamburgerIcon w={'32px'} h={'32px'} color={'darkBlue'} />
               )
             }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
+            variant={'ghost'}
+            aria-label={'Toggle Navigation'}
           />
         </Flex>
 
@@ -147,35 +132,35 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = "black";
-  const linkHoverColor = "black";
-  const popoverContentBgColor = "lightBlue.200";
+  const linkColor = 'black';
+  const linkHoverColor = 'black';
+  const popoverContentBgColor = 'lightBlue.200';
 
   return (
     <Flex
       flex={{ base: 1 }}
-      justify={"space-between"}
-      align={"center"}
-      display={{ base: "none", lg: "flex" }}
+      justify={'space-between'}
+      align={'center'}
+      display={{ base: 'none', lg: 'flex' }}
     >
-      <Image objectFit="cover" src="/images/LogoDesktop.svg" alt="Logo" />
-      <Flex display={{ base: "none", lg: "flex" }}>
-        <Stack direction={"row"} spacing={3} align={"center"}>
+      <Image objectFit='cover' src='/images/LogoDesktop.svg' alt='Logo' />
+      <Flex display={{ base: 'none', lg: 'flex' }}>
+        <Stack direction={'row'} spacing={3} align={'center'}>
           {NAV_ITEMS.map(
             (navItem) =>
-              navItem.options !== "mobile-only" && (
+              navItem.options !== 'mobile-only' && (
                 <Box key={navItem.label}>
-                  <Popover trigger={"hover"} placement={"bottom"}>
+                  <Popover trigger={'hover'} placement={'bottom'}>
                     <PopoverTrigger>
                       <Box
-                        as="a"
+                        as='a'
                         p={2}
-                        href={navItem.href ?? "#"}
-                        fontSize={"16px"}
+                        href={navItem.href ?? '#'}
+                        fontSize={'16px'}
                         fontWeight={500}
                         color={linkColor}
                         _hover={{
-                          textDecoration: "none",
+                          textDecoration: 'none',
                           color: linkHoverColor,
                           fontWeight: 600,
                         }}
@@ -187,14 +172,14 @@ const DesktopNav = () => {
                     {navItem.children && (
                       <PopoverContent
                         border={0}
-                        boxShadow={"xl"}
+                        boxShadow={'xl'}
                         bg={popoverContentBgColor}
                         p={4}
-                        rounded={"xl"}
-                        width={"auto"}
+                        rounded={'xl'}
+                        width={'auto'}
                       >
                         <PopoverArrow bg={popoverContentBgColor} />
-                        <Stack align={"center"}>
+                        <Stack align={'center'}>
                           {navItem.children.map((child) => (
                             <DesktopSubNav key={child.label} {...child} />
                           ))}
@@ -203,24 +188,24 @@ const DesktopNav = () => {
                     )}
                   </Popover>
                 </Box>
-              )
+              ),
           )}
-          <Popover trigger={"click"} placement={"bottom"}>
+          <Popover trigger={'click'} placement={'bottom'}>
             <PopoverTrigger>
               <Button
-                as={"a"}
-                display={{ base: "none", lg: "inline-flex" }}
-                fontSize={"16px"}
-                fontWeight={"medium"}
-                lineHeight={"24px"}
-                py={"24px"}
-                px={"24px"}
+                as={'a'}
+                display={{ base: 'none', lg: 'inline-flex' }}
+                fontSize={'16px'}
+                fontWeight={'medium'}
+                lineHeight={'24px'}
+                py={'24px'}
+                px={'24px'}
                 ml={8}
-                color={"black"}
-                bg={"lightBlue.200"}
-                href={"#"}
+                color={'black'}
+                bg={'lightBlue.200'}
+                href={'#'}
                 _hover={{
-                  bg: "lightBlue.300",
+                  bg: 'lightBlue.300',
                   fontWeight: 600,
                 }}
               >
@@ -230,12 +215,12 @@ const DesktopNav = () => {
 
             <PopoverContent
               border={0}
-              boxShadow={"xl"}
+              boxShadow={'xl'}
               bg={popoverContentBgColor}
               px={10}
               py={6}
-              rounded={"xl"}
-              width={"auto"}
+              rounded={'xl'}
+              width={'auto'}
             >
               <PopoverArrow bg={popoverContentBgColor} />
               <AppointmentsForm popover={true} />
@@ -250,20 +235,20 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, options }: NavItem) => {
   return (
     <Box
-      as="a"
+      as='a'
       href={href}
-      role={"group"}
-      display={"block"}
+      role={'group'}
+      display={'block'}
       py={2}
       px={4}
-      rounded={"md"}
-      color="black"
-      _hover={{ bg: "lightBlue.400", width: "100%", textAlign: "center" }}
+      rounded={'md'}
+      color='black'
+      _hover={{ bg: 'lightBlue.400', width: '100%', textAlign: 'center' }}
     >
       <Box>
         <Text
-          transition={"all .3s ease"}
-          _groupHover={{ color: "black" }}
+          transition={'all .3s ease'}
+          _groupHover={{ color: 'black' }}
           fontWeight={600}
         >
           {label}
@@ -275,7 +260,7 @@ const DesktopSubNav = ({ label, href, options }: NavItem) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={"pastelBlue"} display={{ lg: "none" }} boxShadow={"base"}>
+    <Stack bg={'pastelBlue'} display={{ lg: 'none' }} boxShadow={'base'}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -290,28 +275,28 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     <Stack
       spacing={0}
       onClick={children && onToggle}
-      align={"center"}
+      align={'center'}
       _hover={{
-        bg: "lightBlue.200",
+        bg: 'lightBlue.200',
       }}
     >
       <Flex
         gap={1}
-        as="a"
-        href={href ?? "#"}
-        justifyContent="center"
-        alignItems="center"
+        as='a'
+        href={href ?? '#'}
+        justifyContent='center'
+        alignItems='center'
         _hover={{
-          bg: "lightBlue.200",
-          width: "100%",
+          bg: 'lightBlue.200',
+          width: '100%',
         }}
       >
         <Text
           fontWeight={!isOpen ? 400 : 600}
-          fontSize={"18px"}
-          lineHeight={"24px"}
-          color={"darkBlue"}
-          textAlign={"center"}
+          fontSize={'18px'}
+          lineHeight={'24px'}
+          color={'darkBlue'}
+          textAlign={'center'}
           py={3}
           px={6}
         >
@@ -322,9 +307,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
             as={ChevronRightIcon}
             w={6}
             h={6}
-            color={"darkBlue"}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(90deg)" : ""}
+            color={'darkBlue'}
+            transition={'all .25s ease-in-out'}
+            transform={isOpen ? 'rotate(90deg)' : ''}
           />
         )}
       </Flex>
@@ -332,32 +317,32 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Collapse
         in={isOpen}
         animateOpacity
-        style={{ marginTop: "0!important", width: "100%" }}
+        style={{ marginTop: '0!important', width: '100%' }}
       >
-        <Stack align={"center"} spacing={0} width={"inherit"}>
+        <Stack align={'center'} spacing={0} width={'inherit'}>
           {children &&
             children.map((child) => (
               <Box
-                as="a"
+                as='a'
                 key={child.label}
                 py={2}
-                width={"inherit"}
+                width={'inherit'}
                 href={child.href}
                 _hover={{
-                  bg: "darkBlue",
+                  bg: 'darkBlue',
                 }}
               >
                 <Text
                   fontWeight={!isOpen ? 400 : 600}
-                  fontSize={"18px"}
-                  lineHeight={"24px"}
-                  color={"darkBlue"}
-                  textAlign={"center"}
+                  fontSize={'18px'}
+                  lineHeight={'24px'}
+                  color={'darkBlue'}
+                  textAlign={'center'}
                   py={3}
                   px={6}
                   _hover={{
-                    color: "white",
-                    bg: "darkBlue",
+                    color: 'white',
+                    bg: 'darkBlue',
                   }}
                 >
                   {child.label}

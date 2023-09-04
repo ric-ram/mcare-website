@@ -1,6 +1,6 @@
-import { checkboxAnatomy as parts } from "@chakra-ui/anatomy"
-import { createMultiStyleConfigHelpers, defineStyle, extendTheme, type ThemeConfig } from '@chakra-ui/react'
-import { mode } from "@chakra-ui/theme-tools"
+import { checkboxAnatomy as parts } from "@chakra-ui/anatomy";
+import { createMultiStyleConfigHelpers, defineStyle, extendTheme } from '@chakra-ui/react';
+import { mode } from "@chakra-ui/theme-tools";
 import { Quicksand } from "next/font/google";
 
 const quicksand = Quicksand({ subsets: ['latin'] });

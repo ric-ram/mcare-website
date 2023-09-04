@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
 // import "./globals.css";
-import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
-import { Providers } from "./providers";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-import { Box, Container } from "@chakra-ui/react";
+import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
+import { Container } from '@chakra-ui/react';
+import type { Metadata } from 'next';
+import { Quicksand } from 'next/font/google';
+import { Providers } from './providers';
 
-const inter = Quicksand({ subsets: ["latin"] });
+const inter = Quicksand({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "MCare",
-  description: "",
-  authors: { name: "Ricardo Ramos", url: "https://ricardoframos.com" },
+  title: 'MCare',
+  description: '',
+  authors: { name: 'Ricardo Ramos', url: 'https://ricardoframos.com' },
 };
 
 export default function RootLayout({
@@ -22,14 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt">
+    <html lang='pt'>
       <body className={inter.className}>
         <Providers>
           <Navbar />
 
           <Container
-            pt={"85px"}
-            maxWidth={"full"}
+            pt={'85px'}
+            maxWidth={'full'}
             px={0}
             // maxHeight={'full'}
           >
