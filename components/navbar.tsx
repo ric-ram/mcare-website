@@ -9,6 +9,7 @@ import {
   Icon,
   IconButton,
   Image,
+  Link,
   Popover,
   PopoverArrow,
   PopoverContent,
@@ -108,7 +109,9 @@ export default function Navbar() {
           justify={'space-between'}
           align={'center'}
         >
-          <Image objectFit='cover' src='/images/LogoMobile.svg' alt='Logo' />
+          <Link href='/'>
+            <Image objectFit='cover' src='/images/LogoMobile.svg' alt='Logo' />
+          </Link>
           <IconButton
             onClick={onToggle}
             icon={
@@ -145,7 +148,9 @@ const DesktopNav = () => {
       align={'center'}
       display={{ base: 'none', lg: 'flex' }}
     >
-      <Image objectFit='cover' src='/images/LogoDesktop.svg' alt='Logo' />
+      <Link href='/'>
+        <Image objectFit='cover' src='/images/LogoDesktop.svg' alt='Logo' />
+      </Link>
       <Flex display={{ base: 'none', lg: 'flex' }}>
         <Stack direction={'row'} spacing={3} align={'center'}>
           {NAV_ITEMS.map(
@@ -285,7 +290,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Flex
         gap={1}
         as='a'
-        href={href ?? '#'}
+        href={href && !href.includes('servicos') ? href : '#'}
         justifyContent='center'
         alignItems='center'
         _hover={{
