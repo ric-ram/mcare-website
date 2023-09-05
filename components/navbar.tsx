@@ -46,27 +46,27 @@ const NAV_ITEMS: Array<NavItem> = [
     children: [
       {
         label: 'Neurologia',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Músculo-esquelética',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Cardiorrespiratória',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Drenagem Linfática',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Massagem Terapêutica',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Geriatria',
-        href: '#',
+        href: '/marcacao',
       },
     ],
   },
@@ -77,7 +77,7 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'Marcações',
     options: 'mobile-only',
-    href: '#',
+    href: '/marcacao',
   },
 ];
 
