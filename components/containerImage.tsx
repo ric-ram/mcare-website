@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  As,
   Container,
   Flex,
   Heading,
@@ -12,25 +13,32 @@ import {
 
 interface ContainerProps {
   title: string;
-  text: string;
+  texts: string[];
   imageSrc: string;
   imageAlt: string;
+  as: As;
+  variant: string;
   imageRight?: boolean;
   bgColor?: string;
+  last?: boolean;
 }
 
 export default function ContainerWithImage({
   title,
-  text,
+  texts,
   imageSrc,
   imageAlt,
+  as,
+  variant,
   imageRight = false,
   bgColor,
+  last = false,
 }: ContainerProps) {
   return (
     <Container
       maxWidth='full'
-      py={12}
+      pt={12}
+      pb={last ? 24 : 12}
       px={{ lg: '160px', base: '32px' }}
       bg={bgColor}
     >
@@ -57,16 +65,18 @@ export default function ContainerWithImage({
           gridArea={imageRight && { base: 'second', md: 'first' }}
           alignItems={{ base: 'center', md: 'normal' }}
         >
-          <Heading as='h1' variant='header1'>
+          <Heading as={as} variant={variant}>
             {title}
           </Heading>
-          <Text
-            color={'black'}
-            fontSize={'lg'}
-            textAlign={{ base: 'center', md: 'left' }}
-          >
-            {text}
-          </Text>
+          {texts.map((text) => (
+            <Text
+              color={'black'}
+              fontSize={'lg'}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              {text}
+            </Text>
+          ))}
         </Stack>
       </SimpleGrid>
     </Container>

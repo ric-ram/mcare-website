@@ -37,7 +37,7 @@ const NAV_ITEMS: Array<NavItem> = [
       },
       {
         label: 'Equipa',
-        href: '#',
+        href: '/equipa',
       },
     ],
   },
