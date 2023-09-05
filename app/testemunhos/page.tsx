@@ -1,6 +1,9 @@
 'use client';
 
 import ContainerWithImage from '@/components/containerImage';
+import { TestimonialForm } from '@/components/forms';
+import TestimonialCarousel from '@/components/testimonialCarousel';
+import { Heading, Stack, Text } from '@chakra-ui/react';
 
 export default function Testimonials() {
   const testimonialContainer = {
@@ -30,9 +33,29 @@ export default function Testimonials() {
         imageSrc={testimonialContainer.imagePlaceholder}
         imageAlt={testimonialContainer.imageAlt}
         bgColor='pastelBlue'
-        as={'h2'}
-        variant='header2'
+        as={'h1'}
+        variant='header1'
       />
+      <TestimonialCarousel />
+      <Stack
+        pt={12}
+        pb={24}
+        px={{ lg: '160px', base: '32px' }}
+        minHeight={'650px'}
+        width={'full'}
+        overflow={'hidden'}
+        alignItems={'stretch'}
+        spacing={16}
+        bg={'pastelBlue'}
+      >
+        <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
+          Insira o seu testemunho
+        </Heading>
+        <Text textAlign={'center'} fontSize={'18px'} lineHeight={'24px'}>
+          Tem algo a acrescentar? Partilhe connosco a sua opinão.
+        </Text>
+        <TestimonialForm />
+      </Stack>
     </>
   );
 }
