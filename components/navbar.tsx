@@ -30,6 +30,7 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'A MCare',
+    href: '/sobre-mcare',
     children: [
       {
         label: 'Sobre nós',
@@ -72,7 +73,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Testemunhos',
-    href: '#',
+    href: '/testemunhos',
   },
   {
     label: 'Marcações',

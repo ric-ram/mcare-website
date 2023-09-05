@@ -84,7 +84,7 @@ export default function Footer() {
             <FooterLink href='/sobre-mcare'>Sobre nós</FooterLink>
             <FooterLink href='/equipa'>Equipa</FooterLink>
             <FooterLink href='/recrutar'>Recrutar</FooterLink>
-            <FooterLink>Testemunhos</FooterLink>
+            <FooterLink href='/testemunhos'>Testemunhos</FooterLink>
           </Stack>
 
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
