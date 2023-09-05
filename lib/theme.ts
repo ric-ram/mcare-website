@@ -231,6 +231,18 @@ const theme = extendTheme({
                     fontSize: '36px',
                     lineHeight: '48px',
                 },
+                'header3': {
+                    color: 'darkBlue',
+                    fontWeight: '600',
+                    fontSize: '24px',
+                    lineHeight: '40px',
+                },
+                'header4': {
+                    color: 'darkBlue',
+                    fontWeight: '600',
+                    fontSize: '18px',
+                    lineHeight: '24px',
+                }
             }
         },
         Select: {
