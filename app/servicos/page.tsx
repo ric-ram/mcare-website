@@ -57,6 +57,7 @@ export default function ServicesPage() {
       >
         {SERVICES.map((service) => (
           <ServiceCard
+            key={service.label}
             name={service.label}
             image={service.image}
             href={service.href}

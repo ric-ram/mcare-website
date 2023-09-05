@@ -33,7 +33,7 @@ export default function ServiceCard({ name, image, href }: ServiceCardProps) {
         {name}
       </Heading>
       <NextLink href={href} passHref>
-        <Button colorScheme='darkBlues' as='a' variant='darkSolid' size={'lg'}>
+        <Button colorScheme='darkBlues' variant='darkSolid' size={'lg'}>
           Saber mais
         </Button>
       </NextLink>
