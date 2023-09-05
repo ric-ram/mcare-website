@@ -81,7 +81,7 @@ export default function Footer() {
         >
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
             <ListHeader>A MCare</ListHeader>
-            <FooterLink>Sobre nós</FooterLink>
+            <FooterLink href='/sobre-mcare'>Sobre nós</FooterLink>
             <FooterLink>Equipa</FooterLink>
             <FooterLink href='/recrutar'>Recrutar</FooterLink>
             <FooterLink>Testemunhos</FooterLink>

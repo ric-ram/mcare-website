@@ -33,7 +33,7 @@ const NAV_ITEMS: Array<NavItem> = [
     children: [
       {
         label: 'Sobre nós',
-        href: '#',
+        href: '/sobre-mcare',
       },
       {
         label: 'Equipa',
