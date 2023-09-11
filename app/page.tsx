@@ -1,5 +1,6 @@
 'use client';
 
+import TestimonialCarousel from '@/components/testimonialCarousel';
 import {
   Box,
   Button,
@@ -313,6 +314,7 @@ export default function Home() {
     <>
       <ProcedureSection />
       <ServicesSection bgColor='pastelBlue' />
+      <TestimonialCarousel />
     </>
   );
 }
