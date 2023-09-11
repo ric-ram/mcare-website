@@ -20,9 +20,15 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const FooterLink = ({ children }: { children: ReactNode }) => {
+const FooterLink = ({
+  children,
+  href,
+}: {
+  children: ReactNode;
+  href?: string;
+}) => {
   return (
-    <Link href='#' fontWeight={'400'} fontSize={'16px'} lineHeight={'24px'}>
+    <Link href={href} fontWeight={'400'} fontSize={'16px'} lineHeight={'24px'}>
       {children}
     </Link>
   );
@@ -75,10 +81,10 @@ export default function Footer() {
         >
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
             <ListHeader>A MCare</ListHeader>
-            <FooterLink>Sobre nós</FooterLink>
-            <FooterLink>Equipa</FooterLink>
-            <FooterLink>Recrutar</FooterLink>
-            <FooterLink>Testemunhos</FooterLink>
+            <FooterLink href='/sobre-mcare'>Sobre nós</FooterLink>
+            <FooterLink href='/equipa'>Equipa</FooterLink>
+            <FooterLink href='/recrutar'>Recrutar</FooterLink>
+            <FooterLink href='/testemunhos'>Testemunhos</FooterLink>
           </Stack>
 
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>

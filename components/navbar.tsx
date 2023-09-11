@@ -9,6 +9,7 @@ import {
   Icon,
   IconButton,
   Image,
+  Link,
   Popover,
   PopoverArrow,
   PopoverContent,
@@ -30,54 +31,56 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'A MCare',
+    href: '/sobre-mcare',
     children: [
       {
         label: 'Sobre nós',
-        href: '#',
+        href: '/sobre-mcare',
       },
       {
         label: 'Equipa',
-        href: '#',
+        href: '/equipa',
       },
     ],
   },
   {
     label: 'Serviços',
+    href: '/servicos',
     children: [
       {
         label: 'Neurologia',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Músculo-esquelética',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Cardiorrespiratória',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Drenagem Linfática',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Massagem Terapêutica',
-        href: '#',
+        href: '/marcacao',
       },
       {
         label: 'Geriatria',
-        href: '#',
+        href: '/marcacao',
       },
     ],
   },
   {
     label: 'Testemunhos',
-    href: '#',
+    href: '/testemunhos',
   },
   {
     label: 'Marcações',
     options: 'mobile-only',
-    href: '#',
+    href: '/marcacao',
   },
 ];
 
@@ -106,7 +109,9 @@ export default function Navbar() {
           justify={'space-between'}
           align={'center'}
         >
-          <Image objectFit='cover' src='/images/LogoMobile.svg' alt='Logo' />
+          <Link href='/'>
+            <Image objectFit='cover' src='/images/LogoMobile.svg' alt='Logo' />
+          </Link>
           <IconButton
             onClick={onToggle}
             icon={
@@ -143,7 +148,9 @@ const DesktopNav = () => {
       align={'center'}
       display={{ base: 'none', lg: 'flex' }}
     >
-      <Image objectFit='cover' src='/images/LogoDesktop.svg' alt='Logo' />
+      <Link href='/'>
+        <Image objectFit='cover' src='/images/LogoDesktop.svg' alt='Logo' />
+      </Link>
       <Flex display={{ base: 'none', lg: 'flex' }}>
         <Stack direction={'row'} spacing={3} align={'center'}>
           {NAV_ITEMS.map(
@@ -283,7 +290,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Flex
         gap={1}
         as='a'
-        href={href ?? '#'}
+        href={href && !href.includes('servicos') ? href : '#'}
         justifyContent='center'
         alignItems='center'
         _hover={{

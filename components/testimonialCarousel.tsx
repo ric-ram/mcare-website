@@ -54,7 +54,7 @@ const settings = {
   ],
 };
 
-export default function CaptionCarousel() {
+export default function TestimonialCarousel() {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState<Slider | null>(null);

@@ -1,6 +1,7 @@
 'use client';
 
 import { Avatar, Box, Button, Heading } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 type ServiceCardProps = {
   name: string;
@@ -11,8 +12,8 @@ type ServiceCardProps = {
 export default function ServiceCard({ name, image, href }: ServiceCardProps) {
   return (
     <Box
-      width={'255px'}
-      height={'350px'}
+      minWidth={'255px'}
+      minHeight={'350px'}
       bg='pastelBlue'
       rounded='lg'
       display='flex'
@@ -31,14 +32,11 @@ export default function ServiceCard({ name, image, href }: ServiceCardProps) {
       <Heading as='h4' variant={'header4'}>
         {name}
       </Heading>
-      <Button
-        colorScheme='darkBlues'
-        type='button'
-        variant='darkSolid'
-        size={'lg'}
-      >
-        Saber mais
-      </Button>
+      <NextLink href={href} passHref>
+        <Button colorScheme='darkBlues' variant='darkSolid' size={'lg'}>
+          Saber mais
+        </Button>
+      </NextLink>
     </Box>
   );
 }
