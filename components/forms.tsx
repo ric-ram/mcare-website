@@ -167,6 +167,17 @@ export const AppointmentsForm = ({ popover = false }: appointmentFormProps) => {
     mode: 'onChange',
   });
 
+  async function onSubmitAppointment(values: recruitInputs) {
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+
+    const res = await fetch('/api/email/appointments', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(`${res.message}`));
+  }
+
   const PopoverForm = () => {
     return (
       <VStack spacing={4} zIndex={3}>
@@ -578,7 +589,7 @@ export const AppointmentsForm = ({ popover = false }: appointmentFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitAppointment)}>
       {popover ? <PopoverForm /> : <PageForm />}
     </form>
   );
@@ -596,8 +607,19 @@ export const TestimonialForm = () => {
 
   let inputRef: HTMLInputElement | null;
 
+  async function onSubmitTestimonial(values: testimonialInputs) {
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+
+    const res = await fetch('/api/email/testimonials', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(`${res.message}`));
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitTestimonial)}>
       <VStack spacing={8}>
         <Flex
           direction={{ base: 'column', lg: 'row' }}
@@ -606,7 +628,7 @@ export const TestimonialForm = () => {
         >
           <FormControl isInvalid={Boolean(errors.name)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Nome
+              Nome *
             </FormLabel>
 
             <InputGroup>
@@ -646,7 +668,7 @@ export const TestimonialForm = () => {
 
           <FormControl isInvalid={Boolean(errors.email)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Email
+              Email *
             </FormLabel>
 
             <InputGroup>
@@ -683,7 +705,12 @@ export const TestimonialForm = () => {
           <Controller
             control={control}
             name='image'
-            rules={{ validate: validateFileSize }}
+            rules={{
+              validate: (value) =>
+                value === undefined ||
+                validateFileSize(value) ||
+                'A imagem não é válida',
+            }}
             render={({ field: { value, onChange } }) => {
               return (
                 <FormControl isInvalid={Boolean(errors.image)}>
@@ -736,7 +763,7 @@ export const TestimonialForm = () => {
 
         <FormControl isInvalid={Boolean(errors.testimonial)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Testemunho
+            Testemunho *
           </FormLabel>
 
           <InputGroup>
@@ -833,8 +860,19 @@ export const RecruitForm = () => {
 
   let inputRef: HTMLInputElement | null;
 
+  async function onSubmitRecruit(values: recruitInputs) {
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+
+    const res = await fetch('/api/email/recruit', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(`${res.message}`));
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitRecruit)}>
       <VStack spacing={8}>
         <Flex
           direction={{ base: 'column', lg: 'row' }}
