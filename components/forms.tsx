@@ -1,5 +1,7 @@
 'use client';
 
+import { storage } from '@/firebase/config';
+import { addData } from '@/firebase/controlData';
 import {
   Button,
   Center,
@@ -29,8 +31,9 @@ import {
   Person,
   Phone,
 } from '@mui/icons-material';
-//import { Select } from "chakra-react-select";
+import { ref, uploadBytes } from 'firebase/storage';
 import { Controller, useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
 
 type appointmentFormProps = {
   popover?: boolean;
@@ -608,14 +611,45 @@ export const TestimonialForm = () => {
   let inputRef: HTMLInputElement | null;
 
   async function onSubmitTestimonial(values: testimonialInputs) {
-    const formData = new FormData();
-    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+    const id = uuid();
+    const imageSrc = `/docs/imagens/testemunhos/${id}/${values.image.name}`;
+    const dbData = {
+      nome: values.name,
+      email: values.email,
+      testemunho: values.testimonial,
+      concorda: values.agree,
+      aprovado: false,
+      visivel: false,
+      urlImagem: imageSrc,
+    };
 
-    const res = await fetch('/api/email/testimonials', {
-      method: 'POST',
-      body: formData,
-    }).then((res) => res.json());
-    alert(JSON.stringify(`${res.message}`));
+    const dbRes = await addData('testemunhos', dbData).then(() => {
+      const storageRef = ref(storage, imageSrc);
+
+      return uploadBytes(storageRef, values.image)
+        .then(() => {
+          const formData = new FormData();
+          const emailMessage = {
+            id,
+            name: values.name,
+            email: values.name,
+            testimonial: values.testimonial,
+            imageName: values.image.name,
+            imageSrc,
+          };
+
+          Object.keys(emailMessage).forEach((key) =>
+            formData.append(key, emailMessage[key]),
+          );
+
+          return fetch('/api/email/testimonials', {
+            method: 'POST',
+            body: formData,
+          }).then((res) => res.json());
+        })
+        .catch((e) => console.log);
+    });
+    alert(JSON.stringify(`${dbRes.message}`));
   }
 
   return (

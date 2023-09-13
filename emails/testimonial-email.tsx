@@ -16,6 +16,7 @@ interface TestimonialEmailProps {
   email: string;
   testimonial: string;
   imageName?: string;
+  imageSrc?: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
@@ -27,6 +28,7 @@ export const TestimonialEmail = ({
   email,
   testimonial,
   imageName,
+  imageSrc,
 }: TestimonialEmailProps) => {
   const previewText = `Novo testemunho de ${name}!`;
 
@@ -48,14 +50,14 @@ export const TestimonialEmail = ({
             </Section>
             {imageName && (
               <Section>
-                {/* <Img
-                  src={imageName}
+                <Img
+                  src={imageSrc}
                   width='96'
                   height='96'
-                  alt={name}
-                  style={userimageName}
-                /> */}
-                <Text style={paragraph}>{imageName}</Text>
+                  alt={imageName}
+                  style={testimonialImage}
+                />
+                {/* <Text style={paragraph}>{imageName}</Text> */}
               </Section>
             )}
             <Section style={{ paddingBottom: '20px' }}>
@@ -114,7 +116,7 @@ const container = {
   width: '580px',
 };
 
-const userimageName = {
+const testimonialImage = {
   margin: '0 auto',
   marginBottom: '16px',
   borderRadius: '50%',
@@ -149,18 +151,6 @@ const button = {
   textAlign: 'center' as const,
   display: 'block',
   width: '100%',
-};
-
-const link = {
-  ...paragraph,
-  color: '#ff5a5f',
-  display: 'block',
-};
-
-const reportLink = {
-  fontSize: '14px',
-  color: '#9ca299',
-  textDecoration: 'underline',
 };
 
 const hr = {

@@ -1,17 +1,17 @@
 import TestimonialEmail from "@/emails/testimonial-email";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { v4 as uuid } from 'uuid';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
 	const data = await request.formData();
+	const id = data.get('id') as string;
 	const name = data.get('name') as string;
 	const email = data.get('email') as string;
 	const testimonial = data.get('testimonial') as string;
-	const image = data.get('image') as Blob | null;
-	const imageBuffer = Buffer.from(await image.arrayBuffer());
+	const imageName = data.get('imageName') as string;
+	const imageSrc = data.get('imageSrc') as string;
 
 	try {
 		resend.sendEmail({
@@ -22,18 +22,13 @@ export async function POST(request: Request) {
 				name,
 				email,
 				testimonial,
-				imageName: image.name
+				imageName,
+				imageSrc,
 			}),
-			attachments: [
-				{
-					filename: image.name,
-					content: imageBuffer,
-				},
-			],
 			headers: {
-				'X-Entity-Ref-ID': uuid(),
+				'X-Entity-Ref-ID': id,
 			},
-		});
+		})
 
 		return NextResponse.json(
 			{ message: "O email foi enviado com sucesso" },
