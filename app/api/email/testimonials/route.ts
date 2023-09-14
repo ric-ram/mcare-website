@@ -2,7 +2,7 @@ import TestimonialEmail from "@/emails/testimonial-email";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function POST(request: Request) {
 	const data = await request.formData();
@@ -12,6 +12,7 @@ export async function POST(request: Request) {
 	const testimonial = data.get('testimonial') as string;
 	const imageName = data.get('imageName') as string;
 	const imageSrc = data.get('imageSrc') as string;
+	const logoURL = data.get('logoURL') as string;
 
 	try {
 		resend.sendEmail({
@@ -24,6 +25,7 @@ export async function POST(request: Request) {
 				testimonial,
 				imageName,
 				imageSrc,
+				logoURL
 			}),
 			headers: {
 				'X-Entity-Ref-ID': id,

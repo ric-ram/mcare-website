@@ -31,7 +31,7 @@ import {
   Person,
   Phone,
 } from '@mui/icons-material';
-import { ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { Controller, useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
@@ -627,15 +627,31 @@ export const TestimonialForm = () => {
       const storageRef = ref(storage, imageSrc);
 
       return uploadBytes(storageRef, values.image)
-        .then(() => {
+        .then(async () => {
           const formData = new FormData();
+          let clientImageURL = '';
+
+          if (imageSrc) {
+            await getDownloadURL(storageRef)
+              .then((url) => {
+                clientImageURL = url;
+              })
+              .catch((err) => console.log);
+          }
+
+          const logoURL = await getDownloadURL(
+            ref(storage, '/docs/imagens/mcare/M-Care-SemFundo.png'),
+          ).catch((e) => console.log);
+
+          console.log(logoURL);
           const emailMessage = {
             id,
             name: values.name,
-            email: values.name,
+            email: values.email,
             testimonial: values.testimonial,
             imageName: values.image.name,
-            imageSrc,
+            imageSrc: clientImageURL,
+            logoURL,
           };
 
           Object.keys(emailMessage).forEach((key) =>

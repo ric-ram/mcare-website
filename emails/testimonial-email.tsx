@@ -15,13 +15,10 @@ interface TestimonialEmailProps {
   name: string;
   email: string;
   testimonial: string;
+  logoURL: string;
   imageName?: string;
   imageSrc?: string;
 }
-
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
 
 export const TestimonialEmail = ({
   name,
@@ -29,6 +26,7 @@ export const TestimonialEmail = ({
   testimonial,
   imageName,
   imageSrc,
+  logoURL,
 }: TestimonialEmailProps) => {
   const previewText = `Novo testemunho de ${name}!`;
 
@@ -42,22 +40,23 @@ export const TestimonialEmail = ({
           <Container style={container}>
             <Section>
               <Img
-                src={`${baseUrl}/static/airbnb-logo.png`}
-                width='96'
-                height='30'
-                alt='Airbnb'
+                src={
+                  'https://firebasestorage.googleapis.com/v0/b/mcare-website-9c115.appspot.com/o/docs%2Fimagens%2Fmcare%2FM-Care-SemFundo.png?alt=media&token=8b53ba18-90d9-4c2d-bc1d-6da1aaaca027'
+                }
+                width='auto'
+                height='100'
+                alt='MCare'
               />
             </Section>
             {imageName && (
               <Section>
                 <Img
                   src={imageSrc}
-                  width='96'
-                  height='96'
+                  width='240'
+                  height='auto'
                   alt={imageName}
                   style={testimonialImage}
                 />
-                {/* <Text style={paragraph}>{imageName}</Text> */}
               </Section>
             )}
             <Section style={{ paddingBottom: '20px' }}>
@@ -119,7 +118,7 @@ const container = {
 const testimonialImage = {
   margin: '0 auto',
   marginBottom: '16px',
-  borderRadius: '50%',
+  borderRadius: '5px',
 };
 
 const heading = {
