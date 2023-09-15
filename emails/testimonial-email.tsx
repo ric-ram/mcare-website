@@ -41,6 +41,7 @@ export const TestimonialEmail = ({
             <Section>
               <Img
                 src={
+                  logoURL ??
                   'https://firebasestorage.googleapis.com/v0/b/mcare-website-9c115.appspot.com/o/docs%2Fimagens%2Fmcare%2FM-Care-SemFundo.png?alt=media&token=8b53ba18-90d9-4c2d-bc1d-6da1aaaca027'
                 }
                 width='auto'
@@ -80,10 +81,6 @@ export const TestimonialEmail = ({
                   <b>Email: </b>
                   {email}
                 </Text>
-
-                {/* <Button pY={19} style={button} href='https://airbnb.com/'>
-                  Send My Feedback
-                </Button> */}
               </Row>
             </Section>
 
@@ -139,17 +136,6 @@ const review = {
   padding: '24px',
   backgroundColor: '#f2f3f3',
   borderRadius: '4px',
-};
-
-const button = {
-  backgroundColor: '#ff5a5f',
-  borderRadius: '3px',
-  color: '#fff',
-  fontSize: '18px',
-  textDecoration: 'none',
-  textAlign: 'center' as const,
-  display: 'block',
-  width: '100%',
 };
 
 const hr = {

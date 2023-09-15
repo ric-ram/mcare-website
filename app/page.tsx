@@ -105,6 +105,7 @@ const StepCard = ({ image, step, text }: StepCardProps) => {
         borderColor={'darkBlue'}
         borderRadius='full'
         objectFit={'cover'}
+        alt={`passo ${step}`}
       />
       <VStack
         spacing={2}
@@ -171,8 +172,8 @@ const ServiceDescription = ({ activeService }: ServiceDescriptionProps) => {
         <Text textAlign={'left'}>{activeService.description}</Text>
         {activeService.bullets && (
           <UnorderedList textAlign={'left'}>
-            {activeService.bullets.map((bullet) => (
-              <ListItem>{bullet}</ListItem>
+            {activeService.bullets.map((bullet, index) => (
+              <ListItem key={index}>{bullet}</ListItem>
             ))}
           </UnorderedList>
         )}
@@ -295,8 +296,9 @@ const ServicesSection = ({ bgColor }: ComponentProps) => {
         minWidth={'680px'}
       >
         <VStack direction={'column'} gap={0} minWidth={'300px'}>
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, index) => (
             <ServiceButton
+              key={index}
               service={service}
               onClick={handleServiceClick}
               activeService={activeService}

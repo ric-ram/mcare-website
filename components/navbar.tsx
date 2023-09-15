@@ -239,7 +239,7 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, options }: NavItem) => {
+const DesktopSubNav = ({ label, href }: NavItem) => {
   return (
     <Box
       as='a'

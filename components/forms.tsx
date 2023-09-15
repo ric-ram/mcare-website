@@ -74,7 +74,7 @@ type optionProp = {
 const NAME_REGEX =
   /^[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+([ \-']{0,1}[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+){0,2}[.]{0,1}$/;
 
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const EMAIL_REGEX = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const actuationZones: optionProp[] = [
   {
@@ -117,16 +117,6 @@ const specializationAreas: optionProp[] = [
     value: 'Outro',
   },
 ];
-
-function onSubmit(values: any) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(values);
-      alert(JSON.stringify(values, null, 2));
-      resolve(values);
-    }, 3000);
-  });
-}
 
 const validateFileSize = (value: File) => {
   const fsMb = value.size / (1024 * 1024);
@@ -636,12 +626,12 @@ export const TestimonialForm = () => {
               .then((url) => {
                 clientImageURL = url;
               })
-              .catch((err) => console.log);
+              .catch(console.error);
           }
 
           const logoURL = await getDownloadURL(
             ref(storage, '/docs/imagens/mcare/M-Care-SemFundo.png'),
-          ).catch((e) => console.log);
+          ).catch(console.error);
 
           console.log(logoURL);
           const emailMessage = {
@@ -663,7 +653,7 @@ export const TestimonialForm = () => {
             body: formData,
           }).then((res) => res.json());
         })
-        .catch((e) => console.log);
+        .catch(console.error);
     });
     alert(JSON.stringify(`${dbRes.message}`));
   }
