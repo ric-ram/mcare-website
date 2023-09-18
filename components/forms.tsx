@@ -629,11 +629,6 @@ export const TestimonialForm = () => {
               .catch(console.error);
           }
 
-          const logoURL = await getDownloadURL(
-            ref(storage, '/docs/imagens/mcare/M-Care-SemFundo.png'),
-          ).catch(console.error);
-
-          console.log(logoURL);
           const emailMessage = {
             id,
             name: values.name,
@@ -641,7 +636,6 @@ export const TestimonialForm = () => {
             testimonial: values.testimonial,
             imageName: values.image.name,
             imageSrc: clientImageURL,
-            logoURL,
           };
 
           Object.keys(emailMessage).forEach((key) =>

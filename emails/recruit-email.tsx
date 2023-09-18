@@ -20,10 +20,6 @@ interface RecruitEmailProps {
   message: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
-
 export const RecruitEmail = ({
   name,
   email,
@@ -44,7 +40,7 @@ export const RecruitEmail = ({
           <Container style={container}>
             <Section>
               <Img
-                src={`${baseUrl}/static/airbnb-logo.png`}
+                src={process.env.NEXT_PUBLIC_LOGO_URL}
                 width='96'
                 height='30'
                 alt='Airbnb'
@@ -75,10 +71,6 @@ export const RecruitEmail = ({
                   <b>Área de especialização: </b>
                   {specializationArea}
                 </Text>
-
-                {/* <Button pY={19} style={button} href='https://airbnb.com/'>
-					Send My Feedback
-				  </Button> */}
               </Row>
             </Section>
 
@@ -110,12 +102,6 @@ const container = {
   width: '580px',
 };
 
-const userimageName = {
-  margin: '0 auto',
-  marginBottom: '16px',
-  borderRadius: '50%',
-};
-
 const heading = {
   fontSize: '32px',
   lineHeight: '1.3',
@@ -134,29 +120,6 @@ const review = {
   padding: '24px',
   backgroundColor: '#f2f3f3',
   borderRadius: '4px',
-};
-
-const button = {
-  backgroundColor: '#ff5a5f',
-  borderRadius: '3px',
-  color: '#fff',
-  fontSize: '18px',
-  textDecoration: 'none',
-  textAlign: 'center' as const,
-  display: 'block',
-  width: '100%',
-};
-
-const link = {
-  ...paragraph,
-  color: '#ff5a5f',
-  display: 'block',
-};
-
-const reportLink = {
-  fontSize: '14px',
-  color: '#9ca299',
-  textDecoration: 'underline',
 };
 
 const hr = {

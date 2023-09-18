@@ -26,7 +26,6 @@ export const TestimonialEmail = ({
   testimonial,
   imageName,
   imageSrc,
-  logoURL,
 }: TestimonialEmailProps) => {
   const previewText = `Novo testemunho de ${name}!`;
 
@@ -40,10 +39,7 @@ export const TestimonialEmail = ({
           <Container style={container}>
             <Section>
               <Img
-                src={
-                  logoURL ??
-                  'https://firebasestorage.googleapis.com/v0/b/mcare-website-9c115.appspot.com/o/docs%2Fimagens%2Fmcare%2FM-Care-SemFundo.png?alt=media&token=8b53ba18-90d9-4c2d-bc1d-6da1aaaca027'
-                }
+                src={process.env.NEXT_PUBLIC_LOGO_URL}
                 width='auto'
                 height='100'
                 alt='MCare'
