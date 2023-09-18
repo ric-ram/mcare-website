@@ -31,6 +31,8 @@ import {
   Person,
   Phone,
 } from '@mui/icons-material';
+import { Rating } from '@mui/material';
+
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { Controller, useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
@@ -50,6 +52,7 @@ type appointmentsInputs = {
 type testimonialInputs = {
   name: string;
   email: string;
+  rating: number;
   testimonial: string;
   agree: boolean;
   image?: File;
@@ -606,6 +609,7 @@ export const TestimonialForm = () => {
     const dbData = {
       nome: values.name,
       email: values.email,
+      avaliacao: values.rating,
       testemunho: values.testimonial,
       concorda: values.agree,
       aprovado: false,
@@ -633,6 +637,7 @@ export const TestimonialForm = () => {
             id,
             name: values.name,
             email: values.email,
+            rating: values.rating,
             testimonial: values.testimonial,
             imageName: values.image.name,
             imageSrc: clientImageURL,
@@ -794,6 +799,34 @@ export const TestimonialForm = () => {
             }}
           />
         </Flex>
+
+        <Controller
+          name='rating'
+          control={control}
+          rules={{ required: 'Este campo é obrigatório' }}
+          render={({ field: { value, onChange } }) => {
+            return (
+              <FormControl isInvalid={Boolean(errors.rating)}>
+                <FormLabel color={'darkBlue'} fontSize={'18px'}>
+                  Avaliação *
+                </FormLabel>
+                <Rating
+                  name='rating'
+                  precision={0.5}
+                  value={Number(value)}
+                  onChange={onChange}
+                />
+                {!errors.rating ? (
+                  <FormHelperText>Deixe aqui a sua avaliação</FormHelperText>
+                ) : (
+                  <FormErrorMessage>
+                    {errors.rating.message?.toString()}
+                  </FormErrorMessage>
+                )}
+              </FormControl>
+            );
+          }}
+        />
 
         <FormControl isInvalid={Boolean(errors.testimonial)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
