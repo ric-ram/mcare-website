@@ -68,8 +68,9 @@ export default function ContainerWithImage({
           <Heading as={as} variant={variant}>
             {title}
           </Heading>
-          {texts.map((text) => (
+          {texts.map((text, index) => (
             <Text
+              key={index}
               color={'black'}
               fontSize={'lg'}
               textAlign={{ base: 'center', md: 'left' }}

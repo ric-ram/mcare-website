@@ -1,5 +1,7 @@
 'use client';
 
+import { storage } from '@/firebase/config';
+import { addData } from '@/firebase/controlData';
 import {
   Button,
   Center,
@@ -29,8 +31,9 @@ import {
   Person,
   Phone,
 } from '@mui/icons-material';
-//import { Select } from "chakra-react-select";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { Controller, useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
 
 type appointmentFormProps = {
   popover?: boolean;
@@ -71,7 +74,7 @@ type optionProp = {
 const NAME_REGEX =
   /^[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+([ \-']{0,1}[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+){0,2}[.]{0,1}$/;
 
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const EMAIL_REGEX = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const actuationZones: optionProp[] = [
   {
@@ -115,16 +118,6 @@ const specializationAreas: optionProp[] = [
   },
 ];
 
-function onSubmit(values: any) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(values);
-      alert(JSON.stringify(values, null, 2));
-      resolve(values);
-    }, 3000);
-  });
-}
-
 const validateFileSize = (value: File) => {
   const fsMb = value.size / (1024 * 1024);
   const MAX_FILE_SIZE = 10;
@@ -166,6 +159,17 @@ export const AppointmentsForm = ({ popover = false }: appointmentFormProps) => {
   } = useForm<appointmentsInputs>({
     mode: 'onChange',
   });
+
+  async function onSubmitAppointment(values: recruitInputs) {
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+
+    const res = await fetch('/api/email/appointments', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(`${res.message}`));
+  }
 
   const PopoverForm = () => {
     return (
@@ -578,7 +582,7 @@ export const AppointmentsForm = ({ popover = false }: appointmentFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitAppointment)}>
       {popover ? <PopoverForm /> : <PageForm />}
     </form>
   );
@@ -596,8 +600,60 @@ export const TestimonialForm = () => {
 
   let inputRef: HTMLInputElement | null;
 
+  async function onSubmitTestimonial(values: testimonialInputs) {
+    const id = uuid();
+    const imageSrc = `/docs/imagens/testemunhos/${id}/${values.image.name}`;
+    const dbData = {
+      nome: values.name,
+      email: values.email,
+      testemunho: values.testimonial,
+      concorda: values.agree,
+      aprovado: false,
+      visivel: false,
+      urlImagem: imageSrc,
+    };
+
+    const dbRes = await addData('testemunhos', dbData).then(() => {
+      const storageRef = ref(storage, imageSrc);
+
+      return uploadBytes(storageRef, values.image)
+        .then(async () => {
+          const formData = new FormData();
+          let clientImageURL = '';
+
+          if (imageSrc) {
+            await getDownloadURL(storageRef)
+              .then((url) => {
+                clientImageURL = url;
+              })
+              .catch(console.error);
+          }
+
+          const emailMessage = {
+            id,
+            name: values.name,
+            email: values.email,
+            testimonial: values.testimonial,
+            imageName: values.image.name,
+            imageSrc: clientImageURL,
+          };
+
+          Object.keys(emailMessage).forEach((key) =>
+            formData.append(key, emailMessage[key]),
+          );
+
+          return fetch('/api/email/testimonials', {
+            method: 'POST',
+            body: formData,
+          }).then((res) => res.json());
+        })
+        .catch(console.error);
+    });
+    alert(JSON.stringify(`${dbRes.message}`));
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitTestimonial)}>
       <VStack spacing={8}>
         <Flex
           direction={{ base: 'column', lg: 'row' }}
@@ -606,7 +662,7 @@ export const TestimonialForm = () => {
         >
           <FormControl isInvalid={Boolean(errors.name)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Nome
+              Nome *
             </FormLabel>
 
             <InputGroup>
@@ -646,7 +702,7 @@ export const TestimonialForm = () => {
 
           <FormControl isInvalid={Boolean(errors.email)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Email
+              Email *
             </FormLabel>
 
             <InputGroup>
@@ -683,7 +739,12 @@ export const TestimonialForm = () => {
           <Controller
             control={control}
             name='image'
-            rules={{ validate: validateFileSize }}
+            rules={{
+              validate: (value) =>
+                value === undefined ||
+                validateFileSize(value) ||
+                'A imagem não é válida',
+            }}
             render={({ field: { value, onChange } }) => {
               return (
                 <FormControl isInvalid={Boolean(errors.image)}>
@@ -736,7 +797,7 @@ export const TestimonialForm = () => {
 
         <FormControl isInvalid={Boolean(errors.testimonial)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Testemunho
+            Testemunho *
           </FormLabel>
 
           <InputGroup>
@@ -833,8 +894,19 @@ export const RecruitForm = () => {
 
   let inputRef: HTMLInputElement | null;
 
+  async function onSubmitRecruit(values: recruitInputs) {
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+
+    const res = await fetch('/api/email/recruit', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(`${res.message}`));
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitRecruit)}>
       <VStack spacing={8}>
         <Flex
           direction={{ base: 'column', lg: 'row' }}

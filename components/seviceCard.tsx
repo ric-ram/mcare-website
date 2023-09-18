@@ -25,7 +25,7 @@ export default function ServiceCard({ name, image, href }: ServiceCardProps) {
     >
       <Avatar
         size={'2xl'}
-        src=''
+        src={image ?? ''}
         border={'1px solid'}
         borderColor={'darkBlue'}
       />

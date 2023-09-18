@@ -1,5 +1,6 @@
 'use client';
 
+import { SERVICES } from '@/data/services';
 import {
   Box,
   Container,
@@ -44,7 +45,7 @@ const SocialButton = ({
   href: string;
 }) => {
   return (
-    <Link href='#'>
+    <Link href={href ?? '#'}>
       <IconButton
         icon={children}
         colorScheme={'lightBlue'}
@@ -89,11 +90,9 @@ export default function Footer() {
 
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
             <ListHeader>Serviços</ListHeader>
-            <FooterLink>Cardiorrespiratório</FooterLink>
-            <FooterLink>Drenagem Linfática</FooterLink>
-            <FooterLink>Massagem Terapêutica</FooterLink>
-            <FooterLink>Músculo-esquelética</FooterLink>
-            <FooterLink>Neurologia</FooterLink>
+            {SERVICES.map((service, index) => (
+              <FooterLink key={index}>{service.label}</FooterLink>
+            ))}
           </Stack>
 
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
