@@ -1,46 +1,8 @@
 'use client';
 
 import ServiceCard from '@/components/seviceCard';
+import { SERVICES } from '@/data/services';
 import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
-
-type Service = {
-  label: string;
-  href: string;
-  image: string;
-};
-
-const SERVICES: Array<Service> = [
-  {
-    label: 'Neurologia',
-    href: '/marcacao',
-    image: '',
-  },
-  {
-    label: 'Músculo-esquelética',
-    href: '/marcacao',
-    image: '',
-  },
-  {
-    label: 'Cardiorrespiratória',
-    href: '/marcacao',
-    image: '',
-  },
-  {
-    label: 'Drenagem Linfática',
-    href: '/marcacao',
-    image: '',
-  },
-  {
-    label: 'Massagem Terapêutica',
-    href: '/marcacao',
-    image: '',
-  },
-  {
-    label: 'Geriatria',
-    href: '/marcacao',
-    image: '',
-  },
-];
 
 export default function ServicesPage() {
   return (
