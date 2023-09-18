@@ -9,6 +9,7 @@ export async function POST(request: Request) {
   const id = data.get('id') as string;
   const name = data.get('name') as string;
   const email = data.get('email') as string;
+  const rating = data.get('rating') as string;
   const testimonial = data.get('testimonial') as string;
   const imageName = data.get('imageName') as string;
   const imageSrc = data.get('imageSrc') as string;
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
       react: TestimonialEmail({
         name,
         email,
+        rating,
         testimonial,
         imageName,
         imageSrc,

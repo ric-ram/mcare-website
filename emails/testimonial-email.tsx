@@ -14,6 +14,7 @@ import {
 interface TestimonialEmailProps {
   name: string;
   email: string;
+  rating: string;
   testimonial: string;
   logoURL: string;
   imageName?: string;
@@ -23,6 +24,7 @@ interface TestimonialEmailProps {
 export const TestimonialEmail = ({
   name,
   email,
+  rating,
   testimonial,
   imageName,
   imageSrc,
@@ -58,7 +60,11 @@ export const TestimonialEmail = ({
             )}
             <Section style={{ paddingBottom: '20px' }}>
               <Row>
-                <Text style={heading}>O testemunho de {name}:</Text>
+                <Text style={heading}>A avaliação de {name}:</Text>
+                <Text style={review}>
+                  <b>Avaliação: </b>
+                  {rating} estrelas
+                </Text>
                 <Text style={review}>{testimonial}</Text>
                 <Text style={paragraph}>
                   Se queres que este testemunho apareça no site, nâo te esqueças
