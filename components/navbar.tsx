@@ -20,7 +20,6 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
-import { AppointmentsForm } from './forms';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -148,7 +147,7 @@ const DesktopNav = () => {
                 ml={8}
                 color={'black'}
                 bg={'lightBlue.200'}
-                href={'#'}
+                href={'/marcacao'}
                 _hover={{
                   bg: 'lightBlue.300',
                   fontWeight: 600,
@@ -158,7 +157,8 @@ const DesktopNav = () => {
               </Button>
             </PopoverTrigger>
 
-            <PopoverContent
+            {/* Removed popover due to bug -> Not a priority feature */}
+            {/* <PopoverContent
               border={0}
               boxShadow={'xl'}
               bg={popoverContentBgColor}
@@ -169,7 +169,7 @@ const DesktopNav = () => {
             >
               <PopoverArrow bg={popoverContentBgColor} />
               <AppointmentsForm popover={true} />
-            </PopoverContent>
+            </PopoverContent> */}
           </Popover>
         </Stack>
       </Flex>
