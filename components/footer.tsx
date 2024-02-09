@@ -10,7 +10,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import { Facebook, Instagram } from '@mui/icons-material';
+import { Facebook, Instagram, LinkedIn } from '@mui/icons-material';
 import { JSXElementConstructor, ReactElement, ReactNode } from 'react';
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
@@ -45,7 +45,7 @@ const SocialButton = ({
   href: string;
 }) => {
   return (
-    <Link href={href ?? '#'}>
+    <Link href={href ?? '#'} isExternal>
       <IconButton
         icon={children}
         colorScheme={'lightBlue'}
@@ -104,11 +104,25 @@ export default function Footer() {
               +351 962 915 285
             </Box>
             <Stack direction={'row'} spacing={6}>
-              <SocialButton label={'Facebook'} href={'#'}>
+              <SocialButton
+                label={'Facebook'}
+                href={'https://www.facebook.com/profile.php?id=100085462548094'}
+              >
                 <Facebook />
               </SocialButton>
-              <SocialButton label={'Instagram'} href={'#'}>
+              <SocialButton
+                label={'Instagram'}
+                href={'https://www.instagram.com/mcare.com.pt/'}
+              >
                 <Instagram />
+              </SocialButton>
+              <SocialButton
+                label={'Linkedin'}
+                href={
+                  'https://www.linkedin.com/company/mcare-terapias-ao-domic%C3%ADlio/'
+                }
+              >
+                <LinkedIn />
               </SocialButton>
             </Stack>
           </Stack>
