@@ -1,14 +1,14 @@
 'use client';
 
-import ServiceCard from '@/components/seviceCard';
-import { SERVICES } from '@/data/services';
+import AreaCard from '@/components/areaCard';
+import { AREAS } from '@/data/areas';
 import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 
-export default function ServicesPage() {
+export default function AreasPage() {
   return (
     <Stack pt={12} pb={24} px={{ lg: '160px', base: '32px' }} gap={12}>
       <Heading as='h2' variant={'header1'} textAlign={'center'}>
-        Serviços
+        Áreas
       </Heading>
       <SimpleGrid
         minHeight={'650px'}
@@ -17,12 +17,12 @@ export default function ServicesPage() {
         justifyItems={'center'}
         spacing={16}
       >
-        {SERVICES.map((service) => (
-          <ServiceCard
-            key={service.label}
-            name={service.label}
-            image={service.image}
-            href={service.href}
+        {AREAS.map((area) => (
+          <AreaCard
+            key={area.label}
+            name={area.label}
+            image={area.image}
+            href={'/areas/' + area.areaId}
           />
         ))}
       </SimpleGrid>

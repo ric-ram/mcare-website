@@ -3,13 +3,13 @@
 import { Avatar, Box, Button, Heading } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-type ServiceCardProps = {
+type AreaCardProps = {
   name: string;
   image: string;
   href: string;
 };
 
-export default function ServiceCard({ name, image, href }: ServiceCardProps) {
+export default function AreaCard({ name, image, href }: AreaCardProps) {
   return (
     <Box
       minWidth={'255px'}

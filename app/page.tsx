@@ -1,7 +1,7 @@
 'use client';
 
 import TestimonialCarousel from '@/components/testimonialCarousel';
-import { SERVICES, Service } from '@/data/services';
+import { AREAS, Area } from '@/data/areas';
 import {
   Box,
   Button,
@@ -26,14 +26,14 @@ type ComponentProps = {
   bgColor?: string;
 };
 
-type ServiceButtonProps = {
-  service: Service;
-  activeService: Service;
+type AreaButtonProps = {
+  Area: Area;
+  activeArea: Area;
   onClick?: React.MouseEventHandler;
 };
 
-type ServiceDescriptionProps = {
-  activeService: Service;
+type AreaDescriptionProps = {
+  activeArea: Area;
 };
 
 const StepCard = ({ image, step, text }: StepCardProps) => {
@@ -63,14 +63,10 @@ const StepCard = ({ image, step, text }: StepCardProps) => {
   );
 };
 
-const ServiceButton = ({
-  service,
-  activeService,
-  onClick,
-}: ServiceButtonProps) => {
+const AreaButton = ({ Area, activeArea, onClick }: AreaButtonProps) => {
   return (
     <Box
-      name={service.label}
+      name={Area.label}
       pl={3}
       pr={5}
       py={5}
@@ -82,9 +78,9 @@ const ServiceButton = ({
       lineHeight={'32px'}
       textAlign={{ base: 'center', lg: 'left' }}
       fontWeight={'500'}
-      color={activeService.label === service.label ? 'pastelBlue' : 'darkBlue'}
+      color={activeArea.label === Area.label ? 'pastelBlue' : 'darkBlue'}
       noOfLines={1}
-      bg={activeService.label === service.label && 'darkBlue'}
+      bg={activeArea.label === Area.label && 'darkBlue'}
       _hover={{
         lg: {
           bg: 'darkBlues.600',
@@ -93,12 +89,12 @@ const ServiceButton = ({
       }}
       onClick={onClick}
     >
-      {service.label}
+      {Area.label}
     </Box>
   );
 };
 
-const ServiceDescription = ({ activeService }: ServiceDescriptionProps) => {
+const AreaDescription = ({ activeArea }: AreaDescriptionProps) => {
   return (
     <VStack
       spacing={8}
@@ -107,13 +103,13 @@ const ServiceDescription = ({ activeService }: ServiceDescriptionProps) => {
       display={{ base: 'none', lg: 'flex' }}
     >
       <Heading as={'h3'} variant={'header3'}>
-        {activeService.label}
+        {activeArea.label}
       </Heading>
       <Flex direction='column' alignItems='flex-start' gap={4}>
-        <Text textAlign={'left'}>{activeService.description}</Text>
-        {activeService.bullets && (
+        <Text textAlign={'left'}>{activeArea.description}</Text>
+        {activeArea.services && (
           <UnorderedList textAlign={'left'}>
-            {activeService.bullets.map((bullet, index) => (
+            {activeArea.services.map((bullet, index) => (
               <ListItem key={index}>{bullet}</ListItem>
             ))}
           </UnorderedList>
@@ -130,7 +126,7 @@ const ServiceDescription = ({ activeService }: ServiceDescriptionProps) => {
         ml={8}
         color={'black'}
         bg={'lightBlue.200'}
-        href={activeService.href}
+        href={'/areas/' + activeArea.areaId}
         _hover={{
           bg: 'lightBlue.300',
           fontWeight: 600,
@@ -199,18 +195,16 @@ const ProcedureSection = ({ bgColor }: ComponentProps) => {
   );
 };
 
-const ServicesSection = ({ bgColor }: ComponentProps) => {
-  const [activeService, setActiveService] = useState(SERVICES[0]);
+const AreasSection = ({ bgColor }: ComponentProps) => {
+  const [activeArea, setActiveArea] = useState(AREAS[0]);
 
-  const handleServiceClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAreaClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const activeService: HTMLButtonElement = e.currentTarget;
-    const index = SERVICES.findIndex(
-      (service) => service.label === activeService.name,
-    );
+    const activeArea: HTMLButtonElement = e.currentTarget;
+    const index = AREAS.findIndex((Area) => Area.label === activeArea.name);
 
-    setActiveService(SERVICES[index]);
+    setActiveArea(AREAS[index]);
   };
 
   return (
@@ -222,7 +216,7 @@ const ServicesSection = ({ bgColor }: ComponentProps) => {
       bg={bgColor}
     >
       <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        Serviços
+        Áreas
       </Heading>
       <Stack
         direction={{ base: 'column', lg: 'row' }}
@@ -237,16 +231,16 @@ const ServicesSection = ({ bgColor }: ComponentProps) => {
         minWidth={'680px'}
       >
         <VStack direction={'column'} gap={0} minWidth={'300px'}>
-          {SERVICES.map((service, index) => (
-            <ServiceButton
+          {AREAS.map((Area, index) => (
+            <AreaButton
               key={index}
-              service={service}
-              onClick={handleServiceClick}
-              activeService={activeService}
+              Area={Area}
+              onClick={handleAreaClick}
+              activeArea={activeArea}
             />
           ))}
         </VStack>
-        <ServiceDescription activeService={activeService} />
+        <AreaDescription activeArea={activeArea} />
       </Stack>
     </Stack>
   );
@@ -256,7 +250,7 @@ export default function Home() {
   return (
     <>
       <ProcedureSection />
-      <ServicesSection bgColor='pastelBlue' />
+      <AreasSection bgColor='pastelBlue' />
       <TestimonialCarousel />
     </>
   );
