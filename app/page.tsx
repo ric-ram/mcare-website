@@ -1,7 +1,7 @@
 'use client';
 
 import Carousel from '@/components/carousel';
-import { AREAS, Area } from '@/data/areas';
+import { AREAS } from '@/data/areas';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
 import {
   Box,
@@ -16,26 +16,12 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-
-type StepCardProps = {
-  image: string;
-  step: number;
-  text: string;
-};
-
-type ComponentProps = {
-  bgColor?: string;
-};
-
-type AreaButtonProps = {
-  Area: Area;
-  activeArea: Area;
-  onClick?: React.MouseEventHandler;
-};
-
-type AreaDescriptionProps = {
-  activeArea: Area;
-};
+import {
+  AreaButtonProps,
+  AreaDescriptionProps,
+  ComponentProps,
+  StepCardProps,
+} from './types/componentTypes';
 
 export const getTestimonialsIds = () => {
   let ids = [];

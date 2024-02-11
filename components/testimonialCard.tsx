@@ -1,7 +1,8 @@
 'use client';
 
+import { CardProps } from '@/app/types/componentTypes';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
-import { Box, CardProps, Flex, Icon, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import {
   StarHalfRounded,
   StarOutlineRounded,

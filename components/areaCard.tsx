@@ -1,13 +1,8 @@
 'use client';
 
+import { AreaCardProps } from '@/app/types/componentTypes';
 import { Avatar, Box, Button, Heading } from '@chakra-ui/react';
 import NextLink from 'next/link';
-
-type AreaCardProps = {
-  name: string;
-  image: string;
-  href: string;
-};
 
 export default function AreaCard({ name, image, href }: AreaCardProps) {
   return (

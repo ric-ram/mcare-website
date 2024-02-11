@@ -1,5 +1,12 @@
 'use client';
 
+import {
+  AppointmentFormProps,
+  AppointmentsInputs,
+  OptionProp,
+  RecruitInputs,
+  TestimonialInputs,
+} from '@/app/types/componentTypes';
 import { storage } from '@/firebase/config';
 import { addData } from '@/firebase/controlData';
 import {
@@ -37,49 +44,12 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { Controller, useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
-type appointmentFormProps = {
-  popover?: boolean;
-};
-
-type appointmentsInputs = {
-  name: string;
-  email: string;
-  phone: number;
-  message: string;
-  agree: boolean;
-};
-
-type testimonialInputs = {
-  name: string;
-  email: string;
-  rating: number;
-  testimonial: string;
-  agree: boolean;
-  image?: File;
-};
-
-type recruitInputs = {
-  name: string;
-  email: string;
-  phone: number;
-  actuationZone: string;
-  specializationArea: string;
-  file: File;
-  message: string;
-  agree: boolean;
-};
-
-type optionProp = {
-  label: string;
-  value: string;
-};
-
 const NAME_REGEX =
   /^[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+([ \-']{0,1}[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u01FF]+){0,2}[.]{0,1}$/;
 
 const EMAIL_REGEX = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-const actuationZones: optionProp[] = [
+const actuationZones: OptionProp[] = [
   {
     label: 'Lisboa',
     value: 'Lisboa',
@@ -94,7 +64,7 @@ const actuationZones: optionProp[] = [
   },
 ];
 
-const specializationAreas: optionProp[] = [
+const specializationAreas: OptionProp[] = [
   {
     label: 'Fisioterapeuta',
     value: 'Fisioterapeuta',
@@ -142,7 +112,7 @@ const validateFileType = (value: File) => {
   return validateFileSize(value);
 };
 
-const Options = (props: { options: optionProp[] }) => {
+const Options = (props: { options: OptionProp[] }) => {
   return (
     <>
       {props.options.map((option) => (
@@ -154,16 +124,16 @@ const Options = (props: { options: optionProp[] }) => {
   );
 };
 
-export const AppointmentsForm = ({ popover = false }: appointmentFormProps) => {
+export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting, isDirty, isValid },
-  } = useForm<appointmentsInputs>({
+  } = useForm<AppointmentsInputs>({
     mode: 'onChange',
   });
 
-  async function onSubmitAppointment(values: recruitInputs) {
+  async function onSubmitAppointment(values: RecruitInputs) {
     const formData = new FormData();
     Object.keys(values).forEach((key) => formData.append(key, values[key]));
 
@@ -597,13 +567,13 @@ export const TestimonialForm = () => {
     register,
     control,
     formState: { errors, isSubmitting, isDirty, isValid },
-  } = useForm<testimonialInputs>({
+  } = useForm<TestimonialInputs>({
     mode: 'onChange',
   });
 
   let inputRef: HTMLInputElement | null;
 
-  async function onSubmitTestimonial(values: testimonialInputs) {
+  async function onSubmitTestimonial(values: TestimonialInputs) {
     const id = uuid();
     const imageSrc = `/docs/imagens/testemunhos/${id}/${values.image.name}`;
     const dbData = {
@@ -921,13 +891,13 @@ export const RecruitForm = () => {
     register,
     control,
     formState: { errors, isSubmitting, isDirty, isValid },
-  } = useForm<recruitInputs>({
+  } = useForm<RecruitInputs>({
     mode: 'onChange',
   });
 
   let inputRef: HTMLInputElement | null;
 
-  async function onSubmitRecruit(values: recruitInputs) {
+  async function onSubmitRecruit(values: RecruitInputs) {
     const formData = new FormData();
     Object.keys(values).forEach((key) => formData.append(key, values[key]));
 

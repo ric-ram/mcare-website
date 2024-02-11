@@ -1,21 +1,16 @@
 'use client';
 
+import { AreaProps } from '@/app/types/componentTypes';
 import Carousel from '@/components/carousel';
 import { AppointmentsForm } from '@/components/forms';
 import { AREAS, Area } from '@/data/areas';
 import { Heading, Stack, Text } from '@chakra-ui/react';
 
-type areaProps = {
-  params: {
-    areaId: string;
-  };
-};
-
 const getArea = (areaId: string) => {
   return AREAS.find((area: Area) => area.areaId === areaId);
 };
 
-export default function AreaPage({ params }: areaProps) {
+export default function AreaPage({ params }: AreaProps) {
   const area = getArea(params.areaId);
 
   return (

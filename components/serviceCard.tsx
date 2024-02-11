@@ -1,5 +1,6 @@
 'use client';
 
+import { CardProps } from '@/app/types/componentTypes';
 import { SERVICES, Service } from '@/data/services';
 import {
   Box,
@@ -10,10 +11,6 @@ import {
   Text,
   UnorderedList,
 } from '@chakra-ui/react';
-
-export type CardProps = {
-  id: string;
-};
 
 const getService = (id: string) => {
   return SERVICES.find((service: Service) => service.serviceId === id);

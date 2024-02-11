@@ -10,21 +10,10 @@ import React from 'react';
 // Here we have used react-icons package for the icons
 import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material';
 // And react-slick as our Carousel Lib
+import { CarouselProps, SlideProps } from '@/app/types/componentTypes';
 import Slider from 'react-slick';
 import ServiceCard from './serviceCard';
 import TestimonialCard from './testimonialCard';
-
-type SlideProps = {
-  key: number;
-  type: string;
-  id: string;
-};
-
-type CarouselProps = {
-  carouselType: string;
-  cardIds: string[];
-  bgColor?: string;
-};
 
 // Settings for the Services slider
 const settingsService = {
@@ -94,8 +83,8 @@ const settingsTestimonials = {
   ],
 };
 
-const getSettings = (type: string) => {
-  if (type === 'services') {
+const getSettings = (slideType: string) => {
+  if (slideType === 'services') {
     return settingsService;
   } else {
     return settingsTestimonials;
@@ -116,7 +105,7 @@ export default function Carousel({
   const top = useBreakpointValue({ base: '40%', md: '40%' });
   const side = useBreakpointValue({ base: '0', md: '0px' });
 
-  const Slide = ({ key, type, id }: SlideProps) => {
+  const Slide = ({ key, slideType, id }: SlideProps) => {
     return (
       <HStack
         key={key}
@@ -125,8 +114,8 @@ export default function Carousel({
         alignContent='center'
         justifyContent='center'
       >
-        {type === 'services' && <ServiceCard id={id} />}
-        {type === 'testimonials' && <TestimonialCard id={id} />}
+        {slideType === 'services' && <ServiceCard id={id} />}
+        {slideType === 'testimonials' && <TestimonialCard id={id} />}
       </HStack>
     );
   };
@@ -236,7 +225,7 @@ export default function Carousel({
         {/* Slider */}
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {cardIds.map((cardId, index) => (
-            <Slide key={index} type={carouselType} id={cardId} />
+            <Slide key={index} slideType={carouselType} id={cardId} />
           ))}
         </Slider>
       </Box>
