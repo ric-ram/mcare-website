@@ -27,17 +27,20 @@ export default function AreaPage({ params }: areaProps) {
         maxWidth='full'
         pt={16}
         pb={24}
-        mb={12}
         px={{ lg: '160px', base: '32px' }}
         spacing={16}
       >
         <Text textAlign={{ base: 'center', md: 'left' }} fontSize={'lg'}>
           {area.description}
         </Text>
-        {area.services && (
-          <Carousel carouselType={'services'} cardIds={area.services} />
-        )}
       </Stack>
+      {area.services && (
+        <Carousel
+          carouselType={'services'}
+          cardIds={area.services}
+          bgColor={'pastelBlue'}
+        />
+      )}
       <Stack
         pt={12}
         pb={24}
@@ -47,7 +50,6 @@ export default function AreaPage({ params }: areaProps) {
         overflow={'hidden'}
         alignItems={'stretch'}
         spacing={16}
-        bg={'pastelBlue'}
       >
         <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
           Faça a sua marcação

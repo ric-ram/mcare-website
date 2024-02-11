@@ -1,9 +1,10 @@
 'use client';
 
+import Carousel from '@/components/carousel';
 import ContainerWithImage from '@/components/containerImage';
 import { TestimonialForm } from '@/components/forms';
-import TestimonialCarousel from '@/components/testimonialCarousel';
 import { Heading, Stack, Text } from '@chakra-ui/react';
+import { getTestimonialsIds } from '../page';
 
 export default function Testimonials() {
   const testimonialContainer = {
@@ -15,6 +16,8 @@ export default function Testimonials() {
       'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     imageAlt: 'feature image',
   };
+
+  const testimonialsIds = getTestimonialsIds();
 
   return (
     <>
@@ -36,7 +39,10 @@ export default function Testimonials() {
         as={'h1'}
         variant='header1'
       />
-      <TestimonialCarousel />
+      {/* <TestimonialCarousel /> */}
+      {testimonialsIds && (
+        <Carousel carouselType='testimonials' cardIds={testimonialsIds} />
+      )}
       <Stack
         pt={12}
         pb={24}

@@ -1,7 +1,8 @@
 'use client';
 
-import TestimonialCarousel from '@/components/testimonialCarousel';
+import Carousel from '@/components/carousel';
 import { AREAS, Area } from '@/data/areas';
+import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
 import {
   Box,
   Button,
@@ -34,6 +35,14 @@ type AreaButtonProps = {
 
 type AreaDescriptionProps = {
   activeArea: Area;
+};
+
+export const getTestimonialsIds = () => {
+  let ids = [];
+  TESTIMONIALS.forEach((testimonial: Testimonial) =>
+    ids.push(testimonial.testimonialId),
+  );
+  return ids;
 };
 
 const StepCard = ({ image, step, text }: StepCardProps) => {
@@ -247,11 +256,14 @@ const AreasSection = ({ bgColor }: ComponentProps) => {
 };
 
 export default function Home() {
+  const testimonialsIds = getTestimonialsIds();
+
   return (
     <>
       <ProcedureSection />
       <AreasSection bgColor='pastelBlue' />
-      <TestimonialCarousel />
+      {/* <TestimonialCarousel /> */}
+      <Carousel carouselType={'testimonials'} cardIds={testimonialsIds} />
     </>
   );
 }

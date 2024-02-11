@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Flex, Icon, Stack, Text } from '@chakra-ui/react';
+import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
+import { Box, CardProps, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import {
   StarHalfRounded,
   StarOutlineRounded,
@@ -10,12 +11,6 @@ import {
 interface RatingProps {
   rating: number;
 }
-
-export type TestimonialCardProps = {
-  author: string;
-  review: string;
-  rating: number;
-};
 
 function Rating({ rating }: RatingProps) {
   return (
@@ -40,11 +35,16 @@ function Rating({ rating }: RatingProps) {
   );
 }
 
-export default function TestimonialCard({
-  author,
-  review,
-  rating,
-}: TestimonialCardProps) {
+const getTestimonial = (id: string) => {
+  return TESTIMONIALS.find(
+    (testimonial: Testimonial) => testimonial.testimonialId === id,
+  );
+};
+
+export default function TestimonialCard({ id }: CardProps) {
+  const testimonial = getTestimonial(id);
+  console.log(testimonial);
+
   return (
     <Box
       bg={'lightBlue.200'}
@@ -62,8 +62,10 @@ export default function TestimonialCard({
           direction='column'
           gap={{ base: 4, xl: 6 }}
         >
-          <Rating rating={rating} />
-          <Text textAlign={{ base: 'center', xl: 'left' }}>{review}</Text>
+          <Rating rating={testimonial.rating} />
+          <Text textAlign={{ base: 'center', xl: 'left' }}>
+            {testimonial.review}
+          </Text>
         </Flex>
         <Flex justifyContent='space-between' alignContent='center'>
           <Box
@@ -73,7 +75,7 @@ export default function TestimonialCard({
             lineHeight='tight'
             isTruncated
           >
-            - {author}
+            - {testimonial.author}
           </Box>
         </Flex>
       </Stack>

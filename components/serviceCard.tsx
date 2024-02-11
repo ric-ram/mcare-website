@@ -11,16 +11,15 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
-export type cardProps = {
+export type CardProps = {
   id: string;
-  type: string;
 };
 
 const getService = (id: string) => {
   return SERVICES.find((service: Service) => service.serviceId === id);
 };
 
-export default function ServiceCard({ id }: cardProps) {
+export default function ServiceCard({ id }: CardProps) {
   const service = getService(id);
 
   return (
