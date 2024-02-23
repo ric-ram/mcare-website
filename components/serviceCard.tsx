@@ -1,7 +1,7 @@
 'use client';
 
 import { CardProps } from '@/app/types/componentTypes';
-import { SERVICES, Service } from '@/data/services';
+import { Area, AREAS } from '@/data/areas';
 import {
   Box,
   Flex,
@@ -12,12 +12,12 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
-const getService = (id: string) => {
-  return SERVICES.find((service: Service) => service.serviceId === id);
+const getArea = (id: string) => {
+  return AREAS.find((area: Area) => area.areaId === id);
 };
 
-export default function ServiceCard({ id }: CardProps) {
-  const service = getService(id);
+export default function AreaCard({ id }: CardProps) {
+  const area = getArea(id);
 
   return (
     <Box
@@ -35,15 +35,15 @@ export default function ServiceCard({ id }: CardProps) {
           variant='header2'
           textAlign={{ base: 'center', md: 'left' }}
         >
-          {service.label}
+          {area.label}
         </Heading>
         <Flex direction='column' alignItems='flex-start' gap={4}>
           <Text textAlign={'left'} fontSize={'lg'}>
-            {service.description}
+            {area.description}
           </Text>
-          {service.bullets && (
+          {area.bullets && (
             <UnorderedList textAlign={'left'}>
-              {service.bullets.map((bullet, index) => (
+              {area.bullets.map((bullet, index) => (
                 <ListItem key={index}>{bullet}</ListItem>
               ))}
             </UnorderedList>

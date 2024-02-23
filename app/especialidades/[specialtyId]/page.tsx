@@ -1,22 +1,24 @@
 'use client';
 
-import { AreaProps } from '@/app/types/componentTypes';
+import { SpecialtyProps } from '@/app/types/componentTypes';
 import Carousel from '@/components/carousel';
 import { AppointmentsForm } from '@/components/forms';
-import { AREAS, Area } from '@/data/areas';
+import { SPECIALTIES, Specialty } from '@/data/specialties';
 import { Heading, Stack, Text } from '@chakra-ui/react';
 
-const getArea = (areaId: string) => {
-  return AREAS.find((area: Area) => area.areaId === areaId);
+const getSpecialty = (specialtyId: string) => {
+  return SPECIALTIES.find(
+    (specialty: Specialty) => specialty.specialtyId === specialtyId,
+  );
 };
 
-export default function AreaPage({ params }: AreaProps) {
-  const area = getArea(params.areaId);
+export default function SpecialtyPage({ params }: SpecialtyProps) {
+  const specialty = getSpecialty(params.specialtyId);
 
   return (
     <>
       <Heading as='h1' variant={'header1'} textAlign={'center'} mt={16}>
-        {area.label}
+        {specialty.label}
       </Heading>
       <Stack
         maxWidth='full'
@@ -26,13 +28,13 @@ export default function AreaPage({ params }: AreaProps) {
         spacing={16}
       >
         <Text textAlign={{ base: 'center', md: 'left' }} fontSize={'lg'}>
-          {area.description}
+          {specialty.description}
         </Text>
       </Stack>
-      {area.services && (
+      {specialty.areas && (
         <Carousel
-          carouselType={'services'}
-          cardIds={area.services}
+          carouselType={'areas'}
+          cardIds={specialty.areas}
           bgColor={'pastelBlue'}
         />
       )}

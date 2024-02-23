@@ -1,4 +1,4 @@
-import { Area } from "@/data/areas";
+import { Specialty } from "@/data/specialties";
 
 export type StepCardProps = {
 	image: string;
@@ -10,25 +10,25 @@ export type ComponentProps = {
 	bgColor?: string;
 };
 
-export type AreaButtonProps = {
-	Area: Area;
-	activeArea: Area;
+export type SpecialtyButtonProps = {
+	specialty: Specialty;
+	activeSpecialty: Specialty;
 	onClick?: React.MouseEventHandler;
 };
 
-export type AreaDescriptionProps = {
-	activeArea: Area;
+export type SpecialtyDescriptionProps = {
+	activeSpecialty: Specialty;
 };
 
-export type AreaCardProps = {
+export type SpecialtyCardProps = {
 	name: string;
 	image: string;
 	href: string;
 };
 
-export type AreaProps = {
+export type SpecialtyProps = {
 	params: {
-		areaId: string;
+		specialtyId: string;
 	};
 };
 

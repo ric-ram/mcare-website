@@ -1,10 +1,10 @@
 'use client';
 
-import { AreaCardProps } from '@/app/types/componentTypes';
+import { SpecialtyCardProps } from '@/app/types/componentTypes';
 import { Avatar, Box, Button, Heading } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-export default function AreaCard({ name, image, href }: AreaCardProps) {
+export default function AreaCard({ name, image, href }: SpecialtyCardProps) {
   return (
     <Box
       minWidth={'255px'}

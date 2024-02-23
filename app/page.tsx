@@ -1,7 +1,7 @@
 'use client';
 
 import Carousel from '@/components/carousel';
-import { AREAS } from '@/data/areas';
+import { SPECIALTIES } from '@/data/specialties';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
 import {
   Box,
@@ -17,9 +17,9 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import {
-  AreaButtonProps,
-  AreaDescriptionProps,
   ComponentProps,
+  SpecialtyButtonProps,
+  SpecialtyDescriptionProps,
   StepCardProps,
 } from './types/componentTypes';
 
@@ -58,7 +58,11 @@ const StepCard = ({ image, step, text }: StepCardProps) => {
   );
 };
 
-const AreaButton = ({ Area, activeArea, onClick }: AreaButtonProps) => {
+const SpecialtyButton = ({
+  specialty: Area,
+  activeSpecialty: activeArea,
+  onClick,
+}: SpecialtyButtonProps) => {
   return (
     <Box
       name={Area.label}
@@ -89,7 +93,9 @@ const AreaButton = ({ Area, activeArea, onClick }: AreaButtonProps) => {
   );
 };
 
-const AreaDescription = ({ activeArea }: AreaDescriptionProps) => {
+const AreaDescription = ({
+  activeSpecialty: activeArea,
+}: SpecialtyDescriptionProps) => {
   return (
     <VStack
       spacing={8}
@@ -102,9 +108,9 @@ const AreaDescription = ({ activeArea }: AreaDescriptionProps) => {
       </Heading>
       <Flex direction='column' alignItems='flex-start' gap={4}>
         <Text textAlign={'left'}>{activeArea.description}</Text>
-        {activeArea.services && (
+        {activeArea.areas && (
           <UnorderedList textAlign={'left'}>
-            {activeArea.services.map((bullet, index) => (
+            {activeArea.areas.map((bullet, index) => (
               <ListItem key={index}>{bullet}</ListItem>
             ))}
           </UnorderedList>
@@ -121,7 +127,7 @@ const AreaDescription = ({ activeArea }: AreaDescriptionProps) => {
         ml={8}
         color={'black'}
         bg={'lightBlue.200'}
-        href={'/areas/' + activeArea.areaId}
+        href={'/areas/' + activeArea.specialtyId}
         _hover={{
           bg: 'lightBlue.300',
           fontWeight: 600,
@@ -190,16 +196,18 @@ const ProcedureSection = ({ bgColor }: ComponentProps) => {
   );
 };
 
-const AreasSection = ({ bgColor }: ComponentProps) => {
-  const [activeArea, setActiveArea] = useState(AREAS[0]);
+const SpecialtiesSection = ({ bgColor }: ComponentProps) => {
+  const [activeSpecialty, setActiveSpecialty] = useState(SPECIALTIES[0]);
 
   const handleAreaClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const activeArea: HTMLButtonElement = e.currentTarget;
-    const index = AREAS.findIndex((Area) => Area.label === activeArea.name);
+    const activeSpecialty: HTMLButtonElement = e.currentTarget;
+    const index = SPECIALTIES.findIndex(
+      (Specialty) => Specialty.label === activeSpecialty.name,
+    );
 
-    setActiveArea(AREAS[index]);
+    setActiveSpecialty(SPECIALTIES[index]);
   };
 
   return (
@@ -211,7 +219,7 @@ const AreasSection = ({ bgColor }: ComponentProps) => {
       bg={bgColor}
     >
       <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        Áreas
+        Especialidades
       </Heading>
       <Stack
         direction={{ base: 'column', lg: 'row' }}
@@ -226,16 +234,16 @@ const AreasSection = ({ bgColor }: ComponentProps) => {
         minWidth={'680px'}
       >
         <VStack direction={'column'} gap={0} minWidth={'300px'}>
-          {AREAS.map((Area, index) => (
-            <AreaButton
+          {SPECIALTIES.map((Area, index) => (
+            <SpecialtyButton
               key={index}
-              Area={Area}
+              specialty={Area}
               onClick={handleAreaClick}
-              activeArea={activeArea}
+              activeSpecialty={activeSpecialty}
             />
           ))}
         </VStack>
-        <AreaDescription activeArea={activeArea} />
+        <AreaDescription activeSpecialty={activeSpecialty} />
       </Stack>
     </Stack>
   );
@@ -247,7 +255,7 @@ export default function Home() {
   return (
     <>
       <ProcedureSection />
-      <AreasSection bgColor='pastelBlue' />
+      <SpecialtiesSection bgColor='pastelBlue' />
       {/* <TestimonialCarousel /> */}
       <Carousel carouselType={'testimonials'} cardIds={testimonialsIds} />
     </>

@@ -21,24 +21,24 @@ export const NAV_ITEMS: Array<NavItem> = [
 		],
 	},
 	{
-		label: 'Áreas',
-		href: '/areas',
+		label: 'Especialidades',
+		href: '/especialidades',
 		children: [
 			{
 				label: 'Fisioterapia',
-				href: '/areas/fisioterapia',
+				href: '/especialidades/fisioterapia',
 			},
 			{
 				label: 'Terapia da Fala',
-				href: '/areas/terapia-da-fala',
+				href: '/especialidades/terapia-da-fala',
 			},
 			{
 				label: 'Terapia Ocupacional',
-				href: '/areas/terapia-ocupacional',
+				href: '/especialidades/terapia-ocupacional',
 			},
 			{
 				label: 'Pilates',
-				href: '/areas/pilates',
+				href: '/especialidades/pilates',
 			},
 		],
 	},

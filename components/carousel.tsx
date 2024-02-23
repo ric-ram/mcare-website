@@ -12,11 +12,11 @@ import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material';
 // And react-slick as our Carousel Lib
 import { CarouselProps, SlideProps } from '@/app/types/componentTypes';
 import Slider from 'react-slick';
-import ServiceCard from './serviceCard';
+import AreaCard from './serviceCard';
 import TestimonialCard from './testimonialCard';
 
 // Settings for the Services slider
-const settingsService = {
+const settingsArea = {
   dots: true,
   arrows: false,
   infinite: true,
@@ -84,8 +84,8 @@ const settingsTestimonials = {
 };
 
 const getSettings = (slideType: string) => {
-  if (slideType === 'services') {
-    return settingsService;
+  if (slideType === 'areas') {
+    return settingsArea;
   } else {
     return settingsTestimonials;
   }
@@ -114,7 +114,7 @@ export default function Carousel({
         alignContent='center'
         justifyContent='center'
       >
-        {slideType === 'services' && <ServiceCard id={id} />}
+        {slideType === 'areas' && <AreaCard id={id} />}
         {slideType === 'testimonials' && <TestimonialCard id={id} />}
       </HStack>
     );
@@ -136,16 +136,14 @@ export default function Carousel({
       bg={bgColor}
     >
       <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        {carouselType === 'services' ? 'Serviços' : 'Testemunhos'}
+        {carouselType === 'areas' ? 'Áreas' : 'Testemunhos'}
       </Heading>
       <Box
         position={'relative'}
         height={'full'}
         width={'full'}
         //overflow={"hidden"}
-        px={
-          carouselType === 'services' ? { base: 12 } : { base: 4, xl: '97px' }
-        }
+        px={carouselType === 'areas' ? { base: 12 } : { base: 4, xl: '97px' }}
         sx={{
           '.slick-dots': {
             transform: { base: 'translateY(12px)', xl: 'translateY(36px)' },

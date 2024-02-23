@@ -1,6 +1,6 @@
 'use client';
 
-import { AREAS } from '@/data/areas';
+import { SPECIALTIES } from '@/data/specialties';
 import {
   Box,
   Container,
@@ -90,7 +90,7 @@ export default function Footer() {
 
           <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
             <ListHeader>Áreas</ListHeader>
-            {AREAS.map((service, index) => (
+            {SPECIALTIES.map((service, index) => (
               <FooterLink key={index}>{service.label}</FooterLink>
             ))}
           </Stack>
