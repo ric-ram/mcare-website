@@ -25,9 +25,15 @@ import {
 
 export const getTestimonialsIds = () => {
   let ids = [];
-  TESTIMONIALS.forEach((testimonial: Testimonial) =>
-    ids.push(testimonial.testimonialId),
-  );
+  TESTIMONIALS.forEach((testimonial: Testimonial) => {
+    if (
+      testimonial.accepted &&
+      testimonial.visible &&
+      !testimonial.highlighted
+    ) {
+      ids.push(testimonial.testimonialId);
+    }
+  });
   return ids;
 };
 
@@ -256,7 +262,6 @@ export default function Home() {
     <>
       <ProcedureSection />
       <SpecialtiesSection bgColor='pastelBlue' />
-      {/* <TestimonialCarousel /> */}
       <Carousel carouselType={'testimonials'} cardIds={testimonialsIds} />
     </>
   );

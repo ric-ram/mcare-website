@@ -3,43 +3,44 @@
 import Carousel from '@/components/carousel';
 import ContainerWithImage from '@/components/containerImage';
 import { TestimonialForm } from '@/components/forms';
+import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
 import { Heading, Stack, Text } from '@chakra-ui/react';
 import { getTestimonialsIds } from '../page';
 
+const getHighlightedTestimonialsIds = () => {
+  let testimonials: Testimonial[] = [];
+  TESTIMONIALS.forEach((testimonial: Testimonial) => {
+    if (
+      testimonial.accepted &&
+      testimonial.visible &&
+      testimonial.highlighted
+    ) {
+      testimonials.push(testimonial);
+    }
+  });
+  return testimonials;
+};
+
 export default function Testimonials() {
-  const testimonialContainer = {
-    title: 'Testemunho',
-    loreumText: [
-      'Norem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-    ],
-    imagePlaceholder:
-      'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    imageAlt: 'feature image',
-  };
+  const testimonialsHighlighted = getHighlightedTestimonialsIds();
 
   const testimonialsIds = getTestimonialsIds();
 
   return (
     <>
-      <ContainerWithImage
-        title={testimonialContainer.title + ' A'}
-        texts={testimonialContainer.loreumText}
-        imageSrc={testimonialContainer.imagePlaceholder}
-        imageAlt={testimonialContainer.imageAlt}
-        imageRight={true}
-        as={'h1'}
-        variant='header1'
-      />
-      <ContainerWithImage
-        title={testimonialContainer.title + ' B'}
-        texts={testimonialContainer.loreumText}
-        imageSrc={testimonialContainer.imagePlaceholder}
-        imageAlt={testimonialContainer.imageAlt}
-        bgColor='pastelBlue'
-        as={'h1'}
-        variant='header1'
-      />
-      {/* <TestimonialCarousel /> */}
+      {testimonialsHighlighted &&
+        testimonialsHighlighted.map((testimonial, index) => (
+          <ContainerWithImage
+            title={testimonial.author}
+            texts={[testimonial.review]}
+            imageSrc={testimonial.image}
+            imageAlt={testimonial.imageAlt}
+            imageRight={index % 2 === 0 ? true : false}
+            as={'h1'}
+            variant='header1'
+            bgColor={index % 2 !== 0 && 'pastelBlue'}
+          />
+        ))}
       {testimonialsIds && (
         <Carousel carouselType='testimonials' cardIds={testimonialsIds} />
       )}

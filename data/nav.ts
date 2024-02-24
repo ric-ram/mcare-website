@@ -36,10 +36,6 @@ export const NAV_ITEMS: Array<NavItem> = [
 				label: 'Terapia Ocupacional',
 				href: '/especialidades/terapia-ocupacional',
 			},
-			{
-				label: 'Pilates',
-				href: '/especialidades/pilates',
-			},
 		],
 	},
 	{
