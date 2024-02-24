@@ -584,7 +584,9 @@ export const TestimonialForm = () => {
       concorda: values.agree,
       aprovado: false,
       visivel: false,
+      destaque: false,
       urlImagem: imageSrc,
+      altImagem: values.name.toLowerCase + ' image',
     };
 
     const dbRes = await addData('testemunhos', dbData).then(() => {

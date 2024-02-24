@@ -44,7 +44,6 @@ const getTestimonial = (id: string) => {
 
 export default function TestimonialCard({ id }: CardProps) {
   const testimonial = getTestimonial(id);
-  console.log(testimonial);
 
   return (
     <Box

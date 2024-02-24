@@ -26,13 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Navbar />
-
-          <Container
-            pt={'85px'}
-            maxWidth={'full'}
-            px={0}
-            // maxHeight={'full'}
-          >
+          <Container pt={'85px'} maxWidth={'full'} px={0}>
             {children}
           </Container>
           <Footer />
