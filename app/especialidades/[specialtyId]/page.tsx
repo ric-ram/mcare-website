@@ -1,7 +1,6 @@
 'use client';
 
 import { SpecialtyProps } from '@/app/types/componentTypes';
-import Carousel from '@/components/carousel';
 import { AppointmentsForm } from '@/components/forms';
 import { SPECIALTIES, Specialty } from '@/data/specialties';
 import { Heading, Stack, Text } from '@chakra-ui/react';
@@ -31,13 +30,13 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
           {specialty.description}
         </Text>
       </Stack>
-      {specialty.areas && (
+      {/* {specialty.areas && (
         <Carousel
           carouselType={'areas'}
           cardIds={specialty.areas}
           bgColor={'pastelBlue'}
         />
-      )}
+      )} */}
       <Stack
         pt={12}
         pb={24}
