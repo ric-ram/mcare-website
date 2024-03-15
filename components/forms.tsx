@@ -49,21 +49,6 @@ const NAME_REGEX =
 
 const EMAIL_REGEX = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-const actuationZones: OptionProp[] = [
-  {
-    label: 'Lisboa',
-    value: 'Lisboa',
-  },
-  {
-    label: 'Setúbal',
-    value: 'Setúbal',
-  },
-  {
-    label: ' Santarém',
-    value: 'Santarém',
-  },
-];
-
 const specializationAreas: OptionProp[] = [
   {
     label: 'Fisioterapeuta',
@@ -919,7 +904,7 @@ export const RecruitForm = () => {
         >
           <FormControl isInvalid={Boolean(errors.name)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Nome
+              Nome *
             </FormLabel>
 
             <InputGroup>
@@ -959,7 +944,7 @@ export const RecruitForm = () => {
 
           <FormControl isInvalid={Boolean(errors.email)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Email
+              Email *
             </FormLabel>
 
             <InputGroup>
@@ -995,7 +980,7 @@ export const RecruitForm = () => {
 
           <FormControl isInvalid={Boolean(errors.phone)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Contacto telefónico
+              Contacto telefónico *
             </FormLabel>
 
             <InputGroup>
@@ -1041,32 +1026,28 @@ export const RecruitForm = () => {
         >
           <FormControl isInvalid={Boolean(errors.actuationZone)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Zona de actuação
+              Zona de actuação *
             </FormLabel>
 
-            <HStack spacing={1}>
-              <Flex height={'44px'} alignItems={'center'}>
-                <Icon as={LocationOnRounded} color={'darkBlue'} top={'50%'} />
-              </Flex>
-
-              <Select
-                id='actuationZone'
-                name='actuationZone'
-                placeholder='Zona de actuação'
-                w={'full'}
-                h={'44px'}
-                bg={'white'}
-                focusBorderColor='darkBlue'
-                {...register('actuationZone', {
-                  required: 'Este campo é obrigatório',
-                })}
-              >
-                <Options options={actuationZones} />
-              </Select>
-            </HStack>
-
             <InputGroup>
-              <InputLeftElement h='full'></InputLeftElement>
+              <InputGroup>
+                <InputLeftElement h='full'>
+                  <Icon as={LocationOnRounded} color={'darkBlue'} />
+                </InputLeftElement>
+                <Input
+                  id='actuationZone'
+                  type='text'
+                  name='actuationZone'
+                  placeholder='Zona de actuação'
+                  bg={'white'}
+                  width={'full'}
+                  height={'44px'}
+                  focusBorderColor='darkBlue'
+                  {...register('actuationZone', {
+                    required: 'Este campo é obrigatório',
+                  })}
+                />
+              </InputGroup>
             </InputGroup>
             {!errors.actuationZone ? (
               <FormHelperText>Área geográfica onde pratica</FormHelperText>
@@ -1079,7 +1060,7 @@ export const RecruitForm = () => {
 
           <FormControl isInvalid={Boolean(errors.specializationArea)}>
             <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Área de Especialização
+              Área de Especialização *
             </FormLabel>
 
             <HStack spacing={1}>
@@ -1126,7 +1107,7 @@ export const RecruitForm = () => {
               return (
                 <FormControl isInvalid={Boolean(errors.file)}>
                   <FormLabel color={'darkBlue'} fontSize={'18px'}>
-                    Curriculo
+                    Curriculo *
                   </FormLabel>
 
                   <InputGroup>
@@ -1172,7 +1153,7 @@ export const RecruitForm = () => {
 
         <FormControl isInvalid={Boolean(errors.message)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Mensagem
+            Mensagem *
           </FormLabel>
 
           <InputGroup>
@@ -1191,8 +1172,8 @@ export const RecruitForm = () => {
           </InputGroup>
           {!errors.message ? (
             <FormHelperText width={'full'}>
-              Por favor deixe-nos uma mensagem para que possa ser contactada
-              mais tarde
+              Por favor deixe-nos uma mensagem a explicar porque queres
+              trabalhar conosco
             </FormHelperText>
           ) : (
             <FormErrorMessage>
