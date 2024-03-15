@@ -16,6 +16,7 @@ export const SPECIALTIES: Specialty[] = [
 		areas: [
 			"cardiorrespiratoria",
 			"massagem",
+			"blabla"
 		]
 	},
 	{

@@ -28,5 +28,16 @@ export const AREAS: Area[] = [
 			'Aliquam tincidunt mauris eu risus.',
 			'Vestibulum auctor dapibus neque.',
 		],
+	},
+	{
+		areaId: 'blabla',
+		label: 'BlaBla',
+		image: '',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
+		bullets: [
+			'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			'Aliquam tincidunt mauris eu risus.',
+			'Vestibulum auctor dapibus neque.',
+		],
 	}
 ]

@@ -57,6 +57,8 @@ const SocialButton = ({
 };
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <Box
       bg={'darkBlue'}
@@ -137,7 +139,7 @@ export default function Footer() {
           direction={'column'}
           align={'center'}
         >
-          <Text>© 2023 MCare</Text>
+          <Text>© 2022 - {year} MCare</Text>
         </Container>
       </Box>
     </Box>

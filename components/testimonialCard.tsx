@@ -54,6 +54,7 @@ export default function TestimonialCard({ id }: CardProps) {
       shadow='md'
       position='relative'
       mx={8}
+      key={id}
     >
       <Stack px={{ base: 3, xl: 6 }} py={8} spacing={{ base: 6, xl: 16 }}>
         <Flex

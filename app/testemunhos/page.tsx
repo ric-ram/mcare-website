@@ -39,6 +39,7 @@ export default function Testimonials() {
             as={'h1'}
             variant='header1'
             bgColor={index % 2 !== 0 && 'pastelBlue'}
+            key={index}
           />
         ))}
       {testimonialsIds && (

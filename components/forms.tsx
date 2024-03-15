@@ -575,7 +575,9 @@ export const TestimonialForm = () => {
 
   async function onSubmitTestimonial(values: TestimonialInputs) {
     const id = uuid();
-    const imageSrc = `/docs/imagens/testemunhos/${id}/${values.image.name}`;
+    const imageSrc = values?.image?.name
+      ? `/docs/imagens/testemunhos/${id}/${values?.image?.name}`
+      : '';
     const dbData = {
       nome: values.name,
       email: values.email,
@@ -589,42 +591,39 @@ export const TestimonialForm = () => {
       altImagem: values.name.toLowerCase + ' image',
     };
 
-    const dbRes = await addData('testemunhos', dbData).then(() => {
+    const dbRes = await addData('testemunhos', dbData).then(async () => {
       const storageRef = ref(storage, imageSrc);
+      let imageUrl = '';
 
-      return uploadBytes(storageRef, values.image)
-        .then(async () => {
-          const formData = new FormData();
-          let clientImageURL = '';
+      if (imageSrc != '') {
+        imageUrl = await uploadBytes(storageRef, values.image)
+          .then(() => {
+            return getDownloadURL(storageRef)
+              .then((url) => url)
+              .catch(() => '');
+          })
+          .catch(() => '');
+      }
 
-          if (imageSrc) {
-            await getDownloadURL(storageRef)
-              .then((url) => {
-                clientImageURL = url;
-              })
-              .catch(console.error);
-          }
+      const formData = new FormData();
+      const emailMessage = {
+        id,
+        name: values.name,
+        email: values.email,
+        rating: values.rating,
+        testimonial: values.testimonial,
+        imageName: values.image?.name,
+        imageSrc: imageUrl,
+      };
 
-          const emailMessage = {
-            id,
-            name: values.name,
-            email: values.email,
-            rating: values.rating,
-            testimonial: values.testimonial,
-            imageName: values.image.name,
-            imageSrc: clientImageURL,
-          };
+      Object.keys(emailMessage).forEach((key) =>
+        formData.append(key, emailMessage[key]),
+      );
 
-          Object.keys(emailMessage).forEach((key) =>
-            formData.append(key, emailMessage[key]),
-          );
-
-          return fetch('/api/email/testimonials', {
-            method: 'POST',
-            body: formData,
-          }).then((res) => res.json());
-        })
-        .catch(console.error);
+      return fetch('/api/email/testimonials', {
+        method: 'POST',
+        body: formData,
+      }).then((res) => res.json());
     });
     alert(JSON.stringify(`${dbRes.message}`));
   }
