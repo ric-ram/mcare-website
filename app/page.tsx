@@ -2,9 +2,10 @@
 
 import Carousel from '@/components/carousel';
 import InteractiveTable from '@/components/interactiveTable';
+import { SPECIALTIES } from '@/data/specialties';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
 import { Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
-import { ComponentProps, StepCardProps } from './types/componentTypes';
+import { GeneralComponentProps, StepCardProps } from './types/componentTypes';
 
 export const getTestimonialsIds = () => {
   let ids = [];
@@ -47,7 +48,7 @@ const StepCard = ({ image, step, text }: StepCardProps) => {
   );
 };
 
-const ProcedureSection = ({ bgColor }: ComponentProps) => {
+const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
   return (
     <Stack
       py={12}
@@ -110,7 +111,11 @@ export default function Home() {
   return (
     <>
       <ProcedureSection />
-      <InteractiveTable bgColor='pastelBlue' />
+      <InteractiveTable
+        bgColor='pastelBlue'
+        title='Especialidades'
+        items={SPECIALTIES}
+      />
       <Carousel carouselType={'testimonials'} cardIds={testimonialsIds} />
     </>
   );

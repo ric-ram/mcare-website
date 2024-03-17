@@ -1,3 +1,4 @@
+import { Area } from "@/data/areas";
 import { Specialty } from "@/data/specialties";
 
 export type StepCardProps = {
@@ -6,19 +7,36 @@ export type StepCardProps = {
 	text: string;
 };
 
-export type ComponentProps = {
+export type GeneralComponentProps = {
 	bgColor?: string;
+}
+
+export type InteractiveTableProps = {
+	title: string;
+	items: Specialty[] | Area[];
+	type?: string;
+	bgColor?: string;
+	specialtyId?: string;
 };
 
-export type SpecialtyButtonProps = {
-	specialty: Specialty;
-	activeSpecialty: Specialty;
+export type HighlightedItemButtonProps = {
+	item: Specialty | Area;
+	activeItem: Specialty | Area;
 	onClick?: React.MouseEventHandler;
 };
 
 export type SpecialtyDescriptionProps = {
 	activeSpecialty: Specialty;
 };
+
+export type AreaDescriptionProps = {
+	activeArea: Area;
+};
+
+export type HowToCardProps = {
+	label: string;
+	howToSteps: string[];
+}
 
 export type SpecialtyCardProps = {
 	name: string;

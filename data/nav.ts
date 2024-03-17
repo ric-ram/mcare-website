@@ -29,12 +29,16 @@ export const NAV_ITEMS: Array<NavItem> = [
 				href: '/especialidades/fisioterapia',
 			},
 			{
+				label: 'Terapia Ocupacional',
+				href: '/especialidades/terapia-ocupacional',
+			},
+			{
 				label: 'Terapia da Fala',
 				href: '/especialidades/terapia-da-fala',
 			},
 			{
-				label: 'Terapia Ocupacional',
-				href: '/especialidades/terapia-ocupacional',
+				label: 'Pilates Clínico',
+				href: '/especialidades/pilates-clinico',
 			},
 		],
 	},

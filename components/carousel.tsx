@@ -12,7 +12,7 @@ import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material';
 // And react-slick as our Carousel Lib
 import { CarouselProps, SlideProps } from '@/app/types/componentTypes';
 import Slider from 'react-slick';
-import AreaCard from './serviceCard';
+import { AreaCard } from './serviceCard';
 import TestimonialCard from './testimonialCard';
 
 // Settings for the Services slider

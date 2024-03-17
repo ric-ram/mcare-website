@@ -1,16 +1,33 @@
-import { ComponentProps, SpecialtyButtonProps, SpecialtyDescriptionProps } from '@/app/types/componentTypes';
-import { SPECIALTIES } from '@/data/specialties';
-import { Box, Button, Flex, Heading, Image, ListItem, Stack, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import {
+  AreaDescriptionProps,
+  HighlightedItemButtonProps,
+  InteractiveTableProps,
+  SpecialtyDescriptionProps,
+} from '@/app/types/componentTypes';
+import { Area } from '@/data/areas';
+import { Specialty } from '@/data/specialties';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  ListItem,
+  Stack,
+  Text,
+  UnorderedList,
+  VStack,
+} from '@chakra-ui/react';
 import { useState } from 'react';
 
 const HighlightButton = ({
-  specialty: Area,
-  activeSpecialty: activeArea,
+  item,
+  activeItem,
   onClick,
-}: SpecialtyButtonProps) => {
+}: HighlightedItemButtonProps) => {
   return (
     <Box
-      name={Area.label}
+      name={item.label}
       pl={3}
       pr={5}
       py={5}
@@ -22,9 +39,9 @@ const HighlightButton = ({
       lineHeight={'32px'}
       textAlign={{ base: 'center', lg: 'left' }}
       fontWeight={'500'}
-      color={activeArea.label === Area.label ? 'pastelBlue' : 'darkBlue'}
+      color={activeItem.label === item.label ? 'pastelBlue' : 'darkBlue'}
       noOfLines={1}
-      bg={activeArea.label === Area.label && 'darkBlue'}
+      bg={activeItem.label === item.label && 'darkBlue'}
       _hover={{
         lg: {
           bg: 'darkBlues.600',
@@ -33,13 +50,13 @@ const HighlightButton = ({
       }}
       onClick={onClick}
     >
-      {Area.label}
+      {item.label}
     </Box>
   );
 };
 
-const SelectedDescription = ({
-  activeSpecialty: activeArea,
+const SelectedSpecialtyDescription = ({
+  activeSpecialty,
 }: SpecialtyDescriptionProps) => {
   return (
     <VStack
@@ -49,13 +66,13 @@ const SelectedDescription = ({
       display={{ base: 'none', lg: 'flex' }}
     >
       <Heading as={'h3'} variant={'header3'}>
-        {activeArea.label}
+        {activeSpecialty.label}
       </Heading>
       <Flex direction='column' alignItems='flex-start' gap={4}>
-        <Text textAlign={'left'}>{activeArea.description}</Text>
-        {activeArea.areas && (
+        <Text textAlign={'left'}>{activeSpecialty.summary}</Text>
+        {activeSpecialty.areas && (
           <UnorderedList textAlign={'left'}>
-            {activeArea.areas.map((bullet, index) => (
+            {activeSpecialty.areas.map((bullet, index) => (
               <ListItem key={index}>{bullet}</ListItem>
             ))}
           </UnorderedList>
@@ -72,7 +89,7 @@ const SelectedDescription = ({
         ml={8}
         color={'black'}
         bg={'lightBlue.200'}
-        href={'/areas/' + activeArea.specialtyId}
+        href={'/especialidades/' + activeSpecialty.specialtyId}
         _hover={{
           bg: 'lightBlue.300',
           fontWeight: 600,
@@ -84,18 +101,72 @@ const SelectedDescription = ({
   );
 };
 
-export default function InteractiveTable({ bgColor }: ComponentProps) {
-  const [activeSpecialty, setActiveSpecialty] = useState(SPECIALTIES[0]);
+const SubAreaSection = ({ subArea, index }) => {
+  return (
+    <Stack key={index}>
+      <Heading as={'h4'} variant={'header4'}>
+        {subArea.title}
+      </Heading>
+      <UnorderedList>
+        {subArea.description.map((description, index) => (
+          <ListItem key={index}>{description} </ListItem>
+        ))}
+      </UnorderedList>
+    </Stack>
+  );
+};
 
-  const handleAreaClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+const SelectedAreaDescription = ({ activeArea }: AreaDescriptionProps) => {
+  return (
+    <VStack
+      spacing={8}
+      alignItems={'center'}
+      py={8}
+      display={{ base: 'none', lg: 'flex' }}
+    >
+      <Heading as={'h3'} variant={'header3'}>
+        {activeArea.label}
+      </Heading>
+      <Flex direction='column' alignItems='flex-start' gap={4}>
+        <Text textAlign={'left'}>{activeArea.descriptionParagraphs}</Text>
+        {activeArea.bullets && (
+          <UnorderedList textAlign={'left'}>
+            {activeArea.bullets.map((bullet, index) => (
+              <ListItem key={index}>{bullet}</ListItem>
+            ))}
+          </UnorderedList>
+        )}
+        {activeArea.subAreas &&
+          activeArea.subAreas.map((subArea, index) => (
+            <SubAreaSection subArea={subArea} index={index} />
+          ))}
+        {activeArea.areaNotes &&
+          activeArea.areaNotes.map((note) => (
+            <Text textAlign={'left'}>{note}</Text>
+          ))}
+      </Flex>
+    </VStack>
+  );
+};
+
+export default function InteractiveTable({
+  bgColor,
+  items,
+  title,
+  type = 'specialty',
+  specialtyId: specialtyLabel,
+}: InteractiveTableProps) {
+  const [activeItem, setActiveItem] = useState(items[0]);
+
+  const handleItemClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const activeSpecialty: HTMLButtonElement = e.currentTarget;
-    const index = SPECIALTIES.findIndex(
-      (Specialty) => Specialty.label === activeSpecialty.name,
+    const activeItemButton: HTMLButtonElement = e.currentTarget;
+    const index = items.findIndex(
+      (item) => item.label === activeItemButton.name,
     );
 
-    setActiveSpecialty(SPECIALTIES[index]);
+    setActiveItem(items[index]);
   };
 
   return (
@@ -107,27 +178,23 @@ export default function InteractiveTable({ bgColor }: ComponentProps) {
       bg={bgColor}
     >
       <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        Especialidades
+        {title}
       </Heading>
       <Stack
         direction={{ base: 'column', lg: 'row' }}
         alignItems={'center'}
-        // backgroundImage={{ base: '', lg: '/images/divider.svg' }}
-        // backgroundRepeat={'no-repeat'}
-        // backgroundSize={'contain'}
-        // backgroundPosition={{ md: '45% 50%', xl: '35% 50%' }}
         py={8}
         spacing={'100px'}
         maxWidth={'100%'}
         minWidth={'680px'}
       >
         <VStack direction={'column'} gap={0} minWidth={'300px'}>
-          {SPECIALTIES.map((Area, index) => (
+          {items.map((item, index) => (
             <HighlightButton
               key={index}
-              specialty={Area}
-              onClick={handleAreaClick}
-              activeSpecialty={activeSpecialty}
+              item={item}
+              onClick={handleItemClick}
+              activeItem={activeItem}
             />
           ))}
         </VStack>
@@ -135,7 +202,13 @@ export default function InteractiveTable({ bgColor }: ComponentProps) {
           src='/images/divider.svg'
           display={{ base: 'none', lg: 'block' }}
         />
-        <SelectedDescription activeSpecialty={activeSpecialty} />
+        {type === 'specialty' ? (
+          <SelectedSpecialtyDescription
+            activeSpecialty={activeItem as Specialty}
+          />
+        ) : (
+          <SelectedAreaDescription activeArea={activeItem as Area} />
+        )}
       </Stack>
     </Stack>
   );
