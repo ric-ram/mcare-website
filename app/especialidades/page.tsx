@@ -15,7 +15,7 @@ export default function SpecialtiesPage() {
         <SimpleGrid
           minHeight={{ base: '650px', xl: '100%' }}
           width={'full'}
-          columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
+          columns={{ base: 1, sm: 2, xl: 4 }}
           justifyItems={'center'}
           alignContent={'space-between'}
           spacing={16}

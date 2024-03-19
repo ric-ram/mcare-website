@@ -93,7 +93,7 @@ export const SPECIALTIES: Specialty[] = [
 		]
 	},
 	{
-		specialtyId: "pilates-clinicio",
+		specialtyId: "pilates-clinico",
 		label: 'Pilates Clínico',
 		image: '',
 		summary:

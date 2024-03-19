@@ -34,7 +34,7 @@ const HighlightButton = ({
       as='button'
       borderTop={'1px solid'}
       borderColor={'darkBlue'}
-      width={'full'}
+      width={'100%'}
       fontSize={'24px'}
       lineHeight={'32px'}
       textAlign={{ base: 'center', lg: 'left' }}
@@ -154,7 +154,6 @@ export default function InteractiveTable({
   items,
   title,
   type = 'specialty',
-  specialtyId: specialtyLabel,
 }: InteractiveTableProps) {
   const [activeItem, setActiveItem] = useState(items[0]);
 

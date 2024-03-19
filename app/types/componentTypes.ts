@@ -16,7 +16,6 @@ export type InteractiveTableProps = {
 	items: Specialty[] | Area[];
 	type?: string;
 	bgColor?: string;
-	specialtyId?: string;
 };
 
 export type HighlightedItemButtonProps = {

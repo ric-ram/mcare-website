@@ -52,7 +52,6 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
           title='Áreas de Actuação'
           items={specialtyAreas}
           type='areas'
-          specialtyId={specialty.specialtyId}
         />
       )}
       {/* {specialty.areas && (
