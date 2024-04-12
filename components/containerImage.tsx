@@ -1,39 +1,41 @@
 'use client';
 
+import { InfoDescription } from '@/data/info';
+import { Testimonial } from '@/data/testimonials';
 import {
   As,
   Container,
   Flex,
   Heading,
   Image,
+  List,
+  ListIcon,
+  ListItem,
   SimpleGrid,
   Stack,
   Text,
 } from '@chakra-ui/react';
+import { Favorite } from '@mui/icons-material';
 
-interface ContainerProps {
-  title: string;
-  texts: string[];
-  imageSrc: string;
-  imageAlt: string;
+interface ImageContainerProps {
   as: As;
   variant: string;
+  info?: InfoDescription;
+  testimonial?: Testimonial;
   imageRight?: boolean;
   bgColor?: string;
   last?: boolean;
 }
 
 export default function ContainerWithImage({
-  title,
-  texts,
-  imageSrc,
-  imageAlt,
+  info,
+  testimonial,
   as,
   variant,
   imageRight = false,
   bgColor,
   last = false,
-}: ContainerProps) {
+}: ImageContainerProps) {
   return (
     <Container
       maxWidth='full'
@@ -55,8 +57,8 @@ export default function ContainerWithImage({
         >
           <Image
             rounded={'md'}
-            alt={imageAlt}
-            src={imageSrc}
+            alt={info?.image.alt || testimonial?.imageAlt}
+            src={info?.image.src || testimonial?.image}
             objectFit={'cover'}
           />
         </Flex>
@@ -66,18 +68,56 @@ export default function ContainerWithImage({
           alignItems={{ base: 'center', md: 'normal' }}
         >
           <Heading as={as} variant={variant}>
-            {title}
+            {info?.title || testimonial?.author}
           </Heading>
-          {texts.map((text, index) => (
+          {info?.paragraphs.map((paragraph, index) => (
             <Text
               key={index}
               color={'black'}
               fontSize={'lg'}
               textAlign={{ base: 'center', md: 'left' }}
             >
-              {text}
+              {paragraph}
             </Text>
           ))}
+          {testimonial?.review && (
+            <Text
+              color={'black'}
+              fontSize={'lg'}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              {testimonial.review}
+            </Text>
+          )}
+          {info?.pointDescription && (
+            <Text
+              color={'black'}
+              fontSize={'lg'}
+              textAlign={{ base: 'center', md: 'left' }}
+              variant={
+                info.pointDescription.leadingVariant &&
+                info.pointDescription.leadingVariant
+              }
+            >
+              {info?.pointDescription.leading}
+            </Text>
+          )}
+          {info?.pointDescription && (
+            <List
+              mt={-6}
+              ml={4}
+              textAlign={'left'}
+              spacing={2}
+              fontSize={'18px'}
+            >
+              {info?.pointDescription.bullets.map((bullet, index) => (
+                <ListItem key={index}>
+                  <ListIcon as={Favorite} color={'darkBlue'} />
+                  {bullet}
+                </ListItem>
+              ))}
+            </List>
+          )}
         </Stack>
       </SimpleGrid>
     </Container>
