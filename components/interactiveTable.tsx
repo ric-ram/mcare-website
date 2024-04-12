@@ -1,3 +1,5 @@
+'use client';
+
 import {
   AreaDescriptionProps,
   HighlightedItemButtonProps,
@@ -18,6 +20,7 @@ import {
   UnorderedList,
   VStack,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const HighlightButton = ({
@@ -27,6 +30,7 @@ const HighlightButton = ({
 }: HighlightedItemButtonProps) => {
   return (
     <Box
+      key={item.label}
       name={item.label}
       pl={3}
       pr={5}
@@ -156,8 +160,9 @@ export default function InteractiveTable({
   type = 'specialty',
 }: InteractiveTableProps) {
   const [activeItem, setActiveItem] = useState(items[0]);
+  const router = useRouter();
 
-  const handleItemClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleItemClickDesktop = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const activeItemButton: HTMLButtonElement = e.currentTarget;
@@ -166,6 +171,18 @@ export default function InteractiveTable({
     );
 
     setActiveItem(items[index]);
+  };
+
+  const handleItemClickMobile = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const activeItemButton: HTMLButtonElement = e.currentTarget;
+    const index = items.findIndex(
+      (item) => item.label === activeItemButton.name,
+    );
+
+    setActiveItem(items[index]);
+    router.push(`/especialidades/${items[index].specialtyId}`);
   };
 
   return (
@@ -185,14 +202,38 @@ export default function InteractiveTable({
         py={8}
         spacing={'100px'}
         maxWidth={'100%'}
-        minWidth={'680px'}
+        minWidth={{ base: '100%', lg: '680px' }}
       >
-        <VStack direction={'column'} gap={0} minWidth={'300px'}>
+        <VStack
+          direction={'column'}
+          gap={0}
+          minWidth={'300px'}
+          display={{ base: 'none', lg: 'block' }}
+        >
           {items.map((item, index) => (
             <HighlightButton
               key={index}
               item={item}
-              onClick={handleItemClick}
+              onClick={handleItemClickDesktop}
+              activeItem={activeItem}
+            />
+          ))}
+        </VStack>
+        <VStack
+          direction={'column'}
+          gap={0}
+          minWidth={'300px'}
+          display={{ base: 'block', lg: 'none' }}
+        >
+          {items.map((item, index) => (
+            <HighlightButton
+              key={index}
+              item={item}
+              onClick={
+                type === 'specialty'
+                  ? handleItemClickMobile
+                  : handleItemClickDesktop
+              }
               activeItem={activeItem}
             />
           ))}

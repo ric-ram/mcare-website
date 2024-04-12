@@ -228,7 +228,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Flex
         gap={1}
         as='a'
-        href={href && !href.includes('areas') ? href : '#'}
+        href={href && !href.includes('especialidades') ? href : '#'}
         justifyContent='center'
         alignItems='center'
         _hover={{
