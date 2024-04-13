@@ -31,10 +31,7 @@ export default function Testimonials() {
       {testimonialsHighlighted &&
         testimonialsHighlighted.map((testimonial, index) => (
           <ContainerWithImage
-            title={testimonial.author}
-            texts={[testimonial.review]}
-            imageSrc={testimonial.image}
-            imageAlt={testimonial.imageAlt}
+            testimonial={testimonial}
             imageRight={index % 2 === 0 ? true : false}
             as={'h1'}
             variant='header1'
