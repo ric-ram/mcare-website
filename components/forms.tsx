@@ -573,7 +573,7 @@ export const TestimonialForm = () => {
       visivel: false,
       destaque: false,
       urlImagem: imageSrc,
-      altImagem: values.name.toLowerCase + ' image',
+      altImagem: values.name.toLowerCase() + ' image',
     };
 
     const dbRes = await addData('testemunhos', dbData).then(async () => {
@@ -582,8 +582,8 @@ export const TestimonialForm = () => {
 
       if (imageSrc != '') {
         imageUrl = await uploadBytes(storageRef, values.image)
-          .then(() => {
-            return getDownloadURL(storageRef)
+          .then(async () => {
+            return await getDownloadURL(storageRef)
               .then((url) => url)
               .catch(() => '');
           })
