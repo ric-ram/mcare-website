@@ -14,14 +14,14 @@ import {
 interface AppointmentEmailProps {
   name: string;
   email: string;
-  phone: string;
+  fullPhone: string;
   message: string;
 }
 
 export const AppointmentEmail = ({
   name,
   email,
-  phone,
+  fullPhone,
   message,
 }: AppointmentEmailProps) => {
   const previewText = `Tentativa de marcação de ${name}!`;
@@ -60,7 +60,7 @@ export const AppointmentEmail = ({
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Telemóvel: </b>
-                  {phone}
+                  {fullPhone}
                 </Text>
               </Row>
             </Section>
