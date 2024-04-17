@@ -22,6 +22,7 @@ import {
   Icon,
   Input,
   InputGroup,
+  InputLeftAddon,
   InputLeftElement,
   Link,
   Select,
@@ -41,7 +42,13 @@ import {
 import { Rating } from '@mui/material';
 
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { Controller, useForm } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+  useForm,
+} from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
 const NAME_REGEX =
@@ -109,30 +116,225 @@ const Options = (props: { options: OptionProp[] }) => {
   );
 };
 
-export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting, isDirty, isValid },
-  } = useForm<AppointmentsInputs>({
-    mode: 'onChange',
-  });
+const PopoverForm = (props: {
+  errors: FieldErrors<AppointmentsInputs>;
+  register: UseFormRegister<AppointmentsInputs>;
+  isDirty: boolean;
+  isValid: boolean;
+  isSubmitting: boolean;
+}) => {
+  return (
+    <VStack spacing={4} zIndex={3}>
+      <FormControl isInvalid={Boolean(props.errors.name)}>
+        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+          Nome
+        </FormLabel>
 
-  async function onSubmitAppointment(values: RecruitInputs) {
-    const formData = new FormData();
-    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+        <InputGroup>
+          <InputLeftElement h='full'>
+            <Icon as={Person} color={'darkBlue'} />
+          </InputLeftElement>
+          <Input
+            id='name'
+            type='text'
+            name='name'
+            placeholder='Nome'
+            bg={'white'}
+            width={'320px'}
+            height={'44px'}
+            focusBorderColor='darkBlue'
+            {...props.register('name', {
+              required: 'Este campo é obrigatório',
+              pattern: {
+                value: NAME_REGEX,
+                message: 'Por favor insira um nome válido',
+              },
+              minLength: {
+                value: 3,
+                message: 'Deve ter pelo menos 3 caracteres',
+              },
+            })}
+          />
+        </InputGroup>
+        {!props.errors.name ? (
+          <FormHelperText>O seu primeiro e último nome</FormHelperText>
+        ) : (
+          <FormErrorMessage>
+            {props.errors.name.message?.toString()}
+          </FormErrorMessage>
+        )}
+      </FormControl>
 
-    const res = await fetch('/api/email/appointments', {
-      method: 'POST',
-      body: formData,
-    }).then((res) => res.json());
-    alert(JSON.stringify(`${res.message}`));
-  }
+      <FormControl isInvalid={Boolean(props.errors.email)}>
+        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+          Email
+        </FormLabel>
 
-  const PopoverForm = () => {
-    return (
-      <VStack spacing={4} zIndex={3}>
-        <FormControl isInvalid={Boolean(errors.name)}>
+        <InputGroup>
+          <InputLeftElement h='full'>
+            <Icon as={Email} color={'darkBlue'} />
+          </InputLeftElement>
+          <Input
+            id='email'
+            type='email'
+            name='email'
+            placeholder='Email'
+            bg={'white'}
+            width={'320px'}
+            height={'44px'}
+            focusBorderColor='darkBlue'
+            {...props.register('email', {
+              required: 'Este campo é obrigatório',
+              pattern: {
+                value: EMAIL_REGEX,
+                message: 'Por favor insira um email válido',
+              },
+            })}
+          />
+        </InputGroup>
+        {!props.errors.email ? (
+          <FormHelperText>O seu email de contacto</FormHelperText>
+        ) : (
+          <FormErrorMessage>
+            {props.errors.email.message?.toString()}
+          </FormErrorMessage>
+        )}
+      </FormControl>
+
+      <FormControl isInvalid={Boolean(props.errors.phone)}>
+        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+          Contacto telefónico
+        </FormLabel>
+
+        <InputGroup>
+          <InputLeftElement h='full'>
+            <Icon as={Phone} color={'darkBlue'} />
+          </InputLeftElement>
+          <Input
+            id='phone'
+            type='number'
+            name='phone'
+            placeholder='Telefone'
+            bg={'white'}
+            width={'320px'}
+            height={'44px'}
+            focusBorderColor='darkBlue'
+            {...props.register('phone', {
+              required: 'Este campo é obrigatório',
+              minLength: { value: 9, message: 'O número deve ter 9 digitos' },
+              maxLength: { value: 9, message: 'O número deve ter 9 digitos' },
+            })}
+          />
+        </InputGroup>
+        {!props.errors.phone ? (
+          <FormHelperText>O seu número de telemóvel</FormHelperText>
+        ) : (
+          <FormErrorMessage>
+            {props.errors.phone.message?.toString()}
+          </FormErrorMessage>
+        )}
+      </FormControl>
+
+      <FormControl isInvalid={Boolean(props.errors.message)}>
+        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+          Mensagem
+        </FormLabel>
+
+        <InputGroup>
+          <Textarea
+            //value={message}
+            id='message'
+            name='message'
+            placeholder='Mensagem...'
+            bg={'white'}
+            width={'320px'}
+            minHeight={'120px'}
+            focusBorderColor='darkBlue'
+            //onChange={handleMessageInputChange}
+            {...props.register('message', {
+              required: 'Este campo é obrigatório',
+            })}
+          />
+        </InputGroup>
+        {!props.errors.message ? (
+          <FormHelperText width={'320px'}>
+            Por favor deixe-nos uma mensagem para que possa ser contactada mais
+            tarde
+          </FormHelperText>
+        ) : (
+          <FormErrorMessage>
+            {props.errors.message.message?.toString()}
+          </FormErrorMessage>
+        )}
+      </FormControl>
+
+      <FormControl isInvalid={Boolean(props.errors.agree)}>
+        <Checkbox
+          id='agree'
+          name='agree'
+          size='md14'
+          iconSize={'10px'}
+          borderColor={'darkBlue'}
+          variant={'rounded'}
+          _hover={{
+            '& .chakra-checkbox__control': {
+              background: 'grey',
+              borderColor: 'darkBlue',
+            },
+          }}
+          _checked={{
+            '& .chakra-checkbox__control': {
+              background: 'darkBlue',
+              borderColor: 'darkBlue',
+            },
+          }}
+          {...props.register('agree', {
+            required: { value: true, message: 'Este campo é obrigatório' },
+          })}
+        >
+          <Text color={'black'}>
+            Li e aceito os termos da{' '}
+            <Link href='#' color={'darkBlue'}>
+              política de privacidade.
+            </Link>
+          </Text>
+        </Checkbox>
+        <FormErrorMessage>
+          {props.errors.agree && props.errors.agree.message?.toString()}
+        </FormErrorMessage>
+      </FormControl>
+
+      <Button
+        mt={6}
+        colorScheme='darkBlues'
+        type='submit'
+        variant='darkSolid'
+        size={'regular'}
+        isLoading={props.isSubmitting}
+        isDisabled={!props.isDirty || !props.isValid}
+      >
+        Enviar Mensagem
+      </Button>
+    </VStack>
+  );
+};
+
+const PageForm = (props: {
+  errors: FieldErrors<AppointmentsInputs>;
+  register: UseFormRegister<AppointmentsInputs>;
+  isDirty: boolean;
+  isValid: boolean;
+  isSubmitting: boolean;
+  control: Control<AppointmentsInputs, any>;
+}) => {
+  return (
+    <VStack spacing={8}>
+      <Flex
+        direction={{ base: 'column', lg: 'row' }}
+        gap={{ base: 4, lg: 8 }}
+        width={'full'}
+      >
+        <FormControl isInvalid={Boolean(props.errors.name)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
             Nome
           </FormLabel>
@@ -147,10 +349,10 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
               name='name'
               placeholder='Nome'
               bg={'white'}
-              width={'320px'}
+              width={'full'}
               height={'44px'}
               focusBorderColor='darkBlue'
-              {...register('name', {
+              {...props.register('name', {
                 required: 'Este campo é obrigatório',
                 pattern: {
                   value: NAME_REGEX,
@@ -163,16 +365,16 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
               })}
             />
           </InputGroup>
-          {!errors.name ? (
+          {!props.errors.name ? (
             <FormHelperText>O seu primeiro e último nome</FormHelperText>
           ) : (
             <FormErrorMessage>
-              {errors.name.message?.toString()}
+              {props.errors.name.message?.toString()}
             </FormErrorMessage>
           )}
         </FormControl>
 
-        <FormControl isInvalid={Boolean(errors.email)}>
+        <FormControl isInvalid={Boolean(props.errors.email)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
             Email
           </FormLabel>
@@ -187,10 +389,10 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
               name='email'
               placeholder='Email'
               bg={'white'}
-              width={'320px'}
+              width={'full'}
               height={'44px'}
               focusBorderColor='darkBlue'
-              {...register('email', {
+              {...props.register('email', {
                 required: 'Este campo é obrigatório',
                 pattern: {
                   value: EMAIL_REGEX,
@@ -199,83 +401,111 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
               })}
             />
           </InputGroup>
-          {!errors.email ? (
+          {!props.errors.email ? (
             <FormHelperText>O seu email de contacto</FormHelperText>
           ) : (
             <FormErrorMessage>
-              {errors.email.message?.toString()}
+              {props.errors.email.message?.toString()}
             </FormErrorMessage>
           )}
         </FormControl>
 
-        <FormControl isInvalid={Boolean(errors.phone)}>
+        <FormControl isInvalid={Boolean(props.errors.phone)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
             Contacto telefónico
           </FormLabel>
 
           <InputGroup>
-            <InputLeftElement h='full'>
-              <Icon as={Phone} color={'darkBlue'} />
-            </InputLeftElement>
+            <InputLeftAddon px={0} height={'inherit'}>
+              <InputLeftElement pointerEvents='none' ml={1} mr={12} h='full'>
+                <Icon as={Phone} color={'darkBlue'} />
+              </InputLeftElement>
+              <Select
+                size='lg'
+                variant='unstyled'
+                name={'countryCode'}
+                placeholder='pais'
+                id='country_code'
+                key={'cc'}
+                ml={12}
+                h={'43px'}
+                {...props.register('countryCode', {
+                  required: 'Selecione uma opção',
+                })}
+              >
+                <option value='+44'>+44</option>
+                <option value='+123'>+123</option>
+                <option value='+351'>+351</option>
+              </Select>
+            </InputLeftAddon>
             <Input
               id='phone'
+              key={'tel'}
               type='number'
               name='phone'
               placeholder='Telefone'
               bg={'white'}
-              width={'320px'}
+              width={'full'}
               height={'44px'}
               focusBorderColor='darkBlue'
-              {...register('phone', {
+              {...props.register('phone', {
                 required: 'Este campo é obrigatório',
-                minLength: { value: 9, message: 'O número deve ter 9 digitos' },
-                maxLength: { value: 9, message: 'O número deve ter 9 digitos' },
+                minLength: {
+                  value: 9,
+                  message: 'Apenas números de 9 e 10 digitos aceites',
+                },
+                maxLength: {
+                  value: 10,
+                  message: 'Apenas números de 9 e 10 digitos aceites',
+                },
               })}
             />
           </InputGroup>
-          {!errors.phone ? (
+          {!props.errors.phone ? (
             <FormHelperText>O seu número de telemóvel</FormHelperText>
           ) : (
             <FormErrorMessage>
-              {errors.phone.message?.toString()}
+              {props.errors.phone.message?.toString()}
             </FormErrorMessage>
           )}
         </FormControl>
+      </Flex>
 
-        <FormControl isInvalid={Boolean(errors.message)}>
-          <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Mensagem
-          </FormLabel>
+      <FormControl isInvalid={Boolean(props.errors.message)}>
+        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+          Mensagem
+        </FormLabel>
 
-          <InputGroup>
-            <Textarea
-              //value={message}
-              id='message'
-              name='message'
-              placeholder='Mensagem...'
-              bg={'white'}
-              width={'320px'}
-              minHeight={'120px'}
-              focusBorderColor='darkBlue'
-              //onChange={handleMessageInputChange}
-              {...register('message', {
-                required: 'Este campo é obrigatório',
-              })}
-            />
-          </InputGroup>
-          {!errors.message ? (
-            <FormHelperText width={'320px'}>
-              Por favor deixe-nos uma mensagem para que possa ser contactada
-              mais tarde
-            </FormHelperText>
-          ) : (
-            <FormErrorMessage>
-              {errors.message.message?.toString()}
-            </FormErrorMessage>
-          )}
-        </FormControl>
+        <InputGroup>
+          <Textarea
+            //value={message}
+            id='message'
+            name='message'
+            placeholder='Mensagem...'
+            bg={'white'}
+            width={'full'}
+            minHeight={{ base: '367px', lg: '161px' }}
+            focusBorderColor='darkBlue'
+            //onChange={handleMessageInputChange}
+            {...props.register('message', {
+              required: 'Este campo é obrigatório',
+            })}
+          />
+        </InputGroup>
+        {!props.errors.message ? (
+          <FormHelperText width={'full'}>
+            Por favor deixe-nos uma mensagem para que possa ser contactada mais
+            tarde
+          </FormHelperText>
+        ) : (
+          <FormErrorMessage>
+            {props.errors.message.message?.toString()}
+          </FormErrorMessage>
+        )}
+      </FormControl>
 
-        <FormControl isInvalid={Boolean(errors.agree)}>
+      <FormControl isInvalid={Boolean(props.errors.agree)}>
+        <Center>
           <Checkbox
             id='agree'
             name='agree'
@@ -295,7 +525,7 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
                 borderColor: 'darkBlue',
               },
             }}
-            {...register('agree', {
+            {...props.register('agree', {
               required: { value: true, message: 'Este campo é obrigatório' },
             })}
           >
@@ -306,242 +536,70 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
               </Link>
             </Text>
           </Checkbox>
+        </Center>
+        <Center>
           <FormErrorMessage>
-            {errors.agree && errors.agree.message?.toString()}
+            {props.errors.agree && props.errors.agree.message?.toString()}
           </FormErrorMessage>
-        </FormControl>
+        </Center>
+      </FormControl>
 
-        <Button
-          mt={6}
-          colorScheme='darkBlues'
-          type='submit'
-          variant='darkSolid'
-          size={'regular'}
-          isLoading={isSubmitting}
-          isDisabled={!isDirty || !isValid}
-        >
-          Enviar Mensagem
-        </Button>
-      </VStack>
-    );
-  };
+      <Button
+        colorScheme='pastelBlues'
+        type='submit'
+        size={'regular'}
+        variant={'lightSolid'}
+        isLoading={props.isSubmitting}
+        color={'Black'}
+        isDisabled={!props.isDirty || !props.isValid}
+      >
+        Enviar Mensagem
+      </Button>
+    </VStack>
+  );
+};
 
-  const PageForm = () => {
-    return (
-      <VStack spacing={8}>
-        <Flex
-          direction={{ base: 'column', lg: 'row' }}
-          gap={{ base: 4, lg: 8 }}
-          width={'full'}
-        >
-          <FormControl isInvalid={Boolean(errors.name)}>
-            <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Nome
-            </FormLabel>
+export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors, isSubmitting, isDirty, isValid },
+  } = useForm<AppointmentsInputs>({
+    mode: 'onChange',
+  });
 
-            <InputGroup>
-              <InputLeftElement h='full'>
-                <Icon as={Person} color={'darkBlue'} />
-              </InputLeftElement>
-              <Input
-                id='name'
-                type='text'
-                name='name'
-                placeholder='Nome'
-                bg={'white'}
-                width={'full'}
-                height={'44px'}
-                focusBorderColor='darkBlue'
-                {...register('name', {
-                  required: 'Este campo é obrigatório',
-                  pattern: {
-                    value: NAME_REGEX,
-                    message: 'Por favor insira um nome válido',
-                  },
-                  minLength: {
-                    value: 3,
-                    message: 'Deve ter pelo menos 3 caracteres',
-                  },
-                })}
-              />
-            </InputGroup>
-            {!errors.name ? (
-              <FormHelperText>O seu primeiro e último nome</FormHelperText>
-            ) : (
-              <FormErrorMessage>
-                {errors.name.message?.toString()}
-              </FormErrorMessage>
-            )}
-          </FormControl>
+  async function onSubmitAppointment(values: RecruitInputs) {
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
 
-          <FormControl isInvalid={Boolean(errors.email)}>
-            <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Email
-            </FormLabel>
-
-            <InputGroup>
-              <InputLeftElement h='full'>
-                <Icon as={Email} color={'darkBlue'} />
-              </InputLeftElement>
-              <Input
-                id='email'
-                type='email'
-                name='email'
-                placeholder='Email'
-                bg={'white'}
-                width={'full'}
-                height={'44px'}
-                focusBorderColor='darkBlue'
-                {...register('email', {
-                  required: 'Este campo é obrigatório',
-                  pattern: {
-                    value: EMAIL_REGEX,
-                    message: 'Por favor insira um email válido',
-                  },
-                })}
-              />
-            </InputGroup>
-            {!errors.email ? (
-              <FormHelperText>O seu email de contacto</FormHelperText>
-            ) : (
-              <FormErrorMessage>
-                {errors.email.message?.toString()}
-              </FormErrorMessage>
-            )}
-          </FormControl>
-
-          <FormControl isInvalid={Boolean(errors.phone)}>
-            <FormLabel color={'darkBlue'} fontSize={'18px'}>
-              Contacto telefónico
-            </FormLabel>
-
-            <InputGroup>
-              <InputLeftElement h='full'>
-                <Icon as={Phone} color={'darkBlue'} />
-              </InputLeftElement>
-              <Input
-                id='phone'
-                type='number'
-                name='phone'
-                placeholder='Telefone'
-                bg={'white'}
-                width={'full'}
-                height={'44px'}
-                focusBorderColor='darkBlue'
-                {...register('phone', {
-                  required: 'Este campo é obrigatório',
-                  minLength: {
-                    value: 9,
-                    message: 'O número deve ter 9 digitos',
-                  },
-                  maxLength: {
-                    value: 9,
-                    message: 'O número deve ter 9 digitos',
-                  },
-                })}
-              />
-            </InputGroup>
-            {!errors.phone ? (
-              <FormHelperText>O seu número de telemóvel</FormHelperText>
-            ) : (
-              <FormErrorMessage>
-                {errors.phone.message?.toString()}
-              </FormErrorMessage>
-            )}
-          </FormControl>
-        </Flex>
-
-        <FormControl isInvalid={Boolean(errors.message)}>
-          <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Mensagem
-          </FormLabel>
-
-          <InputGroup>
-            <Textarea
-              //value={message}
-              id='message'
-              name='message'
-              placeholder='Mensagem...'
-              bg={'white'}
-              width={'full'}
-              minHeight={{ base: '367px', lg: '161px' }}
-              focusBorderColor='darkBlue'
-              //onChange={handleMessageInputChange}
-              {...register('message', {
-                required: 'Este campo é obrigatório',
-              })}
-            />
-          </InputGroup>
-          {!errors.message ? (
-            <FormHelperText width={'full'}>
-              Por favor deixe-nos uma mensagem para que possa ser contactada
-              mais tarde
-            </FormHelperText>
-          ) : (
-            <FormErrorMessage>
-              {errors.message.message?.toString()}
-            </FormErrorMessage>
-          )}
-        </FormControl>
-
-        <FormControl isInvalid={Boolean(errors.agree)}>
-          <Center>
-            <Checkbox
-              id='agree'
-              name='agree'
-              size='md14'
-              iconSize={'10px'}
-              borderColor={'darkBlue'}
-              variant={'rounded'}
-              _hover={{
-                '& .chakra-checkbox__control': {
-                  background: 'grey',
-                  borderColor: 'darkBlue',
-                },
-              }}
-              _checked={{
-                '& .chakra-checkbox__control': {
-                  background: 'darkBlue',
-                  borderColor: 'darkBlue',
-                },
-              }}
-              {...register('agree', {
-                required: { value: true, message: 'Este campo é obrigatório' },
-              })}
-            >
-              <Text color={'black'}>
-                Li e aceito os termos da{' '}
-                <Link href='#' color={'darkBlue'}>
-                  política de privacidade.
-                </Link>
-              </Text>
-            </Checkbox>
-          </Center>
-          <Center>
-            <FormErrorMessage>
-              {errors.agree && errors.agree.message?.toString()}
-            </FormErrorMessage>
-          </Center>
-        </FormControl>
-
-        <Button
-          colorScheme='pastelBlues'
-          type='submit'
-          size={'regular'}
-          variant={'lightSolid'}
-          isLoading={isSubmitting}
-          color={'Black'}
-          isDisabled={!isDirty || !isValid}
-        >
-          Enviar Mensagem
-        </Button>
-      </VStack>
-    );
-  };
+    const res = await fetch('/api/email/appointments', {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json());
+    alert(JSON.stringify(`${res.message}`));
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmitAppointment)}>
-      {popover ? <PopoverForm /> : <PageForm />}
+      {popover ? (
+        <PopoverForm
+          errors={errors}
+          register={register}
+          isDirty={isDirty}
+          isValid={isValid}
+          isSubmitting={isSubmitting}
+        />
+      ) : (
+        <PageForm
+          errors={errors}
+          register={register}
+          isDirty={isDirty}
+          isValid={isValid}
+          isSubmitting={isSubmitting}
+          control={control}
+        />
+      )}
     </form>
   );
 };

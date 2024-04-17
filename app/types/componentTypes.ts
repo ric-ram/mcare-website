@@ -68,6 +68,7 @@ export type AppointmentFormProps = {
 export type AppointmentsInputs = {
 	name: string;
 	email: string;
+	countryCode: string;
 	phone: number;
 	message: string;
 	agree: boolean;
