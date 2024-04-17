@@ -56,6 +56,8 @@ const NAME_REGEX =
 
 const EMAIL_REGEX = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
+const COUNTRY_CODE_REGEX = /^[+](\d{2}|\d{3})$/;
+
 const specializationAreas: OptionProp[] = [
   {
     label: 'Fisioterapeuta',
@@ -207,16 +209,37 @@ const PopoverForm = (props: {
         </FormLabel>
 
         <InputGroup>
-          <InputLeftElement h='full'>
-            <Icon as={Phone} color={'darkBlue'} />
-          </InputLeftElement>
+          <InputLeftAddon px={0} height={'44px'} width={'95px'}>
+            <InputLeftElement pointerEvents='none' ml={1} mr={12} h='full'>
+              <Icon as={Phone} color={'darkBlue'} />
+            </InputLeftElement>
+            <Input
+              id='country_code'
+              key={'cc'}
+              type='text'
+              name='countryCode'
+              placeholder='+351'
+              height={'44px'}
+              focusBorderColor='darkBlue'
+              ml={10}
+              px={2}
+              borderRadius={'0.375rem 0 0 0.375rem'}
+              borderLeftColor={'transparent'}
+              {...props.register('countryCode', {
+                pattern: {
+                  value: COUNTRY_CODE_REGEX,
+                  message: 'Por favor insira um código válido',
+                },
+              })}
+            />
+          </InputLeftAddon>
           <Input
             id='phone'
             type='number'
             name='phone'
             placeholder='Telefone'
             bg={'white'}
-            width={'320px'}
+            width={'225px'}
             height={'44px'}
             focusBorderColor='darkBlue'
             {...props.register('phone', {
@@ -231,6 +254,11 @@ const PopoverForm = (props: {
         ) : (
           <FormErrorMessage>
             {props.errors.phone.message?.toString()}
+          </FormErrorMessage>
+        )}
+        {props.errors.countryCode && (
+          <FormErrorMessage>
+            {props.errors.countryCode.message?.toString()}
           </FormErrorMessage>
         )}
       </FormControl>
@@ -416,27 +444,29 @@ const PageForm = (props: {
           </FormLabel>
 
           <InputGroup>
-            <InputLeftAddon px={0} height={'inherit'}>
+            <InputLeftAddon px={0} height={'44px'} width={'95px'}>
               <InputLeftElement pointerEvents='none' ml={1} mr={12} h='full'>
                 <Icon as={Phone} color={'darkBlue'} />
               </InputLeftElement>
-              <Select
-                size='lg'
-                variant='unstyled'
-                name={'countryCode'}
-                placeholder='pais'
+              <Input
                 id='country_code'
                 key={'cc'}
-                ml={12}
-                h={'43px'}
+                type='text'
+                name='countryCode'
+                placeholder='+351'
+                height={'44px'}
+                focusBorderColor='darkBlue'
+                ml={10}
+                px={2}
+                borderRadius={'0.375rem 0 0 0.375rem'}
+                borderLeftColor={'transparent'}
                 {...props.register('countryCode', {
-                  required: 'Selecione uma opção',
+                  pattern: {
+                    value: COUNTRY_CODE_REGEX,
+                    message: 'Por favor insira um código válido',
+                  },
                 })}
-              >
-                <option value='+44'>+44</option>
-                <option value='+123'>+123</option>
-                <option value='+351'>+351</option>
-              </Select>
+              />
             </InputLeftAddon>
             <Input
               id='phone'
@@ -466,6 +496,11 @@ const PageForm = (props: {
           ) : (
             <FormErrorMessage>
               {props.errors.phone.message?.toString()}
+            </FormErrorMessage>
+          )}
+          {props.errors.countryCode && (
+            <FormErrorMessage>
+              {props.errors.countryCode.message?.toString()}
             </FormErrorMessage>
           )}
         </FormControl>

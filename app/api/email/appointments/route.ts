@@ -9,8 +9,16 @@ export async function POST(request: Request) {
   const data = await request.formData();
   const name = data.get('name') as string;
   const email = data.get('email') as string;
+  const countryCode = data.get('countryCode') as string;
   const phone = data.get('phone') as string;
   const message = data.get('message') as string;
+
+  let fullPhone;
+  if (countryCode === '') {
+    fullPhone = '+351' + phone;
+  } else {
+    fullPhone = countryCode + phone
+  }
 
   try {
     resend.sendEmail({
@@ -20,7 +28,7 @@ export async function POST(request: Request) {
       react: AppointmentEmail({
         name,
         email,
-        phone,
+        fullPhone,
         message,
       }),
       headers: {
