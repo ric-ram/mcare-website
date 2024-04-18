@@ -2,7 +2,7 @@
 
 import { CardProps } from '@/app/types/componentTypes';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
-import { Box, Flex, Icon, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Icon, Stack } from '@chakra-ui/react';
 import {
   StarHalfRounded,
   StarOutlineRounded,
@@ -49,7 +49,7 @@ export default function TestimonialCard({ id }: CardProps) {
     <Box
       bg={'lightBlue.200'}
       maxW={{ base: '246px', xl: '396px' }}
-      maxH={{ base: '380px', xl: '340px' }}
+      maxH={{ base: '420px', xl: '400px' }}
       rounded='lg'
       shadow='md'
       position='relative'
@@ -64,9 +64,13 @@ export default function TestimonialCard({ id }: CardProps) {
           gap={{ base: 4, xl: 6 }}
         >
           <Rating rating={testimonial.rating} />
-          <Text textAlign={{ base: 'center', xl: 'left' }}>
+          <Box
+            textAlign={{ base: 'center', xl: 'left' }}
+            maxH={{ base: '220px', xl: '165px' }}
+            overflowY='auto'
+          >
             {testimonial.review}
-          </Text>
+          </Box>
         </Flex>
         <Flex justifyContent='space-between' alignContent='center'>
           <Box

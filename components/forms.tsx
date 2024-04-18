@@ -209,7 +209,7 @@ const PopoverForm = (props: {
         </FormLabel>
 
         <InputGroup>
-          <InputLeftAddon px={0} height={'44px'} width={'95px'}>
+          <InputLeftAddon px={0} height={'44px'} width={'105px'}>
             <InputLeftElement pointerEvents='none' ml={1} mr={12} h='full'>
               <Icon as={Phone} color={'darkBlue'} />
             </InputLeftElement>
@@ -239,7 +239,7 @@ const PopoverForm = (props: {
             name='phone'
             placeholder='Telefone'
             bg={'white'}
-            width={'225px'}
+            width={'215px'}
             height={'44px'}
             focusBorderColor='darkBlue'
             {...props.register('phone', {
@@ -444,7 +444,7 @@ const PageForm = (props: {
           </FormLabel>
 
           <InputGroup>
-            <InputLeftAddon px={0} height={'44px'} width={'95px'}>
+            <InputLeftAddon px={0} height={'44px'} width={'105px'}>
               <InputLeftElement pointerEvents='none' ml={1} mr={12} h='full'>
                 <Icon as={Phone} color={'darkBlue'} />
               </InputLeftElement>

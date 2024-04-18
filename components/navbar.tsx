@@ -101,7 +101,7 @@ const DesktopNav = () => {
                         as='a'
                         p={2}
                         href={navItem.href ?? '#'}
-                        fontSize={'16px'}
+                        fontSize={'18px'}
                         fontWeight={500}
                         color={linkColor}
                         _hover={{
@@ -140,7 +140,7 @@ const DesktopNav = () => {
               <Button
                 as={'a'}
                 display={{ base: 'none', lg: 'inline-flex' }}
-                fontSize={'16px'}
+                fontSize={'18px'}
                 fontWeight={'medium'}
                 lineHeight={'24px'}
                 py={'24px'}

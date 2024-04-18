@@ -85,7 +85,7 @@ const SelectedSpecialtyDescription = ({
       <Button
         as={'a'}
         display={{ base: 'none', lg: 'inline-flex' }}
-        fontSize={'16px'}
+        fontSize={'18px'}
         fontWeight={'medium'}
         lineHeight={'24px'}
         py={'24px'}
