@@ -29,7 +29,7 @@ const FooterLink = ({
   href?: string;
 }) => {
   return (
-    <Link href={href} fontWeight={'400'} fontSize={'16px'} lineHeight={'24px'}>
+    <Link href={href} fontWeight={'400'} fontSize={'18px'} lineHeight={'24px'}>
       {children}
     </Link>
   );
