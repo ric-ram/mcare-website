@@ -22,6 +22,7 @@ export type HighlightedItemButtonProps = {
 	item: Specialty | Area;
 	activeItem: Specialty | Area;
 	onClick?: React.MouseEventHandler;
+	type?: string;
 };
 
 export type SpecialtyDescriptionProps = {
