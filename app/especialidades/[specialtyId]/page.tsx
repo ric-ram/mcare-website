@@ -40,11 +40,17 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
         px={{ lg: '160px', base: '32px' }}
         spacing={16}
       >
-        {specialty.descriptionParagraphs.map((paragraph: string) => (
-          <Text textAlign={{ base: 'center', md: 'left' }} fontSize={'lg'}>
-            {paragraph}
-          </Text>
-        ))}
+        {specialty.descriptionParagraphs.map(
+          (paragraph: string, index: number) => (
+            <Text
+              textAlign={{ base: 'center', md: 'left' }}
+              fontSize={'lg'}
+              key={index}
+            >
+              {paragraph}
+            </Text>
+          ),
+        )}
       </Stack>
       {specialty.areas && (
         <InteractiveTable

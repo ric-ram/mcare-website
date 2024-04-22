@@ -11,6 +11,8 @@ import { Specialty } from '@/data/specialties';
 import {
   Box,
   Button,
+  Center,
+  Collapse,
   Flex,
   Heading,
   Image,
@@ -19,6 +21,7 @@ import {
   Text,
   UnorderedList,
   VStack,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -120,6 +123,21 @@ const SubAreaSection = ({ subArea, index }) => {
   );
 };
 
+const MobileSubAreaSection = ({ subArea, index }) => {
+  return (
+    <Stack key={index} alignItems={'center'} mt={index != 0 ? 3 : 0}>
+      <Heading as={'h4'} variant={'header4'} color={'white'}>
+        {subArea.title}
+      </Heading>
+      {subArea.description.map((description, index) => (
+        <Text key={index} textAlign={'center'}>
+          {description}
+        </Text>
+      ))}
+    </Stack>
+  );
+};
+
 const SelectedAreaDescription = ({ activeArea }: AreaDescriptionProps) => {
   return (
     <VStack
@@ -142,13 +160,55 @@ const SelectedAreaDescription = ({ activeArea }: AreaDescriptionProps) => {
         )}
         {activeArea.subAreas &&
           activeArea.subAreas.map((subArea, index) => (
-            <SubAreaSection subArea={subArea} index={index} />
+            <SubAreaSection subArea={subArea} index={index} key={index} />
           ))}
         {activeArea.areaNotes &&
-          activeArea.areaNotes.map((note) => (
-            <Text textAlign={'left'}>{note}</Text>
+          activeArea.areaNotes.map((note, index) => (
+            <Text textAlign={'left'} key={index}>
+              {note}
+            </Text>
           ))}
       </Flex>
+    </VStack>
+  );
+};
+
+const MobileSelectedAreaDescription = ({
+  activeArea,
+}: AreaDescriptionProps) => {
+  return (
+    <VStack
+      spacing={4}
+      alignItems={'center'}
+      py={6}
+      px={4}
+      fontSize={'16px'}
+      bgColor={'darkBlue'}
+      color={'white'}
+      flexGrow={1}
+    >
+      <VStack justifyContent={'center'} gap={2}>
+        <Text textAlign={'center'}>{activeArea.descriptionParagraphs}</Text>
+        {activeArea.bullets && (
+          <Center h={'100%'} w={'100%'}>
+            <UnorderedList>
+              {activeArea.bullets.map((bullet, index) => (
+                <ListItem key={index}>{bullet}</ListItem>
+              ))}
+            </UnorderedList>
+          </Center>
+        )}
+        {activeArea.subAreas &&
+          activeArea.subAreas.map((subArea, index) => (
+            <MobileSubAreaSection subArea={subArea} index={index} key={index} />
+          ))}
+        {activeArea.areaNotes &&
+          activeArea.areaNotes.map((note, index) => (
+            <Text textAlign={'center'} key={index}>
+              {note}
+            </Text>
+          ))}
+      </VStack>
     </VStack>
   );
 };
@@ -159,6 +219,7 @@ export default function InteractiveTable({
   title,
   type = 'specialty',
 }: InteractiveTableProps) {
+  const { isOpen, onToggle } = useDisclosure();
   const [activeItem, setActiveItem] = useState(items[0]);
   const router = useRouter();
 
@@ -182,7 +243,12 @@ export default function InteractiveTable({
     );
 
     setActiveItem(items[index]);
-    router.push(`/especialidades/${items[index].specialtyId}`);
+
+    if (type === 'specialty') {
+      router.push(`/especialidades/${items[index].specialtyId}`);
+    } else {
+      onToggle();
+    }
   };
 
   return (
@@ -222,20 +288,27 @@ export default function InteractiveTable({
         <VStack
           direction={'column'}
           gap={0}
-          minWidth={'300px'}
+          minWidth={'100%'}
           display={{ base: 'block', lg: 'none' }}
         >
           {items.map((item, index) => (
-            <HighlightButton
-              key={index}
-              item={item}
-              onClick={
-                type === 'specialty'
-                  ? handleItemClickMobile
-                  : handleItemClickDesktop
-              }
-              activeItem={activeItem}
-            />
+            <div key={'div' + index}>
+              <HighlightButton
+                key={index}
+                item={item}
+                onClick={handleItemClickMobile}
+                activeItem={activeItem}
+              />
+              <Collapse
+                in={isOpen && item.label === activeItem.label}
+                onClick={onToggle}
+                animateOpacity
+              >
+                <MobileSelectedAreaDescription
+                  activeArea={activeItem as Area}
+                />
+              </Collapse>
+            </div>
           ))}
         </VStack>
         <Image
