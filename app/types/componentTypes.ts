@@ -103,3 +103,16 @@ export type OptionProp = {
 export type CardProps = {
 	id: string;
 };
+
+export enum ModalTypes {
+	Testimonial = 'Testimonial',
+	Appointment = 'Appointment',
+	Recruit = 'Recruit',
+}
+
+export type ModalProps = {
+	onClose: () => void;
+	isOpen: boolean;
+	success: boolean;
+	type: ModalTypes;
+};
