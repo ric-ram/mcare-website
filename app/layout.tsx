@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='pt'>
-      <body className={inter.className}>
+      <body className={inter.className} style={{ minHeight: '100vh' }}>
         <Providers>
           <Navbar />
           <Container pt={'85px'} maxWidth={'100%'} px={0}>

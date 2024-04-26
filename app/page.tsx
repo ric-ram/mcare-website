@@ -1,6 +1,6 @@
 'use client';
 
-import Carousel from '@/components/carousel';
+import { Carousel, HeroCarousel } from '@/components/carousel';
 import InteractiveTable from '@/components/interactiveTable';
 import { SPECIALTIES } from '@/data/specialties';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
@@ -110,6 +110,7 @@ export default function Home() {
 
   return (
     <>
+      <HeroCarousel />
       <ProcedureSection />
       <InteractiveTable
         bgColor='pastelBlue'

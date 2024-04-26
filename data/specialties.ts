@@ -19,7 +19,7 @@ export const SPECIALTIES: Specialty[] = [
 	{
 		specialtyId: "fisioterapia",
 		label: 'Fisioterapia',
-		image: '',
+		image: '/images/especialidades/fisioterapia.jpg',
 		summary:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
 		descriptionParagraphs: [
@@ -49,7 +49,7 @@ export const SPECIALTIES: Specialty[] = [
 	{
 		specialtyId: "terapia-ocupacional",
 		label: 'Terapia Ocupacional',
-		image: '',
+		image: '/images/especialidades/terapia-ocupacional.jpg',
 		summary:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
 		descriptionParagraphs: [
@@ -75,7 +75,7 @@ export const SPECIALTIES: Specialty[] = [
 	{
 		specialtyId: "terapia-da-fala",
 		label: 'Terapia da Fala',
-		image: '',
+		image: '/images/especialidades/terapia-fala.jpg',
 		summary:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
 		descriptionParagraphs: [
@@ -95,7 +95,7 @@ export const SPECIALTIES: Specialty[] = [
 	{
 		specialtyId: "pilates-clinico",
 		label: 'Pilates Clínico',
-		image: '',
+		image: '/images/especialidades/pilates-clinico.jpg',
 		summary:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
 		descriptionParagraphs: [
