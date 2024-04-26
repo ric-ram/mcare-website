@@ -312,8 +312,8 @@ export function HeroCarousel() {
         >
           <Heading
             as={'h1'}
-            variant={'header2'}
-            color={'pastelBlue'}
+            variant={'header1'}
+            color={{ base: 'pastelBlue' }}
             textAlign={'center'}
           >
             Cuidados especializados no seu lar!
@@ -322,7 +322,7 @@ export function HeroCarousel() {
             as={'a'}
             size='lg'
             display={'inline-flex'}
-            fontSize={{ base: '18px', md: '24px' }}
+            fontSize={'24px'}
             fontWeight={'medium'}
             lineHeight={'24px'}
             py={'24px'}
@@ -349,6 +349,8 @@ export function HeroCarousel() {
               backgroundPosition: 'center',
               willChange: 'opacity',
               backgroundImage: `url(${IMAGES[photoIndex]})`,
+              backgroundColor: 'rgba(7, 63, 86, 0.45)',
+              backgroundBlendMode: 'multiply',
             }}
           />
         ))}

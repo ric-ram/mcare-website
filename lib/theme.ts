@@ -223,7 +223,7 @@ const theme = extendTheme({
         header2: {
           color: 'darkBlue',
           fontWeight: '700',
-          fontSize: () => ({ base: '24px', md: '36px' }),
+          fontSize: '36px',
           lineHeight: '48px',
         },
         header3: {
