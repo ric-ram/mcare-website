@@ -1,6 +1,6 @@
 'use client';
 
-import Carousel from '@/components/carousel';
+import { Carousel } from '@/components/carousel';
 import ContainerWithImage from '@/components/containerImage';
 import { TestimonialForm } from '@/components/forms';
 import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
