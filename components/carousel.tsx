@@ -304,7 +304,7 @@ export function HeroCarousel() {
         // backgroundBlendMode={'multiply'}
       >
         <VStack
-          zIndex={10}
+          zIndex={2}
           position={'absolute'}
           width={'full'}
           height={'full'}
