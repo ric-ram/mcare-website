@@ -146,7 +146,7 @@ const PopoverForm = (props: {
             name='name'
             placeholder='Nome'
             bg={'white'}
-            width={'320px'}
+            minWidth={'320px'}
             height={'44px'}
             focusBorderColor='darkBlue'
             {...props.register('name', {
@@ -186,7 +186,7 @@ const PopoverForm = (props: {
             name='email'
             placeholder='Email'
             bg={'white'}
-            width={'320px'}
+            minWidth={'320px'}
             height={'44px'}
             focusBorderColor='darkBlue'
             {...props.register('email', {
@@ -243,7 +243,7 @@ const PopoverForm = (props: {
             name='phone'
             placeholder='Telefone'
             bg={'white'}
-            width={'215px'}
+            minWidth={'215px'}
             height={'44px'}
             focusBorderColor='darkBlue'
             {...props.register('phone', {
@@ -279,7 +279,7 @@ const PopoverForm = (props: {
             name='message'
             placeholder='Mensagem...'
             bg={'white'}
-            width={'320px'}
+            minWidth={'320px'}
             minHeight={'120px'}
             focusBorderColor='darkBlue'
             //onChange={handleMessageInputChange}
@@ -301,39 +301,41 @@ const PopoverForm = (props: {
       </FormControl>
 
       <FormControl isInvalid={Boolean(props.errors.agree)}>
-        <Checkbox
-          id='agree'
-          name='agree'
-          size='md14'
-          iconSize={'10px'}
-          borderColor={'darkBlue'}
-          variant={'rounded'}
-          _hover={{
-            '& .chakra-checkbox__control': {
-              background: 'grey',
-              borderColor: 'darkBlue',
-            },
-          }}
-          _checked={{
-            '& .chakra-checkbox__control': {
-              background: 'darkBlue',
-              borderColor: 'darkBlue',
-            },
-          }}
-          {...props.register('agree', {
-            required: { value: true, message: 'Este campo é obrigatório' },
-          })}
-        >
-          <Text color={'black'}>
-            Li e aceito os termos da{' '}
-            <Link href='#' color={'darkBlue'}>
-              política de privacidade.
-            </Link>
-          </Text>
-        </Checkbox>
-        <FormErrorMessage>
-          {props.errors.agree && props.errors.agree.message?.toString()}
-        </FormErrorMessage>
+        <HStack minWidth={'320px'}>
+          <Checkbox
+            id='agree'
+            name='agree'
+            size='md14'
+            iconSize={'10px'}
+            borderColor={'darkBlue'}
+            variant={'rounded'}
+            _hover={{
+              '& .chakra-checkbox__control': {
+                background: 'grey',
+                borderColor: 'darkBlue',
+              },
+            }}
+            _checked={{
+              '& .chakra-checkbox__control': {
+                background: 'darkBlue',
+                borderColor: 'darkBlue',
+              },
+            }}
+            {...props.register('agree', {
+              required: { value: true, message: 'Este campo é obrigatório' },
+            })}
+          >
+            <Text color={'black'} fontSize={'16px'}>
+              Li e aceito os termos da{' '}
+              <Link href='#' color={'darkBlue'} fontSize={'16px'}>
+                política de privacidade.
+              </Link>
+            </Text>
+          </Checkbox>
+          <FormErrorMessage>
+            {props.errors.agree && props.errors.agree.message?.toString()}
+          </FormErrorMessage>
+        </HStack>
       </FormControl>
 
       <Button
