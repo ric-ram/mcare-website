@@ -48,7 +48,7 @@ const SpecialtyHero = (props: {
         pt={props.hasQuestions && 16}
         pb={props.hasQuestions && 24}
         px={props.hasQuestions && { lg: '160px', base: '32px' }}
-        spacing={16}
+        spacing={props.hasQuestions ? 16 : 10}
       >
         {props.paragraphs.map((paragraph: string, index: number) => (
           <Text
