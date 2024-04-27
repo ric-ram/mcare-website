@@ -44,8 +44,8 @@ export default function TestimonialCard({ id }: CardProps) {
   return (
     <Box
       bg={'lightBlue.200'}
-      maxW={{ base: '246px', xl: '396px' }}
-      maxH={{ base: '420px', xl: '400px' }}
+      w={{ base: '246px', xl: '396px' }}
+      h={{ base: '420px', xl: '400px' }}
       rounded='lg'
       shadow='md'
       position='relative'
