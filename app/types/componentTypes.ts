@@ -52,12 +52,10 @@ export type SpecialtyProps = {
 
 export type SlideProps = {
 	key: number;
-	slideType: string;
 	id: string;
 };
 
 export type CarouselProps = {
-	carouselType: string;
 	cardIds: string[];
 	bgColor?: string;
 };
