@@ -10,7 +10,6 @@ import {
   Icon,
   IconButton,
   Image,
-  Link,
   Popover,
   PopoverArrow,
   PopoverContent,
@@ -20,6 +19,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { AppointmentsForm } from './forms';
 
 export default function Navbar() {
@@ -97,21 +97,22 @@ const DesktopNav = () => {
                 <Box key={navItem.label}>
                   <Popover trigger={'hover'} placement={'bottom'}>
                     <PopoverTrigger>
-                      <Box
-                        as='a'
-                        p={2}
-                        href={navItem.href ?? '#'}
-                        fontSize={'18px'}
-                        fontWeight={500}
-                        color={linkColor}
-                        _hover={{
-                          textDecoration: 'none',
-                          color: linkHoverColor,
-                          fontWeight: 600,
-                        }}
-                      >
-                        {navItem.label}
-                      </Box>
+                      <Link href={navItem.href ?? '#'}>
+                        <Box
+                          p={2}
+                          //href={navItem.href ?? '#'}
+                          fontSize={'18px'}
+                          fontWeight={500}
+                          color={linkColor}
+                          _hover={{
+                            textDecoration: 'none',
+                            color: linkHoverColor,
+                            fontWeight: 600,
+                          }}
+                        >
+                          {navItem.label}
+                        </Box>
+                      </Link>
                     </PopoverTrigger>
 
                     {navItem.children && (

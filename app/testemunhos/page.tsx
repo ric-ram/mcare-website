@@ -3,33 +3,18 @@
 import { Carousel } from '@/components/carousel';
 import ContainerWithImage from '@/components/containerImage';
 import { TestimonialForm } from '@/components/forms';
-import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
-import { Heading, Stack, Text } from '@chakra-ui/react';
-import { getTestimonialsIds } from '../page';
 
-const getHighlightedTestimonialsIds = () => {
-  let testimonials: Testimonial[] = [];
-  TESTIMONIALS.forEach((testimonial: Testimonial) => {
-    if (
-      testimonial.accepted &&
-      testimonial.visible &&
-      testimonial.highlighted
-    ) {
-      testimonials.push(testimonial);
-    }
-  });
-  return testimonials;
-};
+import { Heading, Stack, Text } from '@chakra-ui/react';
+import { useGlobalContext } from '../context/store';
 
 export default function Testimonials() {
-  const testimonialsHighlighted = getHighlightedTestimonialsIds();
-
-  const testimonialsIds = getTestimonialsIds();
+  const { acceptedTestimonialsIds, highlightedTestimonials } =
+    useGlobalContext();
 
   return (
     <>
-      {testimonialsHighlighted &&
-        testimonialsHighlighted.map((testimonial, index) => (
+      {highlightedTestimonials.length > 0 &&
+        highlightedTestimonials.map((testimonial, index) => (
           <ContainerWithImage
             testimonial={testimonial}
             imageRight={index % 2 === 0 ? true : false}
@@ -39,8 +24,8 @@ export default function Testimonials() {
             key={index}
           />
         ))}
-      {testimonialsIds && (
-        <Carousel carouselType='testimonials' cardIds={testimonialsIds} />
+      {acceptedTestimonialsIds && (
+        <Carousel cardIds={acceptedTestimonialsIds} />
       )}
       <Stack
         pt={12}

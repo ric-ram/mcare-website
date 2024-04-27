@@ -1,4 +1,4 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 import { db } from './config';
 
@@ -15,4 +15,15 @@ async function addData(collectionId, data) {
   }
 }
 
-export { addData };
+async function getTestimonials() {
+  const snapshot = await getDocs(collection(db, "testemunhos"));
+
+  const testimonials = [];
+  snapshot.forEach((doc) => {
+    testimonials.push({ id: doc.id, ...doc.data() })
+  });
+
+  return testimonials;
+}
+
+export { addData, getTestimonials };

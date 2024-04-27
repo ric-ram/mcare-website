@@ -1,25 +1,18 @@
 'use client';
 
-import { Carousel, HeroCarousel } from '@/components/carousel';
+import { Carousel } from '@/components/carousel';
+import { HeroCarousel } from '@/components/hero';
 import InteractiveTable from '@/components/interactiveTable';
 import { SPECIALTIES } from '@/data/specialties';
-import { TESTIMONIALS, Testimonial } from '@/data/testimonials';
+import {
+  getHighlightedTestimonialsIds,
+  getTestimonialsIds,
+} from '@/data/testimonials';
+import { getTestimonials } from '@/firebase/controlData';
 import { Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { useGlobalContext } from './context/store';
 import { GeneralComponentProps, StepCardProps } from './types/componentTypes';
-
-export const getTestimonialsIds = () => {
-  let ids = [];
-  TESTIMONIALS.forEach((testimonial: Testimonial) => {
-    if (
-      testimonial.accepted &&
-      testimonial.visible &&
-      !testimonial.highlighted
-    ) {
-      ids.push(testimonial.testimonialId);
-    }
-  });
-  return ids;
-};
 
 const StepCard = ({ image, step, text }: StepCardProps) => {
   return (
@@ -105,8 +98,45 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
   );
 };
 
+// export async function getStaticProps() {
+//   const {
+//     testimonials,
+//     setTestimonials,
+//     // acceptedTestimonialsIds,
+//     setAcceptedTestimonialIds,
+//     setHighlightedTestimonials,
+//   } = useGlobalContext();
+
+//   const data = await getTestimonials();
+//   setTestimonials(data);
+//   getTestimonialsIds(testimonials, setAcceptedTestimonialIds);
+//   getHighlightedTestimonialsIds(testimonials, setHighlightedTestimonials);
+// }
+
 export default function Home() {
-  const testimonialsIds = getTestimonialsIds();
+  const {
+    testimonials,
+    setTestimonials,
+    acceptedTestimonialsIds,
+    setAcceptedTestimonialIds,
+    setHighlightedTestimonials,
+  } = useGlobalContext();
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getTestimonials();
+      setTestimonials(data);
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    getTestimonialsIds(testimonials, setAcceptedTestimonialIds);
+  }, [testimonials]);
+
+  useEffect(() => {
+    getHighlightedTestimonialsIds(testimonials, setHighlightedTestimonials);
+  }, [testimonials]);
 
   return (
     <>
@@ -117,7 +147,7 @@ export default function Home() {
         title='Especialidades'
         items={SPECIALTIES}
       />
-      <Carousel carouselType={'testimonials'} cardIds={testimonialsIds} />
+      <Carousel cardIds={acceptedTestimonialsIds} />
     </>
   );
 }

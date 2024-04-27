@@ -1,7 +1,7 @@
 'use client';
 
+import { DBTestimonial } from '@/app/context/store';
 import { InfoDescription } from '@/data/info';
-import { Testimonial } from '@/data/testimonials';
 import {
   As,
   Container,
@@ -21,7 +21,7 @@ interface ImageContainerProps {
   as: As;
   variant: string;
   info?: InfoDescription;
-  testimonial?: Testimonial;
+  testimonial?: DBTestimonial;
   imageRight?: boolean;
   bgColor?: string;
   last?: boolean;
@@ -57,8 +57,8 @@ export default function ContainerWithImage({
         >
           <Image
             rounded={'md'}
-            alt={info?.image.alt || testimonial?.imageAlt}
-            src={info?.image.src || testimonial?.image}
+            alt={info?.image.alt || testimonial?.altImage}
+            src={info?.image.src || testimonial?.urlImagem}
             objectFit={'cover'}
           />
         </Flex>
@@ -68,7 +68,7 @@ export default function ContainerWithImage({
           alignItems={{ base: 'center', md: 'normal' }}
         >
           <Heading as={as} variant={variant}>
-            {info?.title || testimonial?.author}
+            {info?.title || testimonial?.nome}
           </Heading>
           {info?.paragraphs.map((paragraph, index) => (
             <Text
@@ -80,13 +80,13 @@ export default function ContainerWithImage({
               {paragraph}
             </Text>
           ))}
-          {testimonial?.review && (
+          {testimonial?.testemunho && (
             <Text
               color={'black'}
               fontSize={'lg'}
               textAlign={{ base: 'center', md: 'left' }}
             >
-              {testimonial.review}
+              {testimonial.testemunho}
             </Text>
           )}
           {info?.pointDescription && (
