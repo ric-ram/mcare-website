@@ -5,11 +5,6 @@ import { HeroCarousel } from '@/components/hero';
 import InteractiveTable from '@/components/interactiveTable';
 import { SPECIALTIES } from '@/data/specialties';
 import {
-  getHighlightedTestimonialsIds,
-  getTestimonialsIds,
-} from '@/data/testimonials';
-import { getTestimonials } from '@/firebase/controlData';
-import {
   Container,
   Heading,
   Image,
@@ -17,7 +12,6 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
 import { useGlobalContext } from './context/store';
 import { GeneralComponentProps, StepCardProps } from './types/componentTypes';
 
@@ -122,29 +116,7 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
 // }
 
 export default function Home() {
-  const {
-    testimonials,
-    setTestimonials,
-    acceptedTestimonialsIds,
-    setAcceptedTestimonialIds,
-    setHighlightedTestimonials,
-  } = useGlobalContext();
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getTestimonials();
-      setTestimonials(data);
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    getTestimonialsIds(testimonials, setAcceptedTestimonialIds);
-  }, [testimonials]);
-
-  useEffect(() => {
-    getHighlightedTestimonialsIds(testimonials, setHighlightedTestimonials);
-  }, [testimonials]);
+  const { acceptedTestimonialsIds } = useGlobalContext();
 
   return (
     <>
