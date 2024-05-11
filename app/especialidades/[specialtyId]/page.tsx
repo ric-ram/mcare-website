@@ -8,8 +8,11 @@ import { AREAS, Area } from '@/data/areas';
 import { SPECIALTIES, Specialty } from '@/data/specialties';
 import {
   Container,
+  Flex,
   Heading,
+  Image,
   ListItem,
+  SimpleGrid,
   Stack,
   Text,
   UnorderedList,
@@ -25,14 +28,103 @@ const getSpecialtyAreas = (specialtyId: string) => {
   return AREAS.filter((area: Area) => area.specialtyId === specialtyId);
 };
 
+const SpecialtyHeroDescription = (props: {
+  label: string;
+  paragraphs: string[];
+  hasQuestions?: Boolean | false;
+}) => {
+  return (
+    <>
+      <Heading
+        as='h1'
+        variant={'header1'}
+        textAlign={'center'}
+        whiteSpace={'nowrap'}
+      >
+        {props.label}
+      </Heading>
+      <Stack
+        maxWidth='full'
+        pt={props.hasQuestions && 16}
+        spacing={props.hasQuestions ? 16 : 10}
+      >
+        {props.paragraphs.map((paragraph: string, index: number) => (
+          <Text
+            textAlign={{ base: 'center', md: 'left' }}
+            fontSize={'lg'}
+            key={index}
+          >
+            {paragraph}
+          </Text>
+        ))}
+      </Stack>
+    </>
+  );
+};
+
+const SpecialtyHero = (props: {
+  label: string;
+  image: string;
+  descriptionParagraphs: string[];
+  hasQuestions?: Boolean | false;
+}) => {
+  return (
+    <>
+      {props.hasQuestions ? (
+        <SpecialtyHeroDescription
+          label={props.label}
+          paragraphs={props.descriptionParagraphs}
+          hasQuestions={props.hasQuestions}
+        />
+      ) : (
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          spacing={20}
+          //px={8}
+          alignItems={'center'}
+          templateAreas={{ base: `'first' 'second'`, md: `'first second'` }}
+        >
+          <Flex
+            justifyContent={'flex-end'}
+            gridArea={{ base: 'first', md: 'second' }}
+          >
+            <Image
+              rounded={'md'}
+              alt={props.label}
+              src={props.image}
+              objectFit={'cover'}
+            />
+          </Flex>
+          <Stack
+            spacing={8}
+            gridArea={{ base: 'second', md: 'first' }}
+            alignItems={{ base: 'center', md: 'normal' }}
+          >
+            <SpecialtyHeroDescription
+              label={props.label}
+              paragraphs={props.descriptionParagraphs}
+            />
+          </Stack>
+        </SimpleGrid>
+      )}
+    </>
+  );
+};
+
 export default function SpecialtyPage({ params }: SpecialtyProps) {
   const specialty = getSpecialty(params.specialtyId);
   const specialtyAreas = getSpecialtyAreas(params.specialtyId);
 
   return (
     <>
-      <Container maxWidth={'1120px'}>
-        <Heading as='h1' variant={'header1'} textAlign={'center'} mt={16}>
+      <Container maxWidth={'1120px'} mt={16} mb={24}>
+        <SpecialtyHero
+          label={specialty.label}
+          image={specialty.image}
+          descriptionParagraphs={specialty.descriptionParagraphs}
+          hasQuestions={specialty.questions ? true : false}
+        />
+        {/* <Heading as='h1' variant={'header1'} textAlign={'center'} mt={16}>
           {specialty.label}
         </Heading>
         <Stack
@@ -53,7 +145,7 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
               </Text>
             ),
           )}
-        </Stack>
+        </Stack> */}
       </Container>
       <Container maxWidth={'100%'} bgColor={'pastelBlue'}>
         {specialty.areas && (
@@ -103,7 +195,10 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
           </Stack>
         )}
       </Container>
-      <Container maxWidth={'full'} bgColor={'pastelBlue'}>
+      <Container
+        maxWidth={'full'}
+        bgColor={(specialty.howToSteps || specialty.questions) && 'pastelBlue'}
+      >
         <Container maxWidth={'1120px'}>
           <Stack
             pt={12}
@@ -112,9 +207,6 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
             overflow={'hidden'}
             alignItems={'stretch'}
             spacing={16}
-            bgColor={
-              (specialty.howToSteps || specialty.questions) && 'pastelBlue'
-            }
           >
             <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
               Faça a sua marcação
