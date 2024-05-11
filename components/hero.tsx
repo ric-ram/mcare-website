@@ -82,11 +82,11 @@ export function HeroCarousel() {
             as={'a'}
             size='lg'
             display={'inline-flex'}
-            fontSize={'24px'}
+            fontSize={'28px'}
             fontWeight={'medium'}
-            lineHeight={'24px'}
-            py={'24px'}
-            px={'24px'}
+            lineHeight={'36px'}
+            py={'36px'}
+            px={'36px'}
             mt={{ base: 4, md: 8 }}
             color={'black'}
             bg={'lightBlue.200'}
