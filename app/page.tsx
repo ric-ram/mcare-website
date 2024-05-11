@@ -57,8 +57,8 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
         <Stack
           gap={{ base: 0, lg: 4, xl: 12 }}
           backgroundImage={{
-            base: '/images/stepArrowV.svg',
-            lg: '/images/stepArrowH.svg',
+            base: '/images/home-page/stepArrowV.svg',
+            lg: '/images/home-page/stepArrowH.svg',
           }}
           backgroundRepeat={'no-repeat'}
           backgroundPosition={{ base: 'center', lg: '50% 16%', xl: '50% 25%' }}
@@ -72,25 +72,25 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
           pt={{ base: 8, lg: 0 }}
         >
           <StepCard
-            image='/images/step1.jpg'
+            image='/images/home-page/step1.jpg'
             step={1}
             text='Marque a sua sessão'
           />
 
           <StepCard
-            image='/images/step2.jpg'
+            image='/images/home-page/step2.jpg'
             step={2}
             text='Irá receber uma chamada para agendar o dia e hora'
           />
 
           <StepCard
-            image='/images/step3.jpg'
+            image='/images/home-page/step3.jpg'
             step={3}
             text='Avaliação por parte do profissional de saúde'
           />
 
           <StepCard
-            image='/images/step4.jpg'
+            image='/images/home-page/step4.jpg'
             step={4}
             text='Início do plano de intervenção adequado'
           />
@@ -99,21 +99,6 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
     </Container>
   );
 };
-
-// export async function getStaticProps() {
-//   const {
-//     testimonials,
-//     setTestimonials,
-//     // acceptedTestimonialsIds,
-//     setAcceptedTestimonialIds,
-//     setHighlightedTestimonials,
-//   } = useGlobalContext();
-
-//   const data = await getTestimonials();
-//   setTestimonials(data);
-//   getTestimonialsIds(testimonials, setAcceptedTestimonialIds);
-//   getHighlightedTestimonialsIds(testimonials, setHighlightedTestimonials);
-// }
 
 export default function Home() {
   const { acceptedTestimonialsIds } = useGlobalContext();
@@ -129,7 +114,26 @@ export default function Home() {
           items={SPECIALTIES}
         />
       </Container>
-      <Carousel cardIds={acceptedTestimonialsIds} />
+      <Container maxWidth={'100%'}>
+        <Container maxWidth={'1120px'}>
+          <Stack
+            py={12}
+            alignItems={'center'}
+            spacing={{ base: 6, lg: '95px' }}
+          >
+            <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
+              Zona de Actuação
+            </Heading>
+            <Image
+              src='/images/home-page/mapa-actuacao.png'
+              alt='Mapa de actuação'
+            />
+          </Stack>
+        </Container>
+      </Container>
+      <Container maxWidth={'100%'} bgColor={'pastelBlue'}>
+        <Carousel cardIds={acceptedTestimonialsIds} />
+      </Container>
     </>
   );
 }
