@@ -23,16 +23,9 @@ const settingsTestimonials = {
   infinite: true,
   speed: 1500,
   autoplaySpeed: 5000,
-  slidesToShow: 3,
-  slidesToScroll: 3,
+  slidesToShow: 2,
+  slidesToScroll: 2,
   responsive: [
-    {
-      breakpoint: 2560,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
     {
       breakpoint: 1920,
       settings: {
