@@ -9,7 +9,14 @@ import {
   getTestimonialsIds,
 } from '@/data/testimonials';
 import { getTestimonials } from '@/firebase/controlData';
-import { Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
+import {
+  Container,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useGlobalContext } from './context/store';
 import { GeneralComponentProps, StepCardProps } from './types/componentTypes';
@@ -43,58 +50,59 @@ const StepCard = ({ image, step, text }: StepCardProps) => {
 
 const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
   return (
-    <Stack
-      py={12}
-      px={{ lg: '160px', base: '32px' }}
-      alignItems={'center'}
-      spacing={{ base: 6, lg: '95px' }}
-      bg={bgColor}
-    >
-      <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        Procedimento
-      </Heading>
+    <Container maxWidth={'1120px'}>
       <Stack
-        gap={{ base: 0, lg: 4, xl: 12 }}
-        backgroundImage={{
-          base: '/images/stepArrowV.svg',
-          lg: '/images/stepArrowH.svg',
-        }}
-        backgroundRepeat={'no-repeat'}
-        backgroundPosition={{ base: 'center', lg: '50% 16%', xl: '50% 25%' }}
-        backgroundSize={'contain'}
-        direction={{ base: 'column', lg: 'row' }}
-        justifyContent={'space-evenly'}
+        py={12}
         alignItems={'center'}
-        //maxWidth={'1120px'}
-        width={'full'}
-        height={{ base: '1500px', lg: 'auto' }}
-        pt={{ base: 8, lg: 0 }}
+        spacing={{ base: 6, lg: '95px' }}
+        bg={bgColor}
       >
-        <StepCard
-          image='/images/step1.jpg'
-          step={1}
-          text='Marque a sua sessão'
-        />
+        <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
+          Procedimento
+        </Heading>
+        <Stack
+          gap={{ base: 0, lg: 4, xl: 12 }}
+          backgroundImage={{
+            base: '/images/stepArrowV.svg',
+            lg: '/images/stepArrowH.svg',
+          }}
+          backgroundRepeat={'no-repeat'}
+          backgroundPosition={{ base: 'center', lg: '50% 16%', xl: '50% 25%' }}
+          backgroundSize={'contain'}
+          direction={{ base: 'column', lg: 'row' }}
+          justifyContent={'space-evenly'}
+          alignItems={'center'}
+          //maxWidth={'1120px'}
+          width={'full'}
+          height={{ base: '1500px', lg: 'auto' }}
+          pt={{ base: 8, lg: 0 }}
+        >
+          <StepCard
+            image='/images/step1.jpg'
+            step={1}
+            text='Marque a sua sessão'
+          />
 
-        <StepCard
-          image='/images/step2.jpg'
-          step={2}
-          text='Irá receber uma chamada para agendar o dia e hora'
-        />
+          <StepCard
+            image='/images/step2.jpg'
+            step={2}
+            text='Irá receber uma chamada para agendar o dia e hora'
+          />
 
-        <StepCard
-          image='/images/step3.jpg'
-          step={3}
-          text='Avaliação por parte do profissional de saúde'
-        />
+          <StepCard
+            image='/images/step3.jpg'
+            step={3}
+            text='Avaliação por parte do profissional de saúde'
+          />
 
-        <StepCard
-          image='/images/step4.jpg'
-          step={4}
-          text='Início do plano de intervenção adequado'
-        />
+          <StepCard
+            image='/images/step4.jpg'
+            step={4}
+            text='Início do plano de intervenção adequado'
+          />
+        </Stack>
       </Stack>
-    </Stack>
+    </Container>
   );
 };
 
@@ -142,11 +150,13 @@ export default function Home() {
     <>
       <HeroCarousel />
       <ProcedureSection />
-      <InteractiveTable
-        bgColor='pastelBlue'
-        title='Especialidades'
-        items={SPECIALTIES}
-      />
+      <Container bgColor='pastelBlue' maxW={'100%'}>
+        <InteractiveTable
+          bgColor='pastelBlue'
+          title='Especialidades'
+          items={SPECIALTIES}
+        />
+      </Container>
       <Carousel cardIds={acceptedTestimonialsIds} />
     </>
   );

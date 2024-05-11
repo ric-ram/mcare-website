@@ -2,6 +2,7 @@
 import { CarouselProps, SlideProps } from '@/app/types/componentTypes';
 import {
   Box,
+  Container,
   HStack,
   Heading,
   IconButton,
@@ -22,8 +23,8 @@ const settingsTestimonials = {
   infinite: true,
   speed: 1500,
   autoplaySpeed: 5000,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   responsive: [
     {
       breakpoint: 2560,
@@ -69,7 +70,7 @@ export function Carousel({ cardIds, bgColor }: CarouselProps) {
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
-  const top = useBreakpointValue({ base: '40%', md: '40%' });
+  const top = useBreakpointValue({ base: '50%', md: '50%' });
   const side = useBreakpointValue({ base: '0', md: '0px' });
 
   const Slide = ({ key, id }: SlideProps) => {
@@ -87,112 +88,116 @@ export function Carousel({ cardIds, bgColor }: CarouselProps) {
   };
 
   return (
-    <Stack
-      py={12}
-      pb={32}
-      px={{ lg: '160px', base: '32px' }}
-      position={'relative'}
-      height={'full'}
-      width={'full'}
-      overflow={'hidden'}
-      alignItems={'center'}
-      spacing={'78px'}
-      bg={bgColor}
-    >
-      <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        {'Testemunhos'}
-      </Heading>
-      <Box
+    <Container maxWidth={'1120px'} bg={bgColor}>
+      <Stack
+        py={12}
+        pb={32}
+        //px={{ lg: '160px', base: '32px' }}
         position={'relative'}
         height={'full'}
         width={'full'}
-        //overflow={"hidden"}
-        px={{ base: 4, xl: '97px' }}
-        sx={{
-          '.slick-dots': {
-            transform: { base: 'translateY(12px)', xl: 'translateY(36px)' },
-          },
-          '.slick-dots li': {
-            width: '16px',
-            height: '16px',
-          },
-          '.slick-dots li button': {
-            _before: {
-              transition: '0.2s',
-              content: "''",
-              borderRadius: '100%',
-              background: 'darkBlues.800',
-              width: '14px',
-              height: '14px',
-              top: '7%',
-              left: '7%',
+        overflow={'hidden'}
+        alignItems={'center'}
+        spacing={'78px'}
+      >
+        <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
+          {'Testemunhos'}
+        </Heading>
+        <Box
+          position={'relative'}
+          height={'full'}
+          width={'full'}
+          //overflow={"hidden"}
+          px={{ base: 4, xl: 5 }}
+          sx={{
+            '.slick-dots': {
+              transform: { base: 'translateY(12px)', xl: 'translateY(36px)' },
             },
-          },
-          '.slick-dots li.slick-active button': {
-            _before: {
+            '.slick-dots li': {
               width: '16px',
               height: '16px',
-              top: '0',
-              left: '0',
             },
-          },
-          '.slick-track': {
-            display: 'flex',
-          },
-          '.slick-slide': {
-            height: 'inherit',
-          },
-          '.slick-slide > div': {
-            height: '100%',
-          },
-        }}
-      >
-        {/* CSS files for react-slick */}
-        <link
-          rel='stylesheet'
-          type='text/css'
-          href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
-        />
-        <link
-          rel='stylesheet'
-          type='text/css'
-          href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-        />
-        {/* Left Icon */}
-        <IconButton
-          aria-label='left-arrow'
-          variant='ghost'
-          position='absolute'
-          left={side}
-          top={top}
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          onClick={() => slider?.slickPrev()}
+            '.slick-dots li button': {
+              _before: {
+                transition: '0.2s',
+                content: "''",
+                borderRadius: '100%',
+                background: 'darkBlues.800',
+                width: '14px',
+                height: '14px',
+                top: '7%',
+                left: '7%',
+              },
+            },
+            '.slick-dots li.slick-active button': {
+              _before: {
+                width: '16px',
+                height: '16px',
+                top: '0',
+                left: '0',
+              },
+            },
+            '.slick-track': {
+              display: 'flex',
+            },
+            '.slick-slide': {
+              height: 'inherit',
+            },
+            '.slick-slide > div': {
+              height: '100%',
+            },
+          }}
         >
-          <ChevronLeftRounded />
-        </IconButton>
-        {/* Right Icon */}
-        <IconButton
-          aria-label='right-arrow'
-          variant='ghost'
-          position='absolute'
-          right={side}
-          top={top}
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          onClick={() => slider?.slickNext()}
-        >
-          <ChevronRightRounded />
-        </IconButton>
-        {/* Slider */}
-        {cardIds.length > 0 && (
-          <Slider {...settingsTestimonials} ref={(slider) => setSlider(slider)}>
-            {cardIds.map((cardId, index) => (
-              <Slide key={index} id={cardId} />
-            ))}
-          </Slider>
-        )}
-      </Box>
-    </Stack>
+          {/* CSS files for react-slick */}
+          <link
+            rel='stylesheet'
+            type='text/css'
+            href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
+          />
+          <link
+            rel='stylesheet'
+            type='text/css'
+            href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
+          />
+          {/* Left Icon */}
+          <IconButton
+            aria-label='left-arrow'
+            variant='ghost'
+            position='absolute'
+            left={side}
+            top={top}
+            transform={'translate(0%, -50%)'}
+            zIndex={2}
+            onClick={() => slider?.slickPrev()}
+          >
+            <ChevronLeftRounded />
+          </IconButton>
+          {/* Right Icon */}
+          <IconButton
+            aria-label='right-arrow'
+            variant='ghost'
+            position='absolute'
+            right={side}
+            top={top}
+            transform={'translate(0%, -50%)'}
+            zIndex={2}
+            onClick={() => slider?.slickNext()}
+          >
+            <ChevronRightRounded />
+          </IconButton>
+          {/* Slider */}
+          {cardIds.length > 0 && (
+            <Slider
+              {...settingsTestimonials}
+              ref={(slider) => setSlider(slider)}
+            >
+              {cardIds.map((cardId, index) => (
+                <Slide key={index} id={cardId} />
+              ))}
+            </Slider>
+          )}
+        </Box>
+      </Stack>
+    </Container>
   );
 }

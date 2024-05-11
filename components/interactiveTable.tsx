@@ -13,6 +13,7 @@ import {
   Button,
   Center,
   Collapse,
+  Container,
   Flex,
   Heading,
   Image,
@@ -252,77 +253,73 @@ export default function InteractiveTable({
   };
 
   return (
-    <Stack
-      py={12}
-      px={{ lg: '160px', base: '32px' }}
-      alignItems={'center'}
-      spacing={{ base: 6, lg: 8 }}
-      bg={bgColor}
-    >
-      <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-        {title}
-      </Heading>
-      <Stack
-        direction={{ base: 'column', lg: 'row' }}
-        alignItems={'center'}
-        py={8}
-        spacing={'100px'}
-        maxWidth={'100%'}
-        minWidth={{ base: '100%', lg: '680px' }}
-      >
-        <VStack
-          direction={'column'}
-          gap={0}
-          minWidth={'300px'}
-          display={{ base: 'none', lg: 'block' }}
+    <Container maxWidth={'1120px'} bg={bgColor}>
+      <Stack py={12} alignItems={'center'} spacing={{ base: 6, lg: 8 }}>
+        <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
+          {title}
+        </Heading>
+        <Stack
+          direction={{ base: 'column', lg: 'row' }}
+          alignItems={'center'}
+          py={8}
+          spacing={'100px'}
+          maxWidth={'100%'}
+          minWidth={{ base: '100%', lg: '680px' }}
         >
-          {items.map((item, index) => (
-            <HighlightButton
-              key={index}
-              item={item}
-              onClick={handleItemClickDesktop}
-              activeItem={activeItem}
-            />
-          ))}
-        </VStack>
-        <VStack
-          direction={'column'}
-          gap={0}
-          minWidth={'100%'}
-          display={{ base: 'block', lg: 'none' }}
-        >
-          {items.map((item, index) => (
-            <div key={'div' + index}>
+          <VStack
+            direction={'column'}
+            gap={0}
+            minWidth={'300px'}
+            display={{ base: 'none', lg: 'block' }}
+          >
+            {items.map((item, index) => (
               <HighlightButton
                 key={index}
                 item={item}
-                onClick={handleItemClickMobile}
+                onClick={handleItemClickDesktop}
                 activeItem={activeItem}
               />
-              <Collapse
-                in={isOpen && item.label === activeItem.label}
-                onClick={onToggle}
-                animateOpacity
-              >
-                <MobileSelectedAreaDescription
-                  activeArea={activeItem as Area}
+            ))}
+          </VStack>
+          <VStack
+            direction={'column'}
+            gap={0}
+            minWidth={'100%'}
+            display={{ base: 'block', lg: 'none' }}
+          >
+            {items.map((item, index) => (
+              <div key={'div' + index}>
+                <HighlightButton
+                  key={index}
+                  item={item}
+                  onClick={handleItemClickMobile}
+                  activeItem={activeItem}
                 />
-              </Collapse>
-            </div>
-          ))}
-        </VStack>
-        <Image
-          src='/images/divider.svg'
-          display={{ base: 'none', lg: 'block' }}
-        />
-        {type === 'specialty' ? (
-          <SelectedSpecialtyDescription
-            activeSpecialty={activeItem as Specialty}
+                <Collapse
+                  in={isOpen && item.label === activeItem.label}
+                  onClick={onToggle}
+                  animateOpacity
+                >
+                  <MobileSelectedAreaDescription
+                    activeArea={activeItem as Area}
+                  />
+                </Collapse>
+              </div>
+            ))}
+          </VStack>
+          <Image
+            src='/images/divider.svg'
+            display={{ base: 'none', lg: 'block' }}
           />
-        ) : (
-          <SelectedAreaDescription activeArea={activeItem as Area} />
-        )}
+          {type === 'specialty' ? (
+            <SelectedSpecialtyDescription
+              activeSpecialty={activeItem as Specialty}
+            />
+          ) : (
+            <SelectedAreaDescription activeArea={activeItem as Area} />
+          )}
+        </Stack>
       </Stack>
-    </Stack>
+    </Container>
   );
 }

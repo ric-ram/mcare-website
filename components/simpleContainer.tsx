@@ -2,6 +2,7 @@
 
 import { InfoDescription } from '@/data/info';
 import {
+  Container,
   Heading,
   List,
   ListIcon,
@@ -21,45 +22,47 @@ export default function SimpleContainer({
   bgColor,
 }: SimpleContainerProps) {
   return (
-    <Stack
-      maxWidth='full'
-      pt={12}
-      pb={24}
-      px={{ lg: '160px', base: '32px' }}
-      bg={bgColor}
-      spacing={10}
-    >
-      <Heading
-        as='h2'
-        variant='header2'
-        textAlign={{ base: 'center', md: 'left' }}
+    <Container maxWidth='1120px'>
+      <Stack
+        pt={12}
+        pb={24}
+        alignSelf={'center'}
+        //px={{ lg: '160px', base: '32px' }}
+        //bg={bgColor}
+        spacing={10}
       >
-        {info.title}
-      </Heading>
-      {info.paragraphs.map((paragraph, index) => (
-        <Text key={index} textAlign={{ base: 'center', md: 'left' }}>
-          {paragraph}
-        </Text>
-      ))}
-      {info.pointDescription && (
         <Heading
-          as={'h3'}
+          as='h2'
+          variant='header2'
           textAlign={{ base: 'center', md: 'left' }}
-          variant={info.pointDescription.leadingVariant}
         >
-          {info.pointDescription.leading}
+          {info.title}
         </Heading>
-      )}
-      {info.pointDescription && (
-        <List mt={-6} ml={4} textAlign={'left'} spacing={2} fontSize={'18px'}>
-          {info.pointDescription.bullets.map((bullet, index) => (
-            <ListItem key={index}>
-              <ListIcon as={Favorite} color={'darkBlue'} />
-              {bullet}
-            </ListItem>
-          ))}
-        </List>
-      )}
-    </Stack>
+        {info.paragraphs.map((paragraph, index) => (
+          <Text key={index} textAlign={{ base: 'center', md: 'left' }}>
+            {paragraph}
+          </Text>
+        ))}
+        {info.pointDescription && (
+          <Heading
+            as={'h3'}
+            textAlign={{ base: 'center', md: 'left' }}
+            variant={info.pointDescription.leadingVariant}
+          >
+            {info.pointDescription.leading}
+          </Heading>
+        )}
+        {info.pointDescription && (
+          <List mt={-6} ml={4} textAlign={'left'} spacing={2} fontSize={'16px'}>
+            {info.pointDescription.bullets.map((bullet, index) => (
+              <ListItem key={index}>
+                <ListIcon as={Favorite} color={'darkBlue'} fontSize={'16px'} />
+                {bullet}
+              </ListItem>
+            ))}
+          </List>
+        )}
+      </Stack>
+    </Container>
   );
 }

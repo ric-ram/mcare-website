@@ -118,7 +118,7 @@ const variantLightSolid = defineStyle((props) => {
 });
 
 const buttonRegular = defineStyle({
-  fontSize: '18px',
+  fontSize: '16px',
   fontWeight: 'medium',
   lineHeight: '24px',
   px: '6',
@@ -132,10 +132,10 @@ const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        fontSize: '18px',
+        fontSize: '16px',
       },
       a: {
-        fontSize: '18px',
+        fontSize: '16px',
       },
     },
   },

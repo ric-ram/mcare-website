@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Collapse,
+  Container,
   Flex,
   Icon,
   IconButton,
@@ -32,44 +33,50 @@ export default function Navbar() {
       w='100%'
       zIndex={3}
       boxShadow={!isOpen && 'base'}
+      bg={'pastelBlue'}
     >
-      <Flex
-        bg={'pastelBlue'}
-        color={useColorModeValue('gray.600', 'white')}
-        maxH={'97px'}
-        py={{ lg: 2, base: '28px' }}
-        px={{ lg: '160px', base: '32px' }}
-        align={'center'}
-      >
+      <Container maxWidth={'1120px'}>
         <Flex
-          flex={{ base: 1, lg: 'auto' }}
-          display={{ base: 'flex', lg: 'none' }}
-          justify={'space-between'}
+          color={useColorModeValue('gray.600', 'white')}
+          maxH={'97px'}
+          py={{ lg: 2, base: '28px' }}
+          //px={{ lg: '160px', base: '32px' }}
           align={'center'}
         >
-          <Link href='/'>
-            <Image objectFit='cover' src='/images/LogoMobile.svg' alt='Logo' />
-          </Link>
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? (
-                <CloseIcon w={'32px'} h={'32px'} color={'darkBlue'} />
-              ) : (
-                <HamburgerIcon w={'32px'} h={'32px'} color={'darkBlue'} />
-              )
-            }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
+          <Flex
+            flex={{ base: 1, lg: 'auto' }}
+            display={{ base: 'flex', lg: 'none' }}
+            justify={'space-between'}
+            align={'center'}
+          >
+            <Link href='/'>
+              <Image
+                objectFit='cover'
+                src='/images/LogoMobile.svg'
+                alt='Logo'
+              />
+            </Link>
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={'32px'} h={'32px'} color={'darkBlue'} />
+                ) : (
+                  <HamburgerIcon w={'32px'} h={'32px'} color={'darkBlue'} />
+                )
+              }
+              variant={'ghost'}
+              aria-label={'Toggle Navigation'}
+            />
+          </Flex>
+
+          <DesktopNav />
         </Flex>
 
-        <DesktopNav />
-      </Flex>
-
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
+        <Collapse in={isOpen} animateOpacity>
+          <MobileNav />
+        </Collapse>
+      </Container>
     </Box>
   );
 }
