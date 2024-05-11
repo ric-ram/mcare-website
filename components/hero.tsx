@@ -9,9 +9,9 @@ export function HeroCarousel() {
   const [photoIndex, setPhotoIndex] = useState(0);
 
   const IMAGES = [
-    '/images/hero/hero-1.jpg',
-    '/images/hero/hero-2.jpg',
-    '/images/hero/hero-3.jpg',
+    '/images/home-page/hero/hero-1.jpg',
+    '/images/home-page/hero/hero-2.jpg',
+    '/images/home-page/hero/hero-3.jpg',
   ];
 
   const transitions = useTransition(photoIndex, {

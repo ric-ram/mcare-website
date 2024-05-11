@@ -57,8 +57,8 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
         <Stack
           gap={{ base: 0, lg: 4, xl: 12 }}
           backgroundImage={{
-            base: '/images/stepArrowV.svg',
-            lg: '/images/stepArrowH.svg',
+            base: '/images/home-page/stepArrowV.svg',
+            lg: '/images/home-page/stepArrowH.svg',
           }}
           backgroundRepeat={'no-repeat'}
           backgroundPosition={{ base: 'center', lg: '50% 16%', xl: '50% 25%' }}
@@ -72,25 +72,25 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
           pt={{ base: 8, lg: 0 }}
         >
           <StepCard
-            image='/images/step1.jpg'
+            image='/images/home-page/step1.jpg'
             step={1}
             text='Marque a sua sessão'
           />
 
           <StepCard
-            image='/images/step2.jpg'
+            image='/images/home-page/step2.jpg'
             step={2}
             text='Irá receber uma chamada para agendar o dia e hora'
           />
 
           <StepCard
-            image='/images/step3.jpg'
+            image='/images/home-page/step3.jpg'
             step={3}
             text='Avaliação por parte do profissional de saúde'
           />
 
           <StepCard
-            image='/images/step4.jpg'
+            image='/images/home-page/step4.jpg'
             step={4}
             text='Início do plano de intervenção adequado'
           />
