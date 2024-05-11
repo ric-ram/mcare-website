@@ -89,7 +89,7 @@ export default function Footer() {
           >
             <ListHeader>A MCare</ListHeader>
             <FooterLink href='/sobre-mcare'>Sobre nós</FooterLink>
-            <FooterLink href='/equipa'>Equipa</FooterLink>
+            {/* <FooterLink href='/equipa'>Equipa</FooterLink> */}
             <FooterLink href='/recrutar'>Recrutar</FooterLink>
             <FooterLink href='/testemunhos'>Testemunhos</FooterLink>
           </Stack>
