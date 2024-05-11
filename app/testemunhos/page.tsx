@@ -25,9 +25,14 @@ export default function Testimonials() {
           />
         ))}
       {acceptedTestimonialsIds && (
-        <Carousel cardIds={acceptedTestimonialsIds} />
+        <Container maxWidth={'100%'} bgColor={'pastelBlue'}>
+          <Carousel cardIds={acceptedTestimonialsIds} />
+        </Container>
       )}
-      <Container maxWidth={'full'} bgColor={'pastelBlue'}>
+      <Container
+        maxWidth={'full'}
+        bgColor={!acceptedTestimonialsIds && 'pastelBlue'}
+      >
         <Container maxWidth={'1120px'}>
           <Stack
             pt={12}
@@ -36,7 +41,6 @@ export default function Testimonials() {
             overflow={'hidden'}
             alignItems={'stretch'}
             spacing={16}
-            bg={'pastelBlue'}
           >
             <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
               Insira o seu testemunho
