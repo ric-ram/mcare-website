@@ -1,6 +1,8 @@
 'use client';
 
+import { CookieBanner } from '@/components/cookieBanner';
 import Footer from '@/components/footer';
+import GoogleAnalytics from '@/components/googleAnalytics';
 import Navbar from '@/components/navbar';
 import { Container } from '@chakra-ui/react';
 import type { Metadata } from 'next';
@@ -23,6 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='pt'>
+      <GoogleAnalytics
+        GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_MEASUREMENT_ID}
+      />
       <body className={inter.className} style={{ minHeight: '100vh' }}>
         <Providers>
           <GlobalContextProvider>
@@ -31,6 +36,7 @@ export default function RootLayout({
               {children}
             </Container>
             <Footer />
+            <CookieBanner />
           </GlobalContextProvider>
         </Providers>
       </body>
