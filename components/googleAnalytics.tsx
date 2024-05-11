@@ -19,8 +19,6 @@ export default function GoogleAnalytics({
     pageview(GA_MEASUREMENT_ID, url);
   }, [pathname, searchParams, GA_MEASUREMENT_ID]);
 
-  console.log(GA_MEASUREMENT_ID);
-
   return (
     <>
       <Script
@@ -30,23 +28,8 @@ export default function GoogleAnalytics({
       <Script
         id='google-analytics'
         strategy='afterInteractive'
-        // dangerouslySetInnerHTML={{
-        //   __html: `
-        //         window.dataLayer = window.dataLayer || [];
-        //         function gtag(){dataLayer.push(arguments);}
-        //         gtag('js', new Date());
-
-        //         gtag('consent', 'default', {
-        //             'analytics_storage': 'denied'
-        //         });
-
-        //          gtag('config', '${GA_MEASUREMENT_ID}', {
-        //             page_path: window.location.pathname,
-        //         });
-        //         `,
-        // }}
-      >
-        {`
+        dangerouslySetInnerHTML={{
+          __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
@@ -58,8 +41,9 @@ export default function GoogleAnalytics({
                  gtag('config', '${GA_MEASUREMENT_ID}', {
                     page_path: window.location.pathname,
                 });
-                `}
-      </Script>
+                `,
+        }}
+      ></Script>
     </>
   );
 }
