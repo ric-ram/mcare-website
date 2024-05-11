@@ -100,21 +100,6 @@ const ProcedureSection = ({ bgColor }: GeneralComponentProps) => {
   );
 };
 
-// export async function getStaticProps() {
-//   const {
-//     testimonials,
-//     setTestimonials,
-//     // acceptedTestimonialsIds,
-//     setAcceptedTestimonialIds,
-//     setHighlightedTestimonials,
-//   } = useGlobalContext();
-
-//   const data = await getTestimonials();
-//   setTestimonials(data);
-//   getTestimonialsIds(testimonials, setAcceptedTestimonialIds);
-//   getHighlightedTestimonialsIds(testimonials, setHighlightedTestimonials);
-// }
-
 export default function Home() {
   const { acceptedTestimonialsIds } = useGlobalContext();
 
@@ -129,7 +114,26 @@ export default function Home() {
           items={SPECIALTIES}
         />
       </Container>
-      <Carousel cardIds={acceptedTestimonialsIds} />
+      <Container maxWidth={'100%'}>
+        <Container maxWidth={'1120px'}>
+          <Stack
+            py={12}
+            alignItems={'center'}
+            spacing={{ base: 6, lg: '95px' }}
+          >
+            <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
+              Zona de Actuação
+            </Heading>
+            <Image
+              src='/images/home-page/mapa-actuacao.png'
+              alt='Mapa de actuação'
+            />
+          </Stack>
+        </Container>
+      </Container>
+      <Container maxWidth={'100%'} bgColor={'pastelBlue'}>
+        <Carousel cardIds={acceptedTestimonialsIds} />
+      </Container>
     </>
   );
 }
