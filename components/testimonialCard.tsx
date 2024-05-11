@@ -49,7 +49,7 @@ export default function TestimonialCard({ id }: CardProps) {
       rounded='lg'
       shadow='md'
       position='relative'
-      mx={8}
+      mx={6}
       key={id}
     >
       <Stack px={{ base: 3, xl: 6 }} py={8} spacing={{ base: 6, xl: 16 }}>

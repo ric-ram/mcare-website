@@ -4,7 +4,7 @@ import { Carousel } from '@/components/carousel';
 import ContainerWithImage from '@/components/containerImage';
 import { TestimonialForm } from '@/components/forms';
 
-import { Heading, Stack, Text } from '@chakra-ui/react';
+import { Container, Heading, Stack, Text } from '@chakra-ui/react';
 import { useGlobalContext } from '../context/store';
 
 export default function Testimonials() {
@@ -27,25 +27,27 @@ export default function Testimonials() {
       {acceptedTestimonialsIds && (
         <Carousel cardIds={acceptedTestimonialsIds} />
       )}
-      <Stack
-        pt={12}
-        pb={24}
-        px={{ lg: '160px', base: '32px' }}
-        minHeight={'650px'}
-        width={'full'}
-        overflow={'hidden'}
-        alignItems={'stretch'}
-        spacing={16}
-        bg={'pastelBlue'}
-      >
-        <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
-          Insira o seu testemunho
-        </Heading>
-        <Text textAlign={'center'} fontSize={'18px'} lineHeight={'24px'}>
-          Tem algo a acrescentar? Partilhe connosco a sua opinão.
-        </Text>
-        <TestimonialForm />
-      </Stack>
+      <Container maxWidth={'full'} bgColor={'pastelBlue'}>
+        <Container maxWidth={'1120px'}>
+          <Stack
+            pt={12}
+            pb={24}
+            minHeight={'650px'}
+            overflow={'hidden'}
+            alignItems={'stretch'}
+            spacing={16}
+            bg={'pastelBlue'}
+          >
+            <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
+              Insira o seu testemunho
+            </Heading>
+            <Text textAlign={'center'} fontSize={'18px'} lineHeight={'24px'}>
+              Tem algo a acrescentar? Partilhe connosco a sua opinão.
+            </Text>
+            <TestimonialForm />
+          </Stack>
+        </Container>
+      </Container>
     </>
   );
 }

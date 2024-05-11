@@ -3,8 +3,6 @@ import "client-only";
 export function getLocalStorage(key: string, defaultValue: any) {
 	const stickyValue = localStorage.getItem(key);
 
-	console.log('Sticky: ' + stickyValue)
-
 	return (stickyValue !== null && stickyValue !== 'undefined')
 		? JSON.parse(stickyValue)
 		: defaultValue;

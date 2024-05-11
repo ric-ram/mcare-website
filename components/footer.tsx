@@ -68,13 +68,13 @@ export default function Footer() {
       bottom={0}
       left={0}
       right={0}
+      marginTop={'auto'}
     >
       <Container
         as={Stack}
-        maxW={'full'}
+        maxW={'1120px'}
         pt={10}
         pb={14}
-        px={{ lg: '160px', base: '32px' }}
         align={'space-between'}
       >
         <SimpleGrid
@@ -82,10 +82,14 @@ export default function Footer() {
           spacing={8}
           justifyItems={'center'}
         >
-          <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
+          <Stack
+            align={{ base: 'center', md: 'flex-start' }}
+            spacing={'18px'}
+            justifySelf={'start'}
+          >
             <ListHeader>A MCare</ListHeader>
             <FooterLink href='/sobre-mcare'>Sobre nós</FooterLink>
-            <FooterLink href='/equipa'>Equipa</FooterLink>
+            {/* <FooterLink href='/equipa'>Equipa</FooterLink> */}
             <FooterLink href='/recrutar'>Recrutar</FooterLink>
             <FooterLink href='/testemunhos'>Testemunhos</FooterLink>
           </Stack>
@@ -97,7 +101,11 @@ export default function Footer() {
             ))}
           </Stack>
 
-          <Stack align={{ base: 'center', md: 'flex-start' }} spacing={'18px'}>
+          <Stack
+            align={{ base: 'center', md: 'flex-start' }}
+            spacing={'18px'}
+            justifySelf={'end'}
+          >
             <ListHeader>Contactos</ListHeader>
             <Box as='a' href={'#'}>
               geral@mcare.com.pt

@@ -38,16 +38,15 @@ export default function ContainerWithImage({
 }: ImageContainerProps) {
   return (
     <Container
-      maxWidth='full'
+      maxWidth='1120px'
       pt={12}
       pb={last ? 24 : 12}
-      px={{ lg: '160px', base: '32px' }}
-      bg={bgColor}
+      //px={{ lg: '160px', base: '32px' }}
     >
       <SimpleGrid
         columns={{ base: 1, md: 2 }}
         spacing={20}
-        px={8}
+        //px={8}
         alignItems={'center'}
         templateAreas={{ base: `'first' 'second'`, md: `'first second'` }}
       >
@@ -63,7 +62,7 @@ export default function ContainerWithImage({
           />
         </Flex>
         <Stack
-          spacing={8}
+          spacing={4}
           gridArea={imageRight && { base: 'second', md: 'first' }}
           alignItems={{ base: 'center', md: 'normal' }}
         >
@@ -74,7 +73,7 @@ export default function ContainerWithImage({
             <Text
               key={index}
               color={'black'}
-              fontSize={'lg'}
+              //fontSize={'lg'}
               textAlign={{ base: 'center', md: 'left' }}
             >
               {paragraph}
@@ -83,7 +82,7 @@ export default function ContainerWithImage({
           {testimonial?.testemunho && (
             <Text
               color={'black'}
-              fontSize={'lg'}
+              //fontSize={'lg'}
               textAlign={{ base: 'center', md: 'left' }}
             >
               {testimonial.testemunho}
@@ -92,7 +91,8 @@ export default function ContainerWithImage({
           {info?.pointDescription && (
             <Text
               color={'black'}
-              fontSize={'lg'}
+              mb={4}
+              //fontSize={'lg'}
               textAlign={{ base: 'center', md: 'left' }}
               variant={
                 info.pointDescription.leadingVariant &&
@@ -108,11 +108,15 @@ export default function ContainerWithImage({
               ml={4}
               textAlign={'left'}
               spacing={2}
-              fontSize={'18px'}
+              fontSize={'16px'}
             >
               {info?.pointDescription.bullets.map((bullet, index) => (
                 <ListItem key={index}>
-                  <ListIcon as={Favorite} color={'darkBlue'} />
+                  <ListIcon
+                    as={Favorite}
+                    color={'darkBlue'}
+                    fontSize={'16px'}
+                  />
                   {bullet}
                 </ListItem>
               ))}

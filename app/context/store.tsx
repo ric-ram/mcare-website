@@ -1,10 +1,16 @@
 'use client';
 
 import {
+  getHighlightedTestimonialsIds,
+  getTestimonialsIds,
+} from '@/data/testimonials';
+import { getTestimonials } from '@/firebase/controlData';
+import {
   Dispatch,
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 
@@ -46,6 +52,22 @@ export const GlobalContextProvider = ({ children }) => {
   const [highlightedTestimonialsIds, setHighlightedTestimonialsIds] = useState(
     [],
   );
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getTestimonials();
+      setTestimonials(data);
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    getTestimonialsIds(testimonials, setAcceptedTestimonialIds);
+  }, [testimonials]);
+
+  useEffect(() => {
+    getHighlightedTestimonialsIds(testimonials, setHighlightedTestimonialsIds);
+  }, [testimonials]);
 
   return (
     <GlobalContext.Provider

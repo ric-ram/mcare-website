@@ -10,7 +10,6 @@ export const CookieBanner = () => {
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage('cookie_consent', null);
-    console.log('Sotered: ' + storedCookieConsent);
 
     setCookieConsent(storedCookieConsent);
   }, [setCookieConsent]);
@@ -23,9 +22,6 @@ export const CookieBanner = () => {
     });
 
     setLocalStorage('cookie_consent', cookieConsent);
-
-    //For Testing
-    console.log('Cookie Consent: ', cookieConsent);
   }, [cookieConsent]);
 
   return (
