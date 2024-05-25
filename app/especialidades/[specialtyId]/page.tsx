@@ -50,7 +50,7 @@ const SpecialtyHeroDescription = (props: {
       >
         {props.paragraphs.map((paragraph: string, index: number) => (
           <Text
-            textAlign={{ base: 'center', md: 'left' }}
+            textAlign={{ base: 'center', md: 'justify' }}
             fontSize={'lg'}
             key={index}
           >

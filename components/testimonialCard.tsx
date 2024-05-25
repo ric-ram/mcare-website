@@ -61,7 +61,7 @@ export default function TestimonialCard({ id }: CardProps) {
         >
           <Rating rating={testimonial.avaliacao} />
           <Box
-            textAlign={{ base: 'center', xl: 'left' }}
+            textAlign={{ base: 'center', xl: 'justify' }}
             maxH={{ base: '220px', xl: '165px' }}
             overflowY='auto'
           >
