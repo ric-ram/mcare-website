@@ -333,7 +333,11 @@ const PopoverForm = (props: {
           >
             <Text color={'black'} fontSize={'14px'}>
               Li e aceito os termos da{' '}
-              <Link href='#' color={'darkBlue'} fontSize={'14px'}>
+              <Link
+                href='politica-privacidade'
+                color={'darkBlue'}
+                fontSize={'14px'}
+              >
                 política de privacidade.
               </Link>
             </Text>
@@ -578,7 +582,7 @@ const PageForm = (props: {
           >
             <Text color={'black'}>
               Li e aceito os termos da{' '}
-              <Link href='#' color={'darkBlue'}>
+              <Link href='politica-privacidade' color={'darkBlue'}>
                 política de privacidade.
               </Link>
             </Text>
@@ -987,7 +991,7 @@ export const TestimonialForm = () => {
               >
                 <Text color={'black'}>
                   Li e aceito os termos da{' '}
-                  <Link href='#' color={'darkBlue'}>
+                  <Link href='politica-privacidade' color={'darkBlue'}>
                     política de privacidade.
                   </Link>
                 </Text>
@@ -1379,7 +1383,7 @@ export const RecruitForm = () => {
               >
                 <Text color={'black'}>
                   Li e aceito os termos da{' '}
-                  <Link href='#' color={'darkBlue'}>
+                  <Link href='politica-privacidade' color={'darkBlue'}>
                     política de privacidade.
                   </Link>
                 </Text>
