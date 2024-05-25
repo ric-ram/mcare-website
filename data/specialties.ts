@@ -55,7 +55,7 @@ export const SPECIALTIES: Specialty[] = [
 		descriptionParagraphs: [
 			'“Entende-se por ocupação tudo aquilo que a pessoa realiza com o objetivo de cuidar de si própria (autocuidados), desfrutar da vida (lazer) ou contribuir para o desenvolvimento da sua comunidade (produtividade).” Associação Portuguesa de Terapeutas Ocupacionais (APTO)',
 			'A Terapia Ocupacional é a área da saúde responsável por promover a participação ou o envolvimento da pessoa nas ocupações necessárias e significativas do seu dia a dia, potenciando o seu desempenho e funcionalidade. Tem como parâmetros todos os fatores que influenciam a participação e o envolvimento da pessoa na ocupação (memória, destreza manual, barreiras do espaço físico, ou exigência da atividade a realizar, por exemplo).',
-			'O objetivo fundamental da Terapia da Fala é promover a autonomia, envolvimento e bem-estar a pessoa.',
+			'O objetivo fundamental da Terapia Ocupacional é promover a autonomia, envolvimento e bem-estar a pessoa.',
 		],
 		howToSteps: [
 			'Promoção de interesses, rotina e papéis;',
