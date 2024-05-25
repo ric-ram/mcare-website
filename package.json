@@ -1,25 +1,52 @@
 {
   "name": "mcare-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "email": "email dev --dir ./emails",
+    "lint": "next lint",
+    "prettier-format": "prettier --check --ignore-path .gitignore .",
+    "prettier-format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.0",
+    "@chakra-ui/next-js": "^2.1.5",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.6",
+    "@mui/material": "^5.14.10",
+    "@react-email/button": "0.0.10",
+    "@react-email/components": "^0.0.7",
+    "@react-email/html": "0.0.4",
+    "@react-spring/web": "^9.7.3",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.45.0",
-    "eslint-config-next": "13.4.10",
+    "firebase": "^10.3.1",
     "next": "13.4.10",
-    "postcss": "8.4.26",
+    "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
+    "react-email": "1.9.4",
+    "react-hook-form": "^7.45.4",
+    "react-slick": "^0.29.0",
+    "resend": "^1.0.0",
+    "typescript": "5.1.6",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "^0.0.19",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "encoding": "^0.1.13",
+    "eslint": "^8.48.0",
+    "eslint-config-next": "^13.4.19",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2"
   }
 }
