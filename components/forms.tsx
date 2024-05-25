@@ -72,8 +72,8 @@ const specializationAreas: OptionProp[] = [
     value: 'Terapeuta Ocupacional',
   },
   {
-    label: 'Cardiorrespiratória',
-    value: 'Cardiorrespiratória',
+    label: 'Nutricionista',
+    value: 'Nutricionista',
   },
   {
     label: 'Terapeuta da Fala',
