@@ -130,9 +130,9 @@ const PopoverForm = (props: {
   isSubmitting: boolean;
 }) => {
   return (
-    <VStack spacing={4} zIndex={3}>
+    <VStack spacing={2} zIndex={3} overflow={'scroll'}>
       <FormControl isInvalid={Boolean(props.errors.name)}>
-        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+        <FormLabel color={'darkBlue'} fontSize={'16px'}>
           Nome
         </FormLabel>
 
@@ -163,16 +163,18 @@ const PopoverForm = (props: {
           />
         </InputGroup>
         {!props.errors.name ? (
-          <FormHelperText>O seu primeiro e último nome</FormHelperText>
+          <FormHelperText fontSize={'12px'}>
+            O seu primeiro e último nome
+          </FormHelperText>
         ) : (
-          <FormErrorMessage>
+          <FormErrorMessage fontSize={'12px'}>
             {props.errors.name.message?.toString()}
           </FormErrorMessage>
         )}
       </FormControl>
 
       <FormControl isInvalid={Boolean(props.errors.email)}>
-        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+        <FormLabel color={'darkBlue'} fontSize={'16px'}>
           Email
         </FormLabel>
 
@@ -199,16 +201,18 @@ const PopoverForm = (props: {
           />
         </InputGroup>
         {!props.errors.email ? (
-          <FormHelperText>O seu email de contacto</FormHelperText>
+          <FormHelperText fontSize={'12px'}>
+            O seu email de contacto
+          </FormHelperText>
         ) : (
-          <FormErrorMessage>
+          <FormErrorMessage fontSize={'12px'}>
             {props.errors.email.message?.toString()}
           </FormErrorMessage>
         )}
       </FormControl>
 
       <FormControl isInvalid={Boolean(props.errors.phone)}>
-        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+        <FormLabel color={'darkBlue'} fontSize={'16px'}>
           Contacto telefónico
         </FormLabel>
 
@@ -254,21 +258,23 @@ const PopoverForm = (props: {
           />
         </InputGroup>
         {!props.errors.phone ? (
-          <FormHelperText>O seu número de telemóvel</FormHelperText>
+          <FormHelperText fontSize={'12px'}>
+            O seu número de telemóvel
+          </FormHelperText>
         ) : (
-          <FormErrorMessage>
+          <FormErrorMessage fontSize={'12px'}>
             {props.errors.phone.message?.toString()}
           </FormErrorMessage>
         )}
         {props.errors.countryCode && (
-          <FormErrorMessage>
+          <FormErrorMessage fontSize={'12px'}>
             {props.errors.countryCode.message?.toString()}
           </FormErrorMessage>
         )}
       </FormControl>
 
       <FormControl isInvalid={Boolean(props.errors.message)}>
-        <FormLabel color={'darkBlue'} fontSize={'18px'}>
+        <FormLabel color={'darkBlue'} fontSize={'16px'}>
           Mensagem
         </FormLabel>
 
@@ -280,7 +286,7 @@ const PopoverForm = (props: {
             placeholder='Mensagem...'
             bg={'white'}
             minWidth={'320px'}
-            minHeight={'120px'}
+            minHeight={'80px'}
             focusBorderColor='darkBlue'
             //onChange={handleMessageInputChange}
             {...props.register('message', {
@@ -289,12 +295,12 @@ const PopoverForm = (props: {
           />
         </InputGroup>
         {!props.errors.message ? (
-          <FormHelperText width={'320px'}>
+          <FormHelperText width={'320px'} fontSize={'12px'}>
             Por favor deixe-nos uma mensagem para que possa ser contactada mais
             tarde
           </FormHelperText>
         ) : (
-          <FormErrorMessage>
+          <FormErrorMessage fontSize={'12px'}>
             {props.errors.message.message?.toString()}
           </FormErrorMessage>
         )}
@@ -325,21 +331,21 @@ const PopoverForm = (props: {
               required: { value: true, message: 'Este campo é obrigatório' },
             })}
           >
-            <Text color={'black'} fontSize={'16px'}>
+            <Text color={'black'} fontSize={'14px'}>
               Li e aceito os termos da{' '}
-              <Link href='#' color={'darkBlue'} fontSize={'16px'}>
+              <Link href='#' color={'darkBlue'} fontSize={'14px'}>
                 política de privacidade.
               </Link>
             </Text>
           </Checkbox>
-          <FormErrorMessage>
+          <FormErrorMessage fontSize={'12px'}>
             {props.errors.agree && props.errors.agree.message?.toString()}
           </FormErrorMessage>
         </HStack>
       </FormControl>
 
       <Button
-        mt={6}
+        mt={5}
         colorScheme='darkBlues'
         type='submit'
         variant='darkSolid'
