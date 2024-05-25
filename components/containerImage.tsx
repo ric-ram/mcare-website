@@ -74,7 +74,7 @@ export default function ContainerWithImage({
               key={index}
               color={'black'}
               //fontSize={'lg'}
-              textAlign={{ base: 'center', md: 'left' }}
+              textAlign={{ base: 'center', md: 'justify' }}
             >
               {paragraph}
             </Text>
@@ -83,7 +83,7 @@ export default function ContainerWithImage({
             <Text
               color={'black'}
               //fontSize={'lg'}
-              textAlign={{ base: 'center', md: 'left' }}
+              textAlign={{ base: 'center', md: 'justify' }}
             >
               {testimonial.testemunho}
             </Text>
@@ -93,7 +93,7 @@ export default function ContainerWithImage({
               color={'black'}
               mb={4}
               //fontSize={'lg'}
-              textAlign={{ base: 'center', md: 'left' }}
+              textAlign={{ base: 'center', md: 'justify' }}
               variant={
                 info.pointDescription.leadingVariant &&
                 info.pointDescription.leadingVariant

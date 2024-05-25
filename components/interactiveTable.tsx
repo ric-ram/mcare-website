@@ -151,7 +151,7 @@ const SelectedAreaDescription = ({ activeArea }: AreaDescriptionProps) => {
         {activeArea.label}
       </Heading>
       <Flex direction='column' alignItems='flex-start' gap={4}>
-        <Text textAlign={'left'}>{activeArea.descriptionParagraphs}</Text>
+        <Text textAlign={'justify'}>{activeArea.descriptionParagraphs}</Text>
         {activeArea.bullets && (
           <UnorderedList textAlign={'left'}>
             {activeArea.bullets.map((bullet, index) => (

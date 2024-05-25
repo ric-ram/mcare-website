@@ -34,19 +34,19 @@ export default function SimpleContainer({
         <Heading
           as='h2'
           variant='header2'
-          textAlign={{ base: 'center', md: 'left' }}
+          textAlign={{ base: 'center', md: 'justify' }}
         >
           {info.title}
         </Heading>
         {info.paragraphs.map((paragraph, index) => (
-          <Text key={index} textAlign={{ base: 'center', md: 'left' }}>
+          <Text key={index} textAlign={{ base: 'center', md: 'justify' }}>
             {paragraph}
           </Text>
         ))}
         {info.pointDescription && (
           <Heading
             as={'h3'}
-            textAlign={{ base: 'center', md: 'left' }}
+            textAlign={{ base: 'center', md: 'justify' }}
             variant={info.pointDescription.leadingVariant}
           >
             {info.pointDescription.leading}
