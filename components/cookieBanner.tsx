@@ -1,8 +1,7 @@
 'use client';
 
 import { getLocalStorage, setLocalStorage } from '@/lib/storageHelper';
-import { Box, Button, Stack, Text } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Box, Button, Link, Stack, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 export const CookieBanner = () => {
@@ -39,7 +38,7 @@ export const CookieBanner = () => {
       justify='space-between'
       align={{ base: 'start', md: 'center' }}
       mx={'auto'}
-      maxWidth={{ base: 'max-content', md: '640px' }}
+      maxWidth={{ base: 'max-content', md: '1120px' }}
       my={'2.5rem'}
       borderRadius={'0.5rem'}
       boxShadow={
@@ -49,7 +48,20 @@ export const CookieBanner = () => {
     >
       <Box>
         <Text>
-          Este site utiliza <Link href='#'>cookies</Link>.
+          Este website utiliza cookies. Ao usar o nosso website, aceita que
+          sejam criados estas cookies. Saiba mais sobre as nossas políticas de{' '}
+          <Link href='' color='lightBlue.50' isExternal>
+            Privacidade
+          </Link>{' '}
+          de{' '}
+          <Link href='' color='lightBlue.50' isExternal>
+            Cookies
+          </Link>{' '}
+          e de{' '}
+          <Link href='' color='lightBlue.50' isExternal>
+            Utilização
+          </Link>
+          .
         </Text>
       </Box>
 
