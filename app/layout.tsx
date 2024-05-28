@@ -1,5 +1,3 @@
-'use client';
-
 import { CookieBanner } from '@/components/cookieBanner';
 import Footer from '@/components/footer';
 import GoogleAnalytics from '@/components/googleAnalytics';
