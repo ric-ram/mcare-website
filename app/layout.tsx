@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: 'MCare',
   description: '',
   authors: { name: 'Ricardo Ramos', url: 'https://ricardoframos.com' },
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
