@@ -39,7 +39,7 @@ const SpecialtyHeroDescription = (props: {
         as='h1'
         variant={'header1'}
         textAlign={'center'}
-        whiteSpace={'nowrap'}
+        whiteSpace={{ md: 'nowrap' }}
       >
         {props.label}
       </Heading>
