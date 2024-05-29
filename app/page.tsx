@@ -17,7 +17,7 @@ import { GeneralComponentProps, StepCardProps } from './types/componentTypes';
 
 const StepCard = ({ image, step, text }: StepCardProps) => {
   return (
-    <VStack width={'189px'} height={{ base: 'full', lg: '333px' }} spacing={6}>
+    <VStack width={'189px'} height={{ base: 'full', lg: '333px' }} spacing={4}>
       <Image
         src={image}
         boxSize={{ base: '175px', lg: '125px', xl: '175px' }}
@@ -30,7 +30,7 @@ const StepCard = ({ image, step, text }: StepCardProps) => {
       <VStack
         spacing={2}
         bg={{ base: 'pastelBlue', lg: 'none' }}
-        p={1}
+        p={{ base: 4, lg: 1 }}
         rounded={'md'}
       >
         <Heading as='h4' variant={'header4'}>
