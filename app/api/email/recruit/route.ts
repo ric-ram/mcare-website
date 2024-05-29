@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   const fileBuffer = Buffer.from(await file.arrayBuffer());
 
   try {
-    resend.sendEmail({
+    resend.emails.send({
       from: 'Ricram <testing@ricardoframos.com>',
       to: 'ricram.log@gmail.com',
       subject: `Candidatura de ${name}`,

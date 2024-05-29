@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    resend.sendEmail({
+    resend.emails.send({
       from: 'Ricram <testing@ricardoframos.com>',
       to: 'ricram.log@gmail.com',
       subject: `Tentativa de marcação de ${name}`,
