@@ -52,8 +52,8 @@ export default function Navbar() {
             <Link href='/'>
               <Image
                 objectFit='cover'
-                src='/images/LogoMobile.svg'
-                alt='Logo'
+                src='/images/logoMobile.svg'
+                alt='Logo Mobile'
               />
             </Link>
             <IconButton
@@ -94,7 +94,11 @@ const DesktopNav = () => {
       display={{ base: 'none', lg: 'flex' }}
     >
       <Link href='/'>
-        <Image objectFit='cover' src='/images/LogoDesktop.svg' alt='Logo' />
+        <Image
+          objectFit='cover'
+          src='/images/LogoDesktop.svg'
+          alt='Logo Desktop'
+        />
       </Link>
       <Flex display={{ base: 'none', lg: 'flex' }}>
         <Stack direction={'row'} spacing={3} align={'center'}>
