@@ -85,7 +85,7 @@ export default function Footer() {
           <Stack
             align={{ base: 'center', md: 'flex-start' }}
             spacing={'18px'}
-            justifySelf={'start'}
+            justifySelf={{ base: 'center', lg: 'start' }}
           >
             <ListHeader>A MCare</ListHeader>
             <FooterLink href='/sobre-mcare'>Sobre nós</FooterLink>
@@ -104,7 +104,7 @@ export default function Footer() {
           <Stack
             align={{ base: 'center', md: 'flex-start' }}
             spacing={'18px'}
-            justifySelf={'end'}
+            justifySelf={{ base: 'center', lg: 'end' }}
           >
             <ListHeader>Contactos</ListHeader>
             <Box as='a' href={'#'}>
