@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   const logoURL = data.get('logoURL') as string;
 
   try {
-    resend.sendEmail({
+    resend.emails.send({
       from: 'Ricram <testing@ricardoframos.com>',
       to: 'ricram.log@gmail.com',
       subject: `Testemunho de ${name}`,

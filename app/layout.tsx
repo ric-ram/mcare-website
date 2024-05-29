@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar';
 import { Container } from '@chakra-ui/react';
 import type { Metadata } from 'next';
 import { Quicksand } from 'next/font/google';
+import { Suspense } from 'react';
 import { GlobalContextProvider } from './context/store';
 import { Providers } from './providers';
 
@@ -26,9 +27,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='pt'>
-      <GoogleAnalytics
-        GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_MEASUREMENT_ID}
-      />
+      <Suspense>
+        <GoogleAnalytics
+          GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_MEASUREMENT_ID}
+        />
+      </Suspense>
       <body className={inter.className} style={{ minHeight: '100vh' }}>
         <Providers>
           <GlobalContextProvider>

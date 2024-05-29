@@ -34,11 +34,12 @@ export const CookieBanner = () => {
       bottom={0}
       right={0}
       flexDirection={{ base: 'column', md: 'row' }}
-      spacing={{ base: 3, md: 4 }}
+      spacing={4}
       justify='space-between'
-      align={{ base: 'start', md: 'center' }}
+      align={'center'}
       mx={'auto'}
       maxWidth={{ base: 'max-content', md: '1120px' }}
+      maxHeight={'max-content'}
       my={'2.5rem'}
       borderRadius={'0.5rem'}
       boxShadow={
@@ -46,7 +47,7 @@ export const CookieBanner = () => {
       }
       zIndex={110}
     >
-      <Box>
+      <Box textAlign={{ base: 'center', md: 'left' }}>
         <Text>
           Este website utiliza cookies. Ao usar o nosso website, aceita que
           sejam criados estas cookies. Saiba mais sobre as nossas políticas de{' '}
@@ -67,7 +68,7 @@ export const CookieBanner = () => {
 
       <Stack direction={'row'} spacing={{ base: 3, md: 4 }}>
         <Button
-          display={{ base: 'none', lg: 'inline-flex' }}
+          display={'inline-flex'}
           fontSize={'18px'}
           fontWeight={'medium'}
           lineHeight={'24px'}
@@ -87,7 +88,7 @@ export const CookieBanner = () => {
           Rejeitar
         </Button>
         <Button
-          display={{ base: 'none', lg: 'inline-flex' }}
+          display={'inline-flex'}
           fontSize={'18px'}
           fontWeight={'medium'}
           lineHeight={'24px'}
