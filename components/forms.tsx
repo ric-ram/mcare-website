@@ -133,7 +133,7 @@ const PopoverForm = (props: {
     <VStack spacing={2} zIndex={3} overflow={'scroll'}>
       <FormControl isInvalid={Boolean(props.errors.name)}>
         <FormLabel color={'darkBlue'} fontSize={'16px'}>
-          Nome
+          Nome*
         </FormLabel>
 
         <InputGroup>
@@ -175,7 +175,7 @@ const PopoverForm = (props: {
 
       <FormControl isInvalid={Boolean(props.errors.email)}>
         <FormLabel color={'darkBlue'} fontSize={'16px'}>
-          Email
+          Email*
         </FormLabel>
 
         <InputGroup>
@@ -213,7 +213,7 @@ const PopoverForm = (props: {
 
       <FormControl isInvalid={Boolean(props.errors.phone)}>
         <FormLabel color={'darkBlue'} fontSize={'16px'}>
-          Contacto telefónico
+          Contacto telefónico*
         </FormLabel>
 
         <InputGroup>
@@ -275,7 +275,7 @@ const PopoverForm = (props: {
 
       <FormControl isInvalid={Boolean(props.errors.message)}>
         <FormLabel color={'darkBlue'} fontSize={'16px'}>
-          Mensagem
+          Mensagem*
         </FormLabel>
 
         <InputGroup>
@@ -380,7 +380,7 @@ const PageForm = (props: {
       >
         <FormControl isInvalid={Boolean(props.errors.name)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Nome
+            Nome*
           </FormLabel>
 
           <InputGroup>
@@ -420,7 +420,7 @@ const PageForm = (props: {
 
         <FormControl isInvalid={Boolean(props.errors.email)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Email
+            Email*
           </FormLabel>
 
           <InputGroup>
@@ -456,7 +456,7 @@ const PageForm = (props: {
 
         <FormControl isInvalid={Boolean(props.errors.phone)}>
           <FormLabel color={'darkBlue'} fontSize={'18px'}>
-            Contacto telefónico
+            Contacto telefónico*
           </FormLabel>
 
           <InputGroup>
@@ -524,7 +524,7 @@ const PageForm = (props: {
 
       <FormControl isInvalid={Boolean(props.errors.message)}>
         <FormLabel color={'darkBlue'} fontSize={'18px'}>
-          Mensagem
+          Mensagem*
         </FormLabel>
 
         <InputGroup>
