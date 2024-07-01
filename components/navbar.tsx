@@ -52,7 +52,7 @@ export default function Navbar() {
             <Link href='/'>
               <Image
                 objectFit='cover'
-                src='/images/logoMobile.svg'
+                src='/images/LogoMobile.svg'
                 alt='Logo Mobile'
               />
             </Link>

@@ -22,8 +22,8 @@ export async function POST(request: Request) {
 
   try {
     resend.emails.send({
-      from: 'Ricram <testing@ricardoframos.com>',
-      to: 'ricram.log@gmail.com',
+      from: 'Marcação Website <info@mcare.com.pt>',
+      to: 'geral@mcare.com.pt',
       subject: `Tentativa de marcação de ${name}`,
       react: AppointmentEmail({
         name,

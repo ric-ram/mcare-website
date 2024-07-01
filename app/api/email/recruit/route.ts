@@ -18,8 +18,8 @@ export async function POST(request: Request) {
 
   try {
     resend.emails.send({
-      from: 'Ricram <testing@ricardoframos.com>',
-      to: 'ricram.log@gmail.com',
+      from: 'Recrutamento Website <info@mcare.com.pt>',
+      to: 'geral@mcare.com.pt',
       subject: `Candidatura de ${name}`,
       react: RecruitEmail({
         name,
