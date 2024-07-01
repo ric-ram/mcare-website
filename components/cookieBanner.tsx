@@ -51,15 +51,15 @@ export const CookieBanner = () => {
         <Text>
           Este website utiliza cookies. Ao usar o nosso website, aceita que
           sejam criados estas cookies. Saiba mais sobre as nossas políticas de{' '}
-          <Link href='' color='lightBlue.50' isExternal>
+          <Link href='/politica-privacidade' color='lightBlue.50' isExternal>
             Privacidade
           </Link>{' '}
           de{' '}
-          <Link href='' color='lightBlue.50' isExternal>
+          <Link href='/politica-cookies' color='lightBlue.50' isExternal>
             Cookies
           </Link>{' '}
           e de{' '}
-          <Link href='' color='lightBlue.50' isExternal>
+          <Link href='termos-utilizacao' color='lightBlue.50' isExternal>
             Utilização
           </Link>
           .

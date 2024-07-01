@@ -17,8 +17,8 @@ export async function POST(request: Request) {
 
   try {
     resend.emails.send({
-      from: 'Ricram <testing@ricardoframos.com>',
-      to: 'ricram.log@gmail.com',
+      from: 'Testemunho Website <info@mcare.com.pt>',
+      to: 'geral@mcare.com.pt',
       subject: `Testemunho de ${name}`,
       react: TestimonialEmail({
         name,
