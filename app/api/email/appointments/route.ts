@@ -13,6 +13,9 @@ export async function POST(request: Request) {
   const phone = data.get('phone') as string;
   const message = data.get('message') as string;
 
+  console.log("Resend API Key:", process.env.NEXT_PUBLIC_RESEND_API_KEY ? "Present" : "Not Set");
+  console.log("Email data:", data);
+
   let fullPhone;
   if (countryCode === '') {
     fullPhone = '+351' + phone;
