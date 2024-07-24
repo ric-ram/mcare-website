@@ -1,5 +1,6 @@
 import AppointmentEmail from '@/emails/appointment-email';
 import { NextResponse } from 'next/server';
+import * as React from 'react';
 import { Resend } from 'resend';
 import { v4 as uuid } from 'uuid';
 
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error('Failed to send email', data)
+      console.error('Failed to send email', error)
       return NextResponse.json({ error }, { status: 500 });
     }
 
