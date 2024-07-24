@@ -10,6 +10,7 @@ import {
   Section,
   Text,
 } from '@react-email/components';
+import * as React from 'react';
 
 interface RecruitEmailProps {
   name: string;
@@ -20,14 +21,14 @@ interface RecruitEmailProps {
   message: string;
 }
 
-export const RecruitEmail = ({
+export const RecruitEmail: React.FC<Readonly<RecruitEmailProps>> = ({
   name,
   email,
   phone,
   actuationZone,
   specializationArea,
   message,
-}: RecruitEmailProps) => {
+}) => {
   const previewText = `Nova candidatura de ${name}!`;
 
   return (

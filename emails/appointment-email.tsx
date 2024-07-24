@@ -10,6 +10,7 @@ import {
   Section,
   Text,
 } from '@react-email/components';
+import * as React from 'react';
 
 interface AppointmentEmailProps {
   name: string;
@@ -18,12 +19,12 @@ interface AppointmentEmailProps {
   message: string;
 }
 
-export const AppointmentEmail = ({
+export const AppointmentEmail: React.FC<Readonly<AppointmentEmailProps>> = ({
   name,
   email,
   fullPhone,
   message,
-}: AppointmentEmailProps) => {
+}) => {
   const previewText = `Tentativa de marcação de ${name}!`;
 
   return (

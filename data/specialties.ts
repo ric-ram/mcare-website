@@ -21,7 +21,7 @@ export const SPECIALTIES: Specialty[] = [
 		label: 'Fisioterapia',
 		image: '/images/especialidades/fisioterapia.jpg',
 		summary:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
+			'A Fisioterapia previne, promove e reabilita alterações do quadro motor e é prestada em circunstâncias em que a funcionalidade da pessoa é, ou pode ser, comprometida pelo envelhecimento, lesões, dor, doenças, distúrbios, condições, entre outras.',
 		descriptionParagraphs: [
 			'“A Fisioterapia é o serviço prestado por Fisioterapeutas a indivíduos e populações de forma a desenvolver, manter e restaurar o máximo movimento e capacidade funcional ao longo da vida.” Associação Portuguesa de Fisioterapeutas (APFISIO)',
 			'A Fisioterapia previne, promove e reabilita alterações do quadro motor e é prestada em circunstâncias em que a funcionalidade da pessoa é, ou pode ser, comprometida pelo envelhecimento, lesões, dor, doenças, distúrbios, condições, entre outras.'
@@ -51,7 +51,7 @@ export const SPECIALTIES: Specialty[] = [
 		label: 'Terapia Ocupacional',
 		image: '/images/especialidades/terapia-ocupacional.jpg',
 		summary:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
+			'A Terapia Ocupacional é a área da saúde responsável por promover a participação ou o envolvimento da pessoa nas ocupações necessárias e significativas do seu dia a dia, potenciando o seu desempenho e funcionalidade.',
 		descriptionParagraphs: [
 			'“Entende-se por ocupação tudo aquilo que a pessoa realiza com o objetivo de cuidar de si própria (autocuidados), desfrutar da vida (lazer) ou contribuir para o desenvolvimento da sua comunidade (produtividade).” Associação Portuguesa de Terapeutas Ocupacionais (APTO)',
 			'A Terapia Ocupacional é a área da saúde responsável por promover a participação ou o envolvimento da pessoa nas ocupações necessárias e significativas do seu dia a dia, potenciando o seu desempenho e funcionalidade. Tem como parâmetros todos os fatores que influenciam a participação e o envolvimento da pessoa na ocupação (memória, destreza manual, barreiras do espaço físico, ou exigência da atividade a realizar, por exemplo).',
@@ -77,7 +77,7 @@ export const SPECIALTIES: Specialty[] = [
 		label: 'Terapia da Fala',
 		image: '/images/especialidades/terapia-fala.jpg',
 		summary:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
+			'Na Terapia da Fala, o foco de intervenção é maioritariamente em perturbações da linguagem adquiridas, patologias vocais e da deglutição, melhorando assim a sua qualidade de vida.',
 		descriptionParagraphs: [
 			'“Para todas as idades, com ou sem patologias diagnosticadas, otimiza as competências da comunicação e/ ou da deglutição promovendo a qualidade de vida do indivíduo.” American Speech - Language - Hearing Association(ASHA)',
 			'Na Terapia da Fala, o foco de intervenção é maioritariamente em perturbações da linguagem adquiridas, patologias vocais e da deglutição, melhorando assim a sua qualidade de vida. Tem também um papel preponderante na promoção das competências da comunicação e da voz nos mais diversos profissionais.',
@@ -97,7 +97,7 @@ export const SPECIALTIES: Specialty[] = [
 		label: 'Pilates Clínico',
 		image: '/images/especialidades/pilates-clinico.jpg',
 		summary:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare magna in dolor elementum tempor. Curabitur iaculis, libero id pulvinar cursus, orci eros egestas ex, nec porta elit lectus at lorem. Nam ut nulla sed ex consectetur bibendum. Pellentesque dictum leo sodales consequat tincidunt. Sed eu nunc id nunc facilisis vehicula et ac lacus.',
+			'O Pilates é um método de exercício físico que permite trabalhar a conexão entre a mente e o corpo, como um só.',
 		descriptionParagraphs: [
 			'O Pilates é um método de exercício físico que permite trabalhar a conexão entre a mente e o corpo, como um só.',
 		],
