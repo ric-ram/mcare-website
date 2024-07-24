@@ -1,5 +1,6 @@
 import AppointmentEmail from '@/emails/appointment-email';
 import { NextResponse } from 'next/server';
+import * as React from 'react';
 import { Resend } from 'resend';
 import { v4 as uuid } from 'uuid';
 
@@ -21,26 +22,31 @@ export async function POST(request: Request) {
   }
 
   try {
-    resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Marcação Website <info@mcare.com.pt>',
-      to: 'geral@mcare.com.pt',
+      to: ['geral@mcare.com.pt'],
       subject: `Tentativa de marcação de ${name}`,
       react: AppointmentEmail({
         name,
         email,
         fullPhone,
         message,
-      }),
+      }) as React.ReactElement,
       headers: {
         'X-Entity-Ref-ID': uuid(),
       },
     });
+
+    if (error) {
+      console.error('Failed to send email', error)
+      return NextResponse.json({ error }, { status: 500 });
+    }
 
     return NextResponse.json(
       { message: 'O email foi enviado com sucesso' },
       { status: 200 },
     );
   } catch (e) {
-    return NextResponse.json({ error: 'Algo correu mal' }, { status: 500 });
+    return NextResponse.json({ e }, { status: 500 });
   }
 }

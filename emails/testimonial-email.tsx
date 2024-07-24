@@ -21,14 +21,14 @@ interface TestimonialEmailProps {
   imageSrc?: string;
 }
 
-export const TestimonialEmail = ({
+export const TestimonialEmail: React.FC<Readonly<TestimonialEmailProps>> = ({
   name,
   email,
   rating,
   testimonial,
   imageName,
   imageSrc,
-}: TestimonialEmailProps) => {
+}) => {
   const previewText = `Novo testemunho de ${name}!`;
 
   return (
