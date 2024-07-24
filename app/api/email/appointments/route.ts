@@ -26,14 +26,14 @@ export async function POST(request: Request) {
   try {
     resend.emails.send({
       from: 'Marcação Website <info@mcare.com.pt>',
-      to: 'geral@mcare.com.pt',
+      to: ['geral@mcare.com.pt'],
       subject: `Tentativa de marcação de ${name}`,
       react: AppointmentEmail({
         name,
         email,
         fullPhone,
         message,
-      }),
+      }) as React.ReactElement,
       headers: {
         'X-Entity-Ref-ID': uuid(),
       },
