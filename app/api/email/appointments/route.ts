@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Marcação Website <info@mcare.com.pt>',
       to: ['geral@mcare.com.pt'],
       subject: `Tentativa de marcação de ${name}`,
@@ -38,6 +38,10 @@ export async function POST(request: Request) {
         'X-Entity-Ref-ID': uuid(),
       },
     });
+
+    if (error) {
+      return Response.json({ error }, { status: 500 });
+    }
 
     return NextResponse.json(
       { message: 'O email foi enviado com sucesso' },
