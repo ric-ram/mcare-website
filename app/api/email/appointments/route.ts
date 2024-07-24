@@ -40,6 +40,7 @@ export async function POST(request: Request) {
     });
 
     if (error) {
+      console.error('Failed to send email', data)
       return NextResponse.json({ error }, { status: 500 });
     }
 
@@ -48,6 +49,6 @@ export async function POST(request: Request) {
       { status: 200 },
     );
   } catch (e) {
-    return NextResponse.json({ error: 'Algo correu mal' }, { status: 500 });
+    return NextResponse.json({ e }, { status: 500 });
   }
 }
