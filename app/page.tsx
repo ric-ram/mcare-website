@@ -1,6 +1,7 @@
 'use client';
 
 import { Carousel } from '@/components/carousel';
+import { AppointmentsForm } from '@/components/forms';
 import { HeroCarousel } from '@/components/hero';
 import InteractiveTable from '@/components/interactiveTable';
 import { SPECIALTIES } from '@/data/specialties';
@@ -133,6 +134,26 @@ export default function Home() {
       </Container>
       <Container maxWidth={'100%'} bgColor={'pastelBlue'}>
         <Carousel cardIds={acceptedTestimonialsIds} />
+      </Container>
+      <Container maxWidth={'full'}>
+        <Container maxWidth={'1120px'}>
+          <Stack
+            pt={12}
+            pb={24}
+            minHeight={'650px'}
+            overflow={'hidden'}
+            alignItems={'stretch'}
+            spacing={16}
+          >
+            <Heading as={'h1'} variant={'header1'} textAlign={'center'}>
+              Faça a sua marcação
+            </Heading>
+            {/* <Text textAlign={'center'} fontSize={'18px'} lineHeight={'24px'}>
+          Tem algo a acrescentar? Partilhe connosco a sua opinão.
+        </Text> */}
+            <AppointmentsForm />
+          </Stack>
+        </Container>
       </Container>
     </>
   );
