@@ -1,5 +1,6 @@
 import TestimonialEmail from '@/emails/testimonial-email';
 import { NextResponse } from 'next/server';
+import * as React from 'react';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
@@ -16,9 +17,9 @@ export async function POST(request: Request) {
   const logoURL = data.get('logoURL') as string;
 
   try {
-    resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Testemunho Website <info@mcare.com.pt>',
-      to: 'geral@mcare.com.pt',
+      to: ['geral@mcare.com.pt'],
       subject: `Testemunho de ${name}`,
       react: TestimonialEmail({
         name,
@@ -28,11 +29,16 @@ export async function POST(request: Request) {
         imageName,
         imageSrc,
         logoURL,
-      }),
+      }) as React.ReactElement,
       headers: {
         'X-Entity-Ref-ID': id,
       },
     });
+
+    if (error) {
+      console.error('Failed to send email', error)
+      return NextResponse.json({ error }, { status: 500 });
+    }
 
     return NextResponse.json(
       { message: 'O email foi enviado com sucesso' },

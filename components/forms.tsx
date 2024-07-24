@@ -632,7 +632,11 @@ export const AppointmentsForm = ({ popover = false }: AppointmentFormProps) => {
       method: 'POST',
       body: formData,
     })
-      .then((res) => true)
+      .then((res) => {
+        if (res.status !== 200) return false;
+
+        return true;
+      })
       .catch((err) => false);
     //alert(JSON.stringify(`${res.message}`));
     setIsSuccess(res);

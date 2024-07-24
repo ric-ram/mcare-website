@@ -1,5 +1,6 @@
 import RecruitEmail from '@/emails/recruit-email';
 import { NextResponse } from 'next/server';
+import * as React from 'react';
 import { Resend } from 'resend';
 import { v4 as uuid } from 'uuid';
 
@@ -17,9 +18,9 @@ export async function POST(request: Request) {
   const fileBuffer = Buffer.from(await file.arrayBuffer());
 
   try {
-    resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Recrutamento Website <info@mcare.com.pt>',
-      to: 'geral@mcare.com.pt',
+      to: ['geral@mcare.com.pt'],
       subject: `Candidatura de ${name}`,
       react: RecruitEmail({
         name,
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
         actuationZone,
         specializationArea,
         message,
-      }),
+      }) as React.ReactElement,
       attachments: [
         {
           filename: file.name,
@@ -39,6 +40,11 @@ export async function POST(request: Request) {
         'X-Entity-Ref-ID': uuid(),
       },
     });
+
+    if (error) {
+      console.error('Failed to send email', error)
+      return NextResponse.json({ error }, { status: 500 });
+    }
 
     return NextResponse.json(
       { message: 'O email foi enviado com sucesso' },
