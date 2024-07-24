@@ -748,7 +748,11 @@ export const TestimonialForm = () => {
         method: 'POST',
         body: formData,
       })
-        .then(() => true)
+        .then((res) => {
+          if (res.status !== 200) return false;
+
+          return true;
+        })
         .catch(() => false);
     });
     // alert(JSON.stringify(`${dbRes.message}`));
@@ -1055,7 +1059,11 @@ export const RecruitForm = () => {
       method: 'POST',
       body: formData,
     })
-      .then((res) => true)
+      .then((res) => {
+        if (res.status !== 200) return false;
+
+        return true;
+      })
       .catch((err) => false);
     //alert(JSON.stringify(`${res.message}`));
     setIsSuccess(res);
