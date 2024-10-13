@@ -150,7 +150,7 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
       <Container maxWidth={'100%'} bgColor={'pastelBlue'}>
         {specialty.areas && (
           <InteractiveTable
-            title='Áreas de Actuação'
+            title='Áreas de Atuação'
             items={specialtyAreas}
             type='areas'
           />
@@ -162,7 +162,7 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
             //maxWidth={'1120px'}
             pt={16}
             pb={24}
-            //px={{ lg: '160px', base: '32px' }}
+          //px={{ lg: '160px', base: '32px' }}
           >
             <HowToCard
               label={specialty.label}

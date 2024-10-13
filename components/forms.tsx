@@ -103,7 +103,7 @@ const validateFileType = (value: File) => {
     value.type != 'application/pdf' &&
     value.type != 'application/msword' &&
     value.type !=
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ) {
     return 'Apenas ficheiros pdf, doc ou docx';
   }
@@ -1117,7 +1117,7 @@ export const RecruitForm = () => {
                 />
               </InputGroup>
               {!errors.name ? (
-                <FormHelperText>O seu primeiro e último nome</FormHelperText>
+                <FormHelperText>O seu primeiro e último nome.</FormHelperText>
               ) : (
                 <FormErrorMessage>
                   {errors.name.message?.toString()}
@@ -1153,7 +1153,7 @@ export const RecruitForm = () => {
                 />
               </InputGroup>
               {!errors.email ? (
-                <FormHelperText>O seu email de contacto</FormHelperText>
+                <FormHelperText>O seu email de contacto.</FormHelperText>
               ) : (
                 <FormErrorMessage>
                   {errors.email.message?.toString()}
@@ -1193,7 +1193,7 @@ export const RecruitForm = () => {
                 />
               </InputGroup>
               {!errors.phone ? (
-                <FormHelperText>O seu número de telemóvel</FormHelperText>
+                <FormHelperText>O seu número de telemóvel.</FormHelperText>
               ) : (
                 <FormErrorMessage>
                   {errors.phone.message?.toString()}
@@ -1233,7 +1233,7 @@ export const RecruitForm = () => {
                 </InputGroup>
               </InputGroup>
               {!errors.actuationZone ? (
-                <FormHelperText>Área geográfica onde pratica</FormHelperText>
+                <FormHelperText>Área geográfica onde pratica.</FormHelperText>
               ) : (
                 <FormErrorMessage>
                   {errors.actuationZone.message?.toString()}
@@ -1271,7 +1271,7 @@ export const RecruitForm = () => {
                 </Select>
               </HStack>
               {!errors.specializationArea ? (
-                <FormHelperText>A sua área de especialização</FormHelperText>
+                <FormHelperText>A sua área de especialização.</FormHelperText>
               ) : (
                 <FormErrorMessage>
                   {errors.specializationArea.message?.toString()}
@@ -1322,7 +1322,7 @@ export const RecruitForm = () => {
                     </InputGroup>
 
                     {!errors.file ? (
-                      <FormHelperText>O seu curriculo</FormHelperText>
+                      <FormHelperText>O seu curriculo.</FormHelperText>
                     ) : (
                       <FormErrorMessage>
                         {errors.file.message?.toString()}
@@ -1355,8 +1355,8 @@ export const RecruitForm = () => {
             </InputGroup>
             {!errors.message ? (
               <FormHelperText width={'full'}>
-                Por favor deixe-nos uma mensagem a explicar porque queres
-                trabalhar conosco
+                Por favor deixe-nos uma mensagem a explicar porque deseja
+                trabalhar conosco.
               </FormHelperText>
             ) : (
               <FormErrorMessage>

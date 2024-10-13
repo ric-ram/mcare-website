@@ -24,7 +24,7 @@ export const SPECIALTIES: Specialty[] = [
 			'A Fisioterapia previne, promove e reabilita alterações do quadro motor e é prestada em circunstâncias em que a funcionalidade da pessoa é, ou pode ser, comprometida pelo envelhecimento, lesões, dor, doenças, distúrbios, condições, entre outras.',
 		descriptionParagraphs: [
 			'“A Fisioterapia é o serviço prestado por Fisioterapeutas a indivíduos e populações de forma a desenvolver, manter e restaurar o máximo movimento e capacidade funcional ao longo da vida.” Associação Portuguesa de Fisioterapeutas (APFISIO)',
-			'A Fisioterapia previne, promove e reabilita alterações do quadro motor e é prestada em circunstâncias em que a funcionalidade da pessoa é, ou pode ser, comprometida pelo envelhecimento, lesões, dor, doenças, distúrbios, condições, entre outras.'
+			'A Fisioterapia previne, promove e reabilita alterações do quadro motor e é prestada em circunstâncias em que a funcionalidade da pessoa é, ou pode ser, comprometida pelo envelhecimento, lesões, dor, doenças, distúrbios ou outras condições.'
 		],
 		howToSteps: [
 			'Fortalecimento Muscular Global;',
@@ -77,10 +77,10 @@ export const SPECIALTIES: Specialty[] = [
 		label: 'Terapia da Fala',
 		image: '/images/especialidades/terapia-fala.jpg',
 		summary:
-			'Na Terapia da Fala, o foco de intervenção é maioritariamente em perturbações da linguagem adquiridas, patologias vocais e da deglutição, melhorando assim a sua qualidade de vida.',
+			'A Terapia da Fala, no caso da população adulta/idosa, desempenha uma função crucial nas perturbações da linguagem adquiridas (afasias), perturbações motoras da fala (disartria e apraxia do discurso), perturbações da deglutição (disfagia), melhorando assim a sua qualidade de vida.',
 		descriptionParagraphs: [
 			'“Para todas as idades, com ou sem patologias diagnosticadas, otimiza as competências da comunicação e/ ou da deglutição promovendo a qualidade de vida do indivíduo.” American Speech - Language - Hearing Association(ASHA)',
-			'Na Terapia da Fala, o foco de intervenção é maioritariamente em perturbações da linguagem adquiridas, patologias vocais e da deglutição, melhorando assim a sua qualidade de vida. Tem também um papel preponderante na promoção das competências da comunicação e da voz nos mais diversos profissionais.',
+			'A Terapia da Fala, no caso da população adulta/idosa, desempenha uma função crucial nas perturbações da linguagem adquiridas (afasias), perturbações motoras da fala (disartria e apraxia do discurso), perturbações da deglutição (disfagia), melhorando assim a sua qualidade de vida.',
 		],
 		areas: [
 			"Motrocidade Orofacial",
@@ -138,7 +138,7 @@ export const SPECIALTIES: Specialty[] = [
 			{
 				questionTitle: 'Quando é que são as aulas?',
 				description: [
-					'Temos aulas de grupo a decorrer às terças e quintas-feiras das 19h45 às 20h30, e também a opção de realizar aulas individuais com mais flexibilidade de horário e exercícios adaptados a si.'
+					'Temos aulas de grupo a decorrer às terças e quintas-feiras das 19h30 às 20h15, e também a opção de realizar aulas individuais com mais flexibilidade de horário e exercícios adaptados a si.'
 				]
 			}
 		]

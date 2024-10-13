@@ -123,11 +123,11 @@ export default function Home() {
             spacing={{ base: 6, lg: '95px' }}
           >
             <Heading as={'h2'} variant={{ base: 'header2', lg: 'header1' }}>
-              Zona de Actuação
+              Zona de Atuação
             </Heading>
             <Image
               src='/images/home-page/mapa-actuacao.png'
-              alt='Mapa de actuação'
+              alt='Mapa de atuação'
             />
           </Stack>
         </Container>

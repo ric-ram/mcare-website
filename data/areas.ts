@@ -23,15 +23,15 @@ export const AREAS: Area[] = [
 		],
 		specialtyId: 'fisioterapia',
 		bullets: [
-			'Acidente Vascular Cerebral(AVC);',
-			'Doença de Alzheimer(DA);',
-			'Doença de Parkinson(DP);',
+			'Acidente Vascular Cerebral (AVC);',
+			'Doença de Alzheimer (DA);',
+			'Doença de Parkinson (DP);',
 			'Demências;',
-			'Esclerose Lateral Amiotrófica(ELA);',
+			'Esclerose Lateral Amiotrófica (ELA);',
 			'Esclerose Múltipla;',
-			'Lesões Vértebro - Medulares(LVM\'s);',
+			'Lesões Vértebro - Medulares (LVM\'s);',
 			'Parkinsonismos Atípicos;',
-			'TCE(Traumatismo Cranioencefálico)',
+			'TCE (Traumatismo Cranioencefálico)',
 			'Tumores cerebrais;',
 			'Entre outras',
 		],
@@ -47,15 +47,15 @@ export const AREAS: Area[] = [
 		],
 		specialtyId: 'terapia-ocupacional',
 		bullets: [
-			'Acidente Vascular Cerebral(AVC);',
-			'Doença de Alzheimer(DA);',
-			'Doença de Parkinson(DP);',
+			'Acidente Vascular Cerebral (AVC);',
+			'Doença de Alzheimer (DA);',
+			'Doença de Parkinson (DP);',
 			'Demências;',
-			'Esclerose Lateral Amiotrófica(ELA);',
+			'Esclerose Lateral Amiotrófica (ELA);',
 			'Esclerose Múltipla;',
-			'Lesões Vértebro - Medulares(LVM\'s);',
+			'Lesões Vértebro - Medulares (LVM\'s);',
 			'Parkinsonismos Atípicos;',
-			'TCE(Traumatismo Cranioencefálico)',
+			'TCE (Traumatismo Cranioencefálico)',
 			'Tumores cerebrais;',
 			'Entre outras',
 		],
@@ -98,7 +98,7 @@ export const AREAS: Area[] = [
 			'Bronquite Crónica;',
 			'Condição pós - covid19;',
 			'Derrames Pleurais;',
-			'Doenças Pulmonares Obstrutivas Crónicas(DPOC\'s);',
+			'Doenças Pulmonares Obstrutivas Crónicas (DPOC\'s);',
 			'Enfisema;',
 			'Pneumonias;',
 			'Entre outras',
@@ -111,7 +111,7 @@ export const AREAS: Area[] = [
 		areaId: 'geriatria',
 		label: 'Geriatria',
 		descriptionParagraphs: [
-			'A terapia aplicada ao envelhecimento está presente desde a prevenção até a reabilitação',
+			'A terapia aplicada ao envelhecimento está presente desde a prevenção até a reabilitação.',
 			'A intervenção visa analisar as capacidades do idoso e o seu risco de queda, e promover a sua autonomia e funcionalidade, com consequente melhoria da qualidade de vida.',
 		],
 		specialtyId: 'fisioterapia',
@@ -132,12 +132,17 @@ export const AREAS: Area[] = [
 		],
 		specialtyId: 'fisioterapia',
 		bullets: [
+			'Tumores da cabeça e pescoçoç',
+			'Melanoma;',
 			'Cancro da mama;',
 			'Cancro do pulmão;',
-			'Tumores da cabeça e pescoço.',
+			'Cancro do Colo do Útero;',
+			'Cancro da Próstata;',
+			'Entre outros;',
 		],
 		areaNotes: [
 			'A intervenção visa prestar cuidados de reabilitação após cirurgia oncológica incidindo na dor, diminuição das amplitudes articulares, diminuição da força, alteração da sensibilidade, tratamento e cuidados da cicatriz, entre outros.',
+			'A fisioterapia é também fundamental na preparação para a cirugia e tratamento oncológico,'
 		],
 	},
 	{
@@ -184,7 +189,7 @@ export const AREAS: Area[] = [
 		specialtyId: 'terapia-ocupacional',
 	},
 	{
-		areaId: 'privacao=ocupacional',
+		areaId: 'privacao-ocupacional',
 		label: 'Privação Ocupacional',
 		descriptionParagraphs: [
 			'Promover o envolvimento em papéis significativos através de estratégias e ensino, tanto à pessoa como à família. '
@@ -195,7 +200,7 @@ export const AREAS: Area[] = [
 		areaId: 'motricidade-orofacial',
 		label: 'Motricidade Orofacial',
 		descriptionParagraphs: [
-			'Intervenção nas alterações estruturais e funcionais da região oral e facial envolvidas nas funções de fala, mastigação e deglutição.'
+			'Intervenção nas alterações estruturais e funcionais da região oral e facial envolvidas nas funções de fala, mastigação, deglutição e respiração.'
 		],
 		specialtyId: 'terapia-da-fala',
 	},
@@ -234,14 +239,14 @@ export const AREAS: Area[] = [
 			'Perda total da voz.',
 		],
 		areaNotes: [
-			'A Terapia da Fala pode ajudar a melhorar a perturbação da voz e promover a qualidade de vida em pessoas com distúrbios vocais sendo que é sempre indicada uma consulta de Otorrinolaringologia prévia.'
+			'A Terapia da Fala pode ajudar a melhorar a qualidade vocal por forma a promover a qualidade de vida em pessoas com distúrbios vocais sendo que é sempre indicada uma consulta de Otorrinolaringologia prévia.'
 		]
 	},
 	{
 		areaId: 'comunicacao',
 		label: 'Comunicação',
 		descriptionParagraphs: [
-			'Na presença de uma patologia ou síndrome que condicione a comunicação da pessoa, impossibilitando o uso da fala e/ou linguagem escrita para comunicar, a Terapia da Fala intervém adequando e instalando um sistema aumentativo e/ou alternativo à comunicação.'
+			'Na presença de uma patologia ou síndrome que condicione a comunicação da pessoa, impossibilitando o uso da fala e/ou linguagem escrita para comunicar, a Terapia da Fala intervém adequando e instalando um sistema aumentativo e/ou alternativo de comunicação.'
 		],
 		specialtyId: 'terapia-da-fala',
 	},
@@ -256,18 +261,18 @@ export const AREAS: Area[] = [
 			{
 				title: 'Linguagem Oral',
 				description: [
-					'A Linguagem Oral compreende a componente expressiva e compreensiva e é composta por 4 elementos linguísticos: a semântica (reconhecimento, significado e relação entre as palavras), a morfossintaxe (conhecimento implícito das regras sintáticas e morfológicas necessárias para a construção de frases gramaticais), a fonológica (reconhecimento dos sons da fala) e a pragmática (capacidade de adequação da linguagem ao contexto).'
+					'A Linguagem Oral compreende a componente expressiva e compreensiva e é composta por 4 elementos linguísticos: a semântica (reconhecimento, significado e relação entre as palavras), a morfossintaxe (conhecimento implícito das regras sintáticas e morfológicas necessárias para a construção de frases gramaticais), a fonologia (reconhecimento e reflexão sobre os sons da fala) e a pragmática (capacidade de adequação da linguagem ao contexto).'
 				]
 			},
 			{
 				title: 'Linguagem Escrita',
 				description: [
-					'A linguagem escrita, ao contrário da linguagem oral, pressupõe uma aprendizagem explícita dos grafemas que convertem a linguagem oral em linguagem escrita'
+					'A linguagem escrita, ao contrário da linguagem oral, pressupõe uma aprendizagem explícita da releºão fonema (som)/grafema (letra), para que sejam acionados mecanismos de codificação (escrita) e descodificação (leitura).'
 				]
 			},
 		],
 		areaNotes: [
-			'A Terapia da Fala intervém nos casos de dificuldade de leitura e escrita. '
+			'A Terapia da Fala intervém nos casos de dificuldade de leitura (alexia) e escrita (agrafia). '
 		]
 	},
 	{

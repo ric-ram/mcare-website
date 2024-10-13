@@ -20,9 +20,7 @@ export default function Recruit() {
             Recrutar
           </Heading>
           <Text fontSize={'18px'} lineHeight={'24px'} textAlign={'center'}>
-            Gostarias de trabalhar connosco? Preenche o formulario em baixo e
-            deixa-nos conhecer-te melhor. Iremos entrar em contacto contigo
-            assim que nos for possível.
+            Gostaria de trabalhar connosco? Preencha o formulário em baixo e iremos entrar em contacto consigo assim que nos for possível.
           </Text>
         </Stack>
         <RecruitForm />
