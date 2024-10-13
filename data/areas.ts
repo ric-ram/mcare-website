@@ -324,4 +324,38 @@ export const AREAS: Area[] = [
 		],
 		specialtyId: 'neuropsicologia',
 	},
+	{
+		areaId: 'nutricao-clinica',
+		label: 'Nutrição Clínica',
+		descriptionParagraphs: [
+			'Consiste na área da nutrição que tem como objetivo a prevenção, o diagnóstico e a gestão das alterações metabólicas e nutricionais que possam resultar de patologias agudas e/ou crónicas, bem como com condições resultantes do défice ou excesso de nutrientes. Esta área de atuação representa um grande desafio pela necessidade de adaptação dos hábitos alimentares, gostos e preferências de cada indivíduo considerando sempre a condição clínica, e o estado de saúde geral do mesmo.',
+			'Dentro desta área é possível atuar:'
+		],
+		specialtyId: 'nutricao',
+		bullets: [
+			'Perda de peso e Obesidade; ',
+			'Diabetes;',
+			'Doenças cardiovasculares;',
+			'Doenças Neurológicas;',
+			'Doença renal;',
+			'Ganho de Massa Muscular;',
+			'Saúde Materno - Infantil; ',
+		],
+	},
+	{
+		areaId: 'nutricao-comunitaria',
+		label: 'Nutrição Comunitária e Saúde Pública',
+		descriptionParagraphs: [
+			'Área da nutrição que identifica, avalia e monitoriza problemas nutricionais na comunidade. É definida como um conjunto de atividades vinculadas à Saúde Pública, com foco participativo na comunidade e desenvolvem-se numa determinada área geográfica. Fomentando hábitos alimentares saudáveis e comportamentos salutogénicos, com o objetivo de melhorar o estado nutricional e de saúde dos grupos populacionais.',
+		],
+		specialtyId: 'nutricao',
+	},
+	{
+		areaId: 'alimentacao-coletiva',
+		label: 'Alimentação Coletiva e Restauração',
+		descriptionParagraphs: [
+			'Esta área da nutrição foca-se na gestão de serviços de alimentação em espaços como cantinas escolares, hospitais, restaurantes e hotéis. Envolve garantir a qualidade e segurança dos alimentos em todas as fases, desde a compra até à distribuição das refeições. São aplicadas normas de segurança alimentar, como o sistema HACCP, e criados planos de ementas para assegurar refeições saudáveis e adequadas a diferentes grupos. Também inclui a formação dos colaboradores e a implementação de práticas que promovem a responsabilidade social, sustentabilidade ambiental e segurança no trabalho.',
+		],
+		specialtyId: 'nutricao',
+	},
 ]

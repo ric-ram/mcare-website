@@ -34,6 +34,10 @@ export const NAV_ITEMS: Array<NavItem> = [
 				label: 'Neuropsicologia',
 				href: '/especialidades/neuropsicologia',
 			},
+			{
+				label: 'Nutrição',
+				href: '/especialidades/nutricao',
+			},
 		],
 	},
 	{
