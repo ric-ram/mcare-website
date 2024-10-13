@@ -43,12 +43,13 @@ const HighlightButton = ({
       borderTop={'1px solid'}
       borderColor={'darkBlue'}
       width={'100%'}
+      height={'auto'}
       fontSize={'24px'}
       lineHeight={'32px'}
       textAlign={{ base: 'center', lg: 'left' }}
       fontWeight={'500'}
       color={activeItem.label === item.label ? 'pastelBlue' : 'darkBlue'}
-      noOfLines={1}
+      noOfLines={2}
       bg={activeItem.label === item.label && 'darkBlue'}
       _hover={{
         lg: {
@@ -151,7 +152,9 @@ const SelectedAreaDescription = ({ activeArea }: AreaDescriptionProps) => {
         {activeArea.label}
       </Heading>
       <Flex direction='column' alignItems='flex-start' gap={4}>
-        <Text textAlign={'justify'}>{activeArea.descriptionParagraphs}</Text>
+        {activeArea.descriptionParagraphs.map((paragraph, index) => (
+          <Text key={index} textAlign={'justify'}>{paragraph}</Text>
+        ))}
         {activeArea.bullets && (
           <UnorderedList textAlign={'left'}>
             {activeArea.bullets.map((bullet, index) => (
