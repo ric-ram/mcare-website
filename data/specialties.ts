@@ -4,13 +4,21 @@ export type Question = {
 	isBullet?: boolean;
 }
 
+export type SpecialtyNotes = {
+	noteIntro: string[];
+	bullets?: string[];
+	finalNotes?: string[];
+}
+
 export type Specialty = {
 	specialtyId: string;
 	label: string;
 	summary: string;
 	descriptionParagraphs: string[];
 	questions?: Question[];
+	howToIntro?: string;
 	howToSteps?: string[];
+	specialtyNotes?: SpecialtyNotes;
 	areas?: string[];
 	image?: string;
 };
@@ -142,5 +150,38 @@ export const SPECIALTIES: Specialty[] = [
 				]
 			}
 		]
+	},
+	{
+		specialtyId: "neuropsicologia",
+		label: 'Neuropsicologia',
+		image: '/images/especialidades/neuropsicologia.jpg',
+		summary:
+			'A Neuropsicologia ajudar na compreensão, através de uma Avaliação Neuropsicológica, do funcionamento do cérebro e das suas funções quando existem queixas cognitivas (esquecimentos, lentificação de pensamento, dificuldades de atenção e concentração, entre outras).Após essa avaliação, a Neuropsicologia tem um papel importante na implementação de planos de intervenção baseados na evidência científica com o objetivo de compensar, manter, ou melhorar o funcionamento cognitivo da pessoa, contribuindo assim para a manutenção do seu bem- estar, autonomia, e qualidade de vida.',
+		descriptionParagraphs: [
+			'A Neuropsicologia é uma área da Psicologia especializada na compreensão da relação entre o cérebro, a cognição, e o comportamento, aplicando esse conhecimento à avaliação e intervenção em casos de patologia neurológica ou psiquiátrica(American Psychological Association, 2018).',
+			'A Neuropsicologia ajudar na compreensão, através de uma Avaliação Neuropsicológica, do funcionamento do cérebro e das suas funções quando existem queixas cognitivas (esquecimentos, lentificação de pensamento, dificuldades de atenção e concentração, entre outras).Após essa avaliação, a Neuropsicologia tem um papel importante na implementação de planos de intervenção baseados na evidência científica com o objetivo de compensar, manter, ou melhorar o funcionamento cognitivo da pessoa, contribuindo assim para a manutenção do seu bem- estar, autonomia, e qualidade de vida.',
+		],
+		areas: [
+			"Envelhecimento normal",
+			"Defeito Cognitivo Ligeiro (DCL)",
+			"Doenças Neurodegenerativas",
+			"Lesão Cerebral Adquirida",
+		],
+		specialtyNotes: {
+			noteIntro: [
+				'O processo de envelhecimento, bem como algumas lesões e doenças do sistema nervoso podem comprometer o funcionamento cognitivo, originando sintomas como:',
+			],
+			bullets: [
+				'Esquecimentos frequentes (nomes, datas, compromissos);,',
+				'Dificuldade em arranjar as palavras certas;',
+				'Falta de atenção e concentração;',
+				'Dificuldade em tomar decisões do dia - a - dia;',
+				'Lentificação de pensamento;',
+				'Dificuldade em assimilar novas informações;',
+			],
+			finalNotes: [
+				'Se identificar em si, ou em algum familiar, este tipo de sintomas, a avaliação por parte de um Neuropsicólogo pode ser útil para compreender se as queixas correspondem a um processo de envelhecimento normal ou patológico. Por outro lado, a intervenção focada na Estimulação Cognitiva pode ser importante de forma a estimular o funcionamento cognitivo global, com o objetivo de manter / melhorar o funcionamento da pessoa e promover o seu bem - estar e autonomia.',
+			],
+		}
 	},
 ];

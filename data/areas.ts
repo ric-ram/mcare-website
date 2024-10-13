@@ -283,4 +283,45 @@ export const AREAS: Area[] = [
 		],
 		specialtyId: 'terapia-da-fala',
 	},
+	{
+		areaId: 'envelhecimento-normal',
+		label: 'Envelhecimento Normal',
+		descriptionParagraphs: [
+			'“O cérebro é como um músculo: quanto mais o exercitamos, mais forte ele fica” - Michael Merzenich, investigador premiado na área das neurociências e do envelhecimento.',
+			'À medida que se atingem idades cada vez mais avançadas, surge a preocupação de saber se as alterações cognitivas que vão surgindo são normais e se é possível mudar o rumo do nosso envelhecimento cerebral, de forma a conservar a saúde do cérebro durante o máximo de tempo possível.Da mesma forma que o exercício físico é necessário para manter a forma física, a participação em atividades estimulantes para o cérebro também é fundamental para manter o seu bom funcionamento, e a investigação tem demonstrado que a Intervenção Cognitiva em pessoas cognitivamente saudáveis pode trazer melhorias, mesmo em idades muito avançadas.'
+		],
+		specialtyId: 'neuropsicologia',
+	},
+	{
+		areaId: 'defeito-cognitivo-ligeiro',
+		label: 'Defeito Cognitivo Ligeiro (DCL)',
+		descriptionParagraphs: [
+			'Está comprovado que a participação em atividades cognitivamente estimulantes e significativas pode promover a reversão do quadro de DCL para cognição normal, ou pelo menos o atraso na sua progressão para Doença de Alzheimer, podendo gerar ganhos moderados ao nível de funções cognitivas como a linguagem, memória, atenção, velocidade de processamento, entre outras.'
+		],
+		specialtyId: 'neuropsicologia',
+	},
+	{
+		areaId: 'doencas-neurodegenerativas',
+		label: 'Doenças Neurodegenerativas',
+		descriptionParagraphs: [
+			'No caso de doenças Neurodegenerativas, como a Doença de Alzheimer, a participação em atividades estimulantes para o cérebro continua a ser fundamental para retardar o agravamento da doença e promover o bem - estar da pessoa.De acordo com o National Institute for Health and Clinical Excellence, a Estimulação Cognitiva é a única intervenção não farmacológica recomendada para a sintomatologia cognitiva e a manutenção da funcionalidade, sendo que todos os indivíduos com demência deveriam participar em programas de Estimulação Cognitiva. A Neuropsicologia também intervém noutras doenças neurodegenerativas como a Doença de Parkinson, Parkinsonismos Atípicos, Esclerose Múltipla, Esclerose Lateral Amiotrófica, entre outras.',
+			'Os benefícios mais consistentes da Estimulação Cognitiva para pessoas com doenças neurodegenerativas são os seguintes:'
+		],
+		specialtyId: 'neuropsicologia',
+		bullets: [
+			'Melhorar, ou pelo menos manter, a cognição global;',
+			'Promover o bem-estar e qualidade de vida;',
+			'Reduzir a apatia e sintomatologia depressiva;',
+			'Melhorar o humor, a comunicação e o relacionamento interpessoal;',
+			'Melhorar os níveis de energia, atenção, envolvimento e interesse.',
+		],
+	},
+	{
+		areaId: 'lesao-cerebral-adquirida',
+		label: 'Lesão Cerebral Adquirida',
+		descriptionParagraphs: [
+			'A Intervenção Cognitiva nos casos de Lesão Cerebral Adquirida tem um papel fundamental na compensação e melhoria das dificuldades cognitivas após a lesão, seja em situações de traumatismos cranioencefálicos ou Acidentes Vasculares Cerebrais.Os exercícios e estratégias adotadas no processo de reabilitação envolvem frequentemente a memória, resolução de problemas, atenção, raciocínio lógico, funções executivas, entre outras.',
+		],
+		specialtyId: 'neuropsicologia',
+	},
 ]

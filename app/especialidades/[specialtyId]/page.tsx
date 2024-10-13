@@ -15,7 +15,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  UnorderedList,
+  UnorderedList
 } from '@chakra-ui/react';
 
 const getSpecialty = (specialtyId: string) => {
@@ -166,8 +166,49 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
           >
             <HowToCard
               label={specialty.label}
+              howToIntro={specialty.howToIntro}
               howToSteps={specialty.howToSteps}
             />
+          </Stack>
+        )}
+      </Container>
+      <Container maxWidth={'1120px'}>
+        {specialty.specialtyNotes && (
+          <Stack
+            maxWidth='full'
+            pt={16}
+            pb={24}
+            spacing={4}
+          >
+            {specialty.specialtyNotes.noteIntro.map((paragraph: string, index: number) => (
+              <Text
+                textAlign={{ base: 'center', md: 'justify' }}
+                fontSize={'lg'}
+                key={index}
+              >
+                {paragraph}
+              </Text>
+            ))}
+
+            {specialty.specialtyNotes.bullets && (
+              <UnorderedList textAlign={'left'} spacing={2} fontSize={'18px'}>
+                {specialty.specialtyNotes.bullets.map((bullet, index) => (
+                  <ListItem key={index}>
+                    {bullet}
+                  </ListItem>
+                ))}
+              </UnorderedList>
+            )}
+
+            {specialty.specialtyNotes.finalNotes.map((paragraph: string, index: number) => (
+              <Text
+                textAlign={{ base: 'center', md: 'justify' }}
+                fontSize={'lg'}
+                key={index}
+              >
+                {paragraph}
+              </Text>
+            ))}
           </Stack>
         )}
       </Container>
@@ -197,7 +238,7 @@ export default function SpecialtyPage({ params }: SpecialtyProps) {
       </Container>
       <Container
         maxWidth={'full'}
-        bgColor={(specialty.howToSteps || specialty.questions) && 'pastelBlue'}
+        bgColor={(specialty.howToSteps || specialty.questions || specialty.specialtyNotes) && 'pastelBlue'}
       >
         <Container maxWidth={'1120px'}>
           <Stack
