@@ -187,7 +187,7 @@ export const SPECIALTIES: Specialty[] = [
 	{
 		specialtyId: "nutricao",
 		label: 'Nutrição',
-		image: '/images/especialidades/neuropsicologia.jpg',
+		image: '/images/especialidades/nutricao.jpg',
 		summary:
 			'“A Nutrição é a ciência que estuda a relação entre os alimentos e a saúde humana. É um serviço prestado por Nutricionistas, que visa a proteção e promoção da saúde, prevenção, controlo e tratamento da doença. com o propósito de promover o bem-estar e melhorar a qualidade de vida de pessoas, grupos, organizações ou comunidades.“ Ordem dos Nutricionistas',
 		descriptionParagraphs: [
