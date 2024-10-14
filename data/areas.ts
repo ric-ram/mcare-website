@@ -283,4 +283,79 @@ export const AREAS: Area[] = [
 		],
 		specialtyId: 'terapia-da-fala',
 	},
+	{
+		areaId: 'envelhecimento-normal',
+		label: 'Envelhecimento Normal',
+		descriptionParagraphs: [
+			'“O cérebro é como um músculo: quanto mais o exercitamos, mais forte ele fica” - Michael Merzenich, investigador premiado na área das neurociências e do envelhecimento.',
+			'À medida que se atingem idades cada vez mais avançadas, surge a preocupação de saber se as alterações cognitivas que vão surgindo são normais e se é possível mudar o rumo do nosso envelhecimento cerebral, de forma a conservar a saúde do cérebro durante o máximo de tempo possível.Da mesma forma que o exercício físico é necessário para manter a forma física, a participação em atividades estimulantes para o cérebro também é fundamental para manter o seu bom funcionamento, e a investigação tem demonstrado que a Intervenção Cognitiva em pessoas cognitivamente saudáveis pode trazer melhorias, mesmo em idades muito avançadas.'
+		],
+		specialtyId: 'neuropsicologia',
+	},
+	{
+		areaId: 'defeito-cognitivo-ligeiro',
+		label: 'Defeito Cognitivo Ligeiro (DCL)',
+		descriptionParagraphs: [
+			'Está comprovado que a participação em atividades cognitivamente estimulantes e significativas pode promover a reversão do quadro de DCL para cognição normal, ou pelo menos o atraso na sua progressão para Doença de Alzheimer, podendo gerar ganhos moderados ao nível de funções cognitivas como a linguagem, memória, atenção, velocidade de processamento, entre outras.'
+		],
+		specialtyId: 'neuropsicologia',
+	},
+	{
+		areaId: 'doencas-neurodegenerativas',
+		label: 'Doenças Neurodegenerativas',
+		descriptionParagraphs: [
+			'No caso de doenças Neurodegenerativas, como a Doença de Alzheimer, a participação em atividades estimulantes para o cérebro continua a ser fundamental para retardar o agravamento da doença e promover o bem - estar da pessoa.De acordo com o National Institute for Health and Clinical Excellence, a Estimulação Cognitiva é a única intervenção não farmacológica recomendada para a sintomatologia cognitiva e a manutenção da funcionalidade, sendo que todos os indivíduos com demência deveriam participar em programas de Estimulação Cognitiva. A Neuropsicologia também intervém noutras doenças neurodegenerativas como a Doença de Parkinson, Parkinsonismos Atípicos, Esclerose Múltipla, Esclerose Lateral Amiotrófica, entre outras.',
+			'Os benefícios mais consistentes da Estimulação Cognitiva para pessoas com doenças neurodegenerativas são os seguintes:'
+		],
+		specialtyId: 'neuropsicologia',
+		bullets: [
+			'Melhorar, ou pelo menos manter, a cognição global;',
+			'Promover o bem-estar e qualidade de vida;',
+			'Reduzir a apatia e sintomatologia depressiva;',
+			'Melhorar o humor, a comunicação e o relacionamento interpessoal;',
+			'Melhorar os níveis de energia, atenção, envolvimento e interesse.',
+		],
+	},
+	{
+		areaId: 'lesao-cerebral-adquirida',
+		label: 'Lesão Cerebral Adquirida',
+		descriptionParagraphs: [
+			'A Intervenção Cognitiva nos casos de Lesão Cerebral Adquirida tem um papel fundamental na compensação e melhoria das dificuldades cognitivas após a lesão, seja em situações de traumatismos cranioencefálicos ou Acidentes Vasculares Cerebrais.Os exercícios e estratégias adotadas no processo de reabilitação envolvem frequentemente a memória, resolução de problemas, atenção, raciocínio lógico, funções executivas, entre outras.',
+		],
+		specialtyId: 'neuropsicologia',
+	},
+	{
+		areaId: 'nutricao-clinica',
+		label: 'Nutrição Clínica',
+		descriptionParagraphs: [
+			'Consiste na área da nutrição que tem como objetivo a prevenção, o diagnóstico e a gestão das alterações metabólicas e nutricionais que possam resultar de patologias agudas e/ou crónicas, bem como com condições resultantes do défice ou excesso de nutrientes. Esta área de atuação representa um grande desafio pela necessidade de adaptação dos hábitos alimentares, gostos e preferências de cada indivíduo considerando sempre a condição clínica, e o estado de saúde geral do mesmo.',
+			'Dentro desta área é possível atuar:'
+		],
+		specialtyId: 'nutricao',
+		bullets: [
+			'Perda de peso e Obesidade; ',
+			'Diabetes;',
+			'Doenças cardiovasculares;',
+			'Doenças Neurológicas;',
+			'Doença renal;',
+			'Ganho de Massa Muscular;',
+			'Saúde Materno - Infantil; ',
+		],
+	},
+	{
+		areaId: 'nutricao-comunitaria',
+		label: 'Nutrição Comunitária e Saúde Pública',
+		descriptionParagraphs: [
+			'Área da nutrição que identifica, avalia e monitoriza problemas nutricionais na comunidade. É definida como um conjunto de atividades vinculadas à Saúde Pública, com foco participativo na comunidade e desenvolvem-se numa determinada área geográfica. Fomentando hábitos alimentares saudáveis e comportamentos salutogénicos, com o objetivo de melhorar o estado nutricional e de saúde dos grupos populacionais.',
+		],
+		specialtyId: 'nutricao',
+	},
+	{
+		areaId: 'alimentacao-coletiva',
+		label: 'Alimentação Coletiva e Restauração',
+		descriptionParagraphs: [
+			'Esta área da nutrição foca-se na gestão de serviços de alimentação em espaços como cantinas escolares, hospitais, restaurantes e hotéis. Envolve garantir a qualidade e segurança dos alimentos em todas as fases, desde a compra até à distribuição das refeições. São aplicadas normas de segurança alimentar, como o sistema HACCP, e criados planos de ementas para assegurar refeições saudáveis e adequadas a diferentes grupos. Também inclui a formação dos colaboradores e a implementação de práticas que promovem a responsabilidade social, sustentabilidade ambiental e segurança no trabalho.',
+		],
+		specialtyId: 'nutricao',
+	},
 ]

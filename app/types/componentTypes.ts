@@ -35,6 +35,7 @@ export type AreaDescriptionProps = {
 
 export type HowToCardProps = {
 	label: string;
+	howToIntro: string;
 	howToSteps: string[];
 }
 
