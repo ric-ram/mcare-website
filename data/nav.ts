@@ -30,6 +30,14 @@ export const NAV_ITEMS: Array<NavItem> = [
 				label: 'Pilates Clínico',
 				href: '/especialidades/pilates-clinico',
 			},
+			{
+				label: 'Neuropsicologia',
+				href: '/especialidades/neuropsicologia',
+			},
+			{
+				label: 'Nutrição',
+				href: '/especialidades/nutricao',
+			},
 		],
 	},
 	{

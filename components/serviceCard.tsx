@@ -57,7 +57,7 @@ export function AreaCard({ id }: CardProps) {
   );
 }
 
-export default function HowToCard({ label, howToSteps }: HowToCardProps) {
+export default function HowToCard({ label, howToIntro, howToSteps }: HowToCardProps) {
   return (
     <Box
       bg={'pastelBlue'}
@@ -72,8 +72,9 @@ export default function HowToCard({ label, howToSteps }: HowToCardProps) {
           as='h2'
           variant='header2'
           textAlign={{ base: 'center', md: 'left' }}
+
         >
-          {`A ${label} atua em todas estas áreas através de:`}
+          {howToIntro || `A ${label} atua em todas estas áreas através de:`}
         </Heading>
         <List textAlign={'left'} spacing={2} fontSize={'18px'}>
           {howToSteps.map((step, index) => (
